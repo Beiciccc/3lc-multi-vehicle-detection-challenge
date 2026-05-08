@@ -1,0 +1,19 @@
+{
+  "weights": "/root/3LC Multi Vehicle detection Challenge/competition_starter/runs/detect/r2_yolov8n_scratch_e30_b32_640/weights/best.pt",
+  "submission": "/root/3LC Multi Vehicle detection Challenge/competition_starter/submissions/r3_r2weights_conf0.05_iou0.55_submission.csv",
+  "conf": 0.05,
+  "iou": 0.55,
+  "imgsz": 640,
+  "batch": 32,
+  "max_det": 300,
+  "seconds": 9.386820316314697,
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 12456
+  },
+  "sweep_best_val_map50": 0.8544782255492824,
+  "sweep_best_val_map50_95": 0.7305773031036116
+}

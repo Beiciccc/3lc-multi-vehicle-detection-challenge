@@ -1,0 +1,4 @@
+fileName                                               date                        description                                               status                     publicScore  privateScore  
+-----------------------------------------------------  --------------------------  --------------------------------------------------------  -------------------------  -----------  ------------  
+r2_yolov8n_scratch_e30_b32_640_submission_clipped.csv  2026-04-30 19:05:08.257000  r2_yolov8n_scratch_e30_b32_640_conf0.001_iou0.65_clipped  SubmissionStatus.COMPLETE  0.81762                    
+r1_yolov8n_scratch_e10_640_submission_clipped.csv      2026-04-30 18:44:41.340000  r1_yolov8n_scratch_e10_640_conf0.001_iou0.65_clipped      SubmissionStatus.COMPLETE  0.82352                    

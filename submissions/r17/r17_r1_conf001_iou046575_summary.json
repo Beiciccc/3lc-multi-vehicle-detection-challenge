@@ -1,0 +1,23 @@
+{
+  "weights": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\competition_starter\\runs\\detect\\r1_yolov8n_scratch_e10_640\\weights\\best.pt",
+  "submission": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\submissions\\r17\\r17_r1_conf001_iou046575_submission.csv",
+  "imgsz": 640,
+  "conf": 0.001,
+  "iou": 0.46575,
+  "max_det": 300,
+  "batch": 16,
+  "device": "cpu",
+  "val_metrics": {
+    "map50": 0.8187033077845453,
+    "map50_95": 0.6323226419608473
+  },
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 50283
+  },
+  "note": "R1 narrow NMS left-neighbor sweep after R15/R16: conf 0.001, iou 0.46575; CPU rerun due GPU contention; no TTA/ensemble/pretraining.",
+  "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
+}
