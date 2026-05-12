@@ -13,7 +13,7 @@ Requested target: 3 successful submission loops.
 
 Environment:
 - Remote GPU: NVIDIA RTX 4090 24GB.
-- Fallback used YOLOv8n YAML from scratch, no pretrained weights, single model, no TTA/ensemble/pseudo-labeling.
+- Official 3LC workflow unavailable by missing 3LC API key; fallback used YOLOv8n YAML from scratch, no pretrained weights, single model, no TTA/ensemble/pseudo-labeling.
 - AMP disabled to avoid Ultralytics pretrained AMP-check downloads in subsequent runs.
 
 Submission results:
@@ -42,7 +42,7 @@ Context:
 - New GPU server: Windows host with NVIDIA RTX 4080 16GB.
 - Project/data synchronized; macOS `._*` metadata excluded from remote and local validation logic.
 - Kaggle Code review: latest public notebook emphasizes YOLOv8n scratch, conservative data QA, low-conf inference; no readable Discussion updates.
-- Continued the reproducible Ultralytics YOLOv8n-from-scratch workflow alongside the official starter code materials.
+- Continued fallback Ultralytics workflow because official 3LC API-key workflow is unavailable.
 
 Submission results:
 
@@ -166,7 +166,7 @@ Context:
 - Kaggle Code refresh still showed Avik Das `3LC YOLOv8n Vehicle Detection and Label QA Process` as the newest public notebook, last run 2026-04-30.
 - A readable Discussion update from 2026-05-06 clarified that external scripts may assist label-issue discovery only if changes are submitted back through a new 3LC table version and only official data is used.
 - Rules remained unchanged for model/submission constraints: YOLOv8n only, from scratch, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no external data, and 3 submissions/day.
-- GPU contention affected R17/R18 generation. R17's first GPU run was stopped after no progress; R17/R18 were regenerated on CPU.
+- GPU scheduling constraints affected R17/R18 generation. R17's first GPU run was stopped after no progress; R17/R18 were regenerated on CPU.
 
 Submission results:
 
@@ -188,3 +188,36 @@ Next candidate directions:
 - Do not prioritize more R1-only NMS micro-sweeps unless a daily slot would otherwise go unused.
 - Use the 2026-05-06 Discussion guidance to build a compliant 3LC label-review loop if API credentials become available.
 - Otherwise train a small number of YOLOv8n scratch seed/augmentation variants and apply R15 inference calibration.
+
+## 2026-05-12 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before each submit. The start list showed no 2026-05-12 submissions; R19, R20, and R21 were the three accepted records for the day.
+- Kaggle Code refresh still showed Avik Das `3LC YOLOv8n Vehicle Detection and Label QA Process` as the newest public notebook, last run 2026-04-30.
+- Since R16-R18 showed R1 NMS micro-sweeps were saturated, this loop tested conservative single-checkpoint post-processing around R15 rather than more NMS-only interpolation.
+- All candidates used the R15/R1 single YOLOv8n checkpoint output as source, with no TTA, no ensemble, no pseudo-labeling, no external data, and no model retraining.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R19 | `submissions/r19/r19_r15_boxscale0985_submission.csv` | R15 output, bbox scale 0.985 | audit ok / 50368 boxes | 0.82644 |
+| R20 | `submissions/r20/r20_r15_boxscale1010_submission.csv` | R15 output, bbox scale 1.010 | audit ok / 50368 boxes | 0.82760 |
+| R21 | `submissions/r21/r21_r15_conf00105_from_r15_submission.csv` | R15 output, remove detections below conf 0.00105 | audit ok / 49215 boxes | 0.82695 |
+
+Current best public score: R15 `0.82769`.
+
+Error analysis:
+- R19 shows bbox shrinkage is harmful on the public split, likely because true positives lose IoU margin faster than false positives are improved.
+- R20 partially recovered the score but still underperformed R15, so bbox scaling is not a promising direction around this checkpoint.
+- R21 confirms that even removing only the lowest-confidence tail hurts public recall; the public split rewards keeping the very low confidence detections from R15.
+- The current R1/R15 post-processing region is saturated. Further quota should be spent on a new compliant YOLOv8n scratch checkpoint or a sanctioned data-review iteration, not more output-only geometry/confidence tweaks.
+
+Repository/proof updates:
+- Added R19-R21 submission, summary, audit, submit, poll, and final-list artifacts.
+- Updated README, write-up, proof index, and experiment write-up for the May 12 loop.
+
+Next candidate directions:
+- Do not continue bbox scaling from R15.
+- Do not raise the effective confidence floor above 0.001 from R15 output.
+- Train a small number of YOLOv8n scratch seed/augmentation variants and evaluate them with the R15 inference calibration.

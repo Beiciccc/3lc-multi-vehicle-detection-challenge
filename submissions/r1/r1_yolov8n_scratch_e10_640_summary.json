@@ -1,7 +1,7 @@
 {
   "run_name": "r1_yolov8n_scratch_e10_640",
-  "best_weights": "/root/3LC Multi Vehicle detection Challenge/competition_starter/runs/detect/r1_yolov8n_scratch_e10_640/weights/best.pt",
-  "submission": "/root/3LC Multi Vehicle detection Challenge/competition_starter/submissions/r1_yolov8n_scratch_e10_640_submission.csv",
+  "best_weights": "<project-root>/competition_starter/runs/detect/r1_yolov8n_scratch_e10_640/weights/best.pt",
+  "submission": "<project-root>/competition_starter/submissions/r1_yolov8n_scratch_e10_640_submission.csv",
   "train_minutes": 6.332289254665374,
   "val_map50": 0.8222960168661821,
   "val_map50_95": 0.6411126363151869,
@@ -13,7 +13,7 @@
     "total_boxes": 74099
   },
   "args": {
-    "starter_dir": "/root/3LC Multi Vehicle detection Challenge/competition_starter",
+    "starter_dir": "<project-root>/competition_starter",
     "run_name": "r1_yolov8n_scratch_e10_640",
     "epochs": 10,
     "batch": 16,
@@ -41,5 +41,5 @@
     "pred_batch": 16,
     "max_det": 300
   },
-  "rule_note": "YOLOv8n.yaml from scratch with no pretraining."
+  "rule_note": "Fallback path because official 3LC workflow needs a 3LC API key; model is YOLOv8n.yaml from scratch with no pretraining."
 }

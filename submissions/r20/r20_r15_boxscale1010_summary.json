@@ -1,0 +1,19 @@
+{
+  "source": "submissions/r15/r15_r1_conf001_iou046625_submission.csv",
+  "submission": "submissions/r20/r20_r15_boxscale1010_submission.csv",
+  "scale": 1.01,
+  "conf_min": 0.0,
+  "classes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 50368,
+  "dropped_conf": 0,
+  "dropped_class": 0,
+  "note": "R15 single-checkpoint output with mild bbox expansion after R19 shrink underperformed.",
+  "rule_note": "post-processing of a single YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

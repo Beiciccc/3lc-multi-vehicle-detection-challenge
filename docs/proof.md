@@ -10,6 +10,8 @@ This page indexes the reproducibility and leaderboard proof artifacts.
 - Final May 6 list: `logs/final_submissions_2026-05-06.txt`
 - Start of May 7 loop: `logs/submissions_2026-05-07_start.txt`
 - Final May 7 list: `logs/final_submissions_2026-05-07.txt`
+- Start/before-submit May 12 lists: `logs/submissions_2026-05-12_before_r19.txt`, `logs/submissions_2026-05-12_before_r20.txt`, `logs/submissions_2026-05-12_before_r21.txt`
+- Final May 12 list: `logs/final_submissions_2026-05-12.txt`
 
 ## May 5 Submission Proof
 
@@ -47,3 +49,13 @@ R17's first upload attempt returned `429 Too Many Requests`; five subsequent sub
 - R2 training artifacts: `competition_starter/runs/detect/r2_yolov8n_scratch_e30_b32_640/`
 - Inference summaries: `submissions/r*/r*_summary.json`
 - Chronological experiment log: `experiments/run_log.md`
+
+## May 12 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R19 | `submissions/r19/r19_r15_boxscale0985_submission.csv` | `submissions/r19/r19_r15_boxscale0985_summary.json` | `logs/r19/audit_r19.txt` | `logs/r19/submit_r19.txt` | `logs/r19/submissions_poll_*.txt` | 0.82644 |
+| R20 | `submissions/r20/r20_r15_boxscale1010_submission.csv` | `submissions/r20/r20_r15_boxscale1010_summary.json` | `logs/r20/audit_r20.txt` | `logs/r20/submit_r20.txt` | `logs/r20/submissions_poll_*.txt` | 0.82760 |
+| R21 | `submissions/r21/r21_r15_conf00105_from_r15_submission.csv` | `submissions/r21/r21_r15_conf00105_from_r15_summary.json` | `logs/r21/audit_r21.txt` | `logs/r21/submit_r21.txt` | `logs/r21/submissions_poll_*.txt` | 0.82695 |
+
+Final May 12 submission list snapshot: `logs/final_submissions_2026-05-12.txt`. R15 remains the current best public submission.

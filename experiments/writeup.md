@@ -4,7 +4,7 @@
 
 The score-chasing workflow uses the competition-provided data only and keeps the model budget fixed to YOLOv8n. The most stable public checkpoint remains R1, a YOLOv8n model trained from scratch for 10 epochs at 640 px with AdamW and no pretrained weights.
 
-The official 3LC starter code is retained, and the repository also includes a fallback Ultralytics entrypoint. No external data, pseudo-labels, ensembles, TTA, distillation, or pretrained weights were used.
+The official 3LC starter code is retained, but current runs used a fallback Ultralytics entrypoint because the available runtime does not have a usable 3LC API key. No external data, pseudo-labels, ensembles, TTA, distillation, or pretrained weights were used.
 
 ## Findings
 
@@ -30,3 +30,15 @@ Current best: R15, public LB `0.82769`.
 ## Next Direction
 
 Pure NMS interpolation around R15 is saturated. Next useful work should focus on compliant data-centric improvements through the official 3LC workflow if credentials are available, or on short YOLOv8n-from-scratch seed/augmentation variants calibrated with R15-style inference.
+
+## May 12 Update
+
+The May 12 loop tested output-only post-processing around R15 after NMS micro-sweeps had saturated. Bbox shrinkage, bbox expansion, and ultra-low-confidence filtering all underperformed R15:
+
+| Round | Source | Post-processing | Boxes | Public LB |
+|---|---|---|---:|---:|
+| R19 | R15 output | bbox scale 0.985 | 50368 | 0.82644 |
+| R20 | R15 output | bbox scale 1.010 | 50368 | 0.82760 |
+| R21 | R15 output | confidence floor 0.00105 | 49215 | 0.82695 |
+
+Conclusion: preserve R15 geometry and low-confidence tail. The next useful step is a new compliant YOLOv8n-from-scratch checkpoint, then apply R15-style inference calibration.

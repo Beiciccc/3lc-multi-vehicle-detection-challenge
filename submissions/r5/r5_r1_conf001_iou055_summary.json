@@ -1,6 +1,6 @@
 {
-  "weights": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\competition_starter\\runs\\detect\\r1_yolov8n_scratch_e10_640\\weights\\best.pt",
-  "submission": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\submissions\\r5\\r5_r1_conf001_iou055_submission.csv",
+  "weights": "<project-root>\\competition_starter\\runs\\detect\\r1_yolov8n_scratch_e10_640\\weights\\best.pt",
+  "submission": "<project-root>\\submissions\\r5\\r5_r1_conf001_iou055_submission.csv",
   "imgsz": 640,
   "conf": 0.001,
   "iou": 0.55,

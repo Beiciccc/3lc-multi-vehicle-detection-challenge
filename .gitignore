@@ -22,3 +22,4 @@ competition_starter/runs/
 *.pth
 *.onnx
 *.engine
+*.cache

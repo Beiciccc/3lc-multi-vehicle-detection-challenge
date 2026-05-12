@@ -4,7 +4,7 @@ The official starter workflow expects a personal 3LC account and API key, plus 3
 
 ## Current Status
 
-- 3LC dashboard exports and screenshots are not included in this public repository.
+- The 3LC API key was not configured for the runtime used for these submissions.
 - Because of that, `register_tables.py` and the full dashboard-based data-centric loop could not be completed.
 - No 3LC project export or Dashboard screenshot is currently available. This was rechecked for the May 7 loop; the fallback proof is therefore the reproducible code, summaries, audit logs, Kaggle submit logs, and leaderboard submission-list snapshots.
 

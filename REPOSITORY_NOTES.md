@@ -1,5 +1,5 @@
 # Repository Notes
 
-This public repository contains project code, experiment records, generated submission files, and proof logs for the Kaggle 3LC Multi Vehicle Detection Challenge.
+This public repository contains code, documentation, experiment logs, validation/audit outputs, and generated submission artifacts for reproducibility.
 
-Raw competition images, labels, trained model weights, credentials, and local machine-specific cache files are intentionally not redistributed here. Use the official Kaggle competition page to obtain the dataset and configure credentials locally before running the reproduction commands.
+Raw competition images, labels, trained weights, credentials, and private challenge data are not redistributed here. Obtain the official dataset through the Kaggle competition page and place it under the documented `competition_starter/data/` layout before reproducing runs.

@@ -1,0 +1,19 @@
+{
+  "source": "submissions/r15/r15_r1_conf001_iou046625_submission.csv",
+  "submission": "submissions/r21/r21_r15_conf00105_from_r15_submission.csv",
+  "scale": 1.0,
+  "conf_min": 0.00105,
+  "classes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 49215,
+  "dropped_conf": 1153,
+  "dropped_class": 0,
+  "note": "R15 single-checkpoint output with only ultra-low confidence detections below 0.00105 removed; geometry unchanged.",
+  "rule_note": "post-processing of a single YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}
