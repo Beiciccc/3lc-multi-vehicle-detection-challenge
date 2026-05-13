@@ -2,7 +2,7 @@
 """
 Fallback YOLOv8n-from-scratch training and submission generation.
 
-This is used only when the official 3LC starter workflow is unavailable by a
+This is used only when the official 3LC starter workflow is blocked by a
 missing 3LC API key. It keeps the architecture and no-pretraining constraints:
 YOLOv8n YAML, random initialization, single model, no TTA/ensemble.
 """

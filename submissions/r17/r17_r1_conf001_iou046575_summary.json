@@ -18,6 +18,6 @@
     "nonempty": 982,
     "total_boxes": 50283
   },
-  "note": "R1 narrow NMS left-neighbor sweep after R15/R16: conf 0.001, iou 0.46575; CPU rerun for CPU reproducibility; no TTA/ensemble/pretraining.",
+  "note": "R1 narrow NMS left-neighbor sweep after R15/R16: conf 0.001, iou 0.46575; CPU rerun due unrelated GPU contention; no TTA/ensemble/pretraining.",
   "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
 }

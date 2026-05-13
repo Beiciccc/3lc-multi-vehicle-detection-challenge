@@ -12,7 +12,7 @@ The active experiments follow the competition constraints:
 - Inference: single checkpoint, no ensemble, no TTA, no pseudo-labeling.
 - Submission format: `id,image_id,prediction_string`, matching `competition_starter/sample_submission.csv`.
 
-The official 3LC workflow requires a personal 3LC API key. That workflow was unavailable in the available runtime, so the score-chasing runs use a compliant Ultralytics fallback with YOLOv8n from scratch and documented inference-only sweeps from the R1 checkpoint.
+The official 3LC workflow requires a personal 3LC API key. That workflow was blocked in this environment, so the score-chasing runs use a compliant Ultralytics fallback with YOLOv8n from scratch and documented inference-only sweeps from the R1 checkpoint.
 
 ## Repository Layout
 
@@ -69,7 +69,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce current best public submission
 
-Current best public score after the May 12 loop remains R15: `0.82769`.
+Current best public score after the May 13 loop remains R15: `0.82769`.
 
 ```bash
 python scripts/make_inference_submission.py \

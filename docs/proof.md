@@ -12,6 +12,8 @@ This page indexes the reproducibility and leaderboard proof artifacts.
 - Final May 7 list: `logs/final_submissions_2026-05-07.txt`
 - Start/before-submit May 12 lists: `logs/submissions_2026-05-12_before_r19.txt`, `logs/submissions_2026-05-12_before_r20.txt`, `logs/submissions_2026-05-12_before_r21.txt`
 - Final May 12 list: `logs/final_submissions_2026-05-12.txt`
+- Start/before-submit May 13 lists: `logs/submissions_2026-05-13_start.txt`, `logs/submissions_2026-05-13_before_r22.txt`, `logs/submissions_2026-05-13_before_r23.txt`, `logs/submissions_2026-05-13_before_r24_retry_1.txt`
+- Final May 13 list: `logs/final_submissions_2026-05-13.txt`
 
 ## May 5 Submission Proof
 
@@ -59,3 +61,13 @@ R17's first upload attempt returned `429 Too Many Requests`; five subsequent sub
 | R21 | `submissions/r21/r21_r15_conf00105_from_r15_submission.csv` | `submissions/r21/r21_r15_conf00105_from_r15_summary.json` | `logs/r21/audit_r21.txt` | `logs/r21/submit_r21.txt` | `logs/r21/submissions_poll_*.txt` | 0.82695 |
 
 Final May 12 submission list snapshot: `logs/final_submissions_2026-05-12.txt`. R15 remains the current best public submission.
+
+## May 13 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R22 | `submissions/r22/r22_yolov8n_scratch_e10_seed7_640_submission.csv` | `submissions/r22/r22_yolov8n_scratch_e10_seed7_640_summary.json` | `logs/r22/audit_r22.txt` | `logs/r22/submit_r22.txt` | `logs/r22/submissions_poll_*.txt` | 0.81336 |
+| R23 | `submissions/r23/r23_r1_conf001_iou04665_submission.csv` | `submissions/r23/r23_r1_conf001_iou04665_summary.json` | `logs/r23/audit_r23.txt` | `logs/r23/submit_r23.txt` | `logs/r23/submissions_poll_*.txt` | 0.82767 |
+| R24 | `submissions/r24/r24_r1_conf001_iou0466125_submission.csv` | `submissions/r24/r24_r1_conf001_iou0466125_summary.json` | `logs/r24/audit_r24.txt` | `logs/r24/submit_r24.txt` | `logs/r24/submissions_poll_*.txt` | 0.82768 |
+
+Final May 13 submission list snapshot: `logs/final_submissions_2026-05-13.txt`. R15 remains the current best public submission.

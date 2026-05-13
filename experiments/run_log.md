@@ -13,7 +13,7 @@ Requested target: 3 successful submission loops.
 
 Environment:
 - Remote GPU: NVIDIA RTX 4090 24GB.
-- Official 3LC workflow unavailable by missing 3LC API key; fallback used YOLOv8n YAML from scratch, no pretrained weights, single model, no TTA/ensemble/pseudo-labeling.
+- Official 3LC workflow blocked by missing 3LC API key; fallback used YOLOv8n YAML from scratch, no pretrained weights, single model, no TTA/ensemble/pseudo-labeling.
 - AMP disabled to avoid Ultralytics pretrained AMP-check downloads in subsequent runs.
 
 Submission results:
@@ -221,3 +221,35 @@ Next candidate directions:
 - Do not continue bbox scaling from R15.
 - Do not raise the effective confidence floor above 0.001 from R15 output.
 - Train a small number of YOLOv8n scratch seed/augmentation variants and evaluate them with the R15 inference calibration.
+
+## 2026-05-13 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before each submit. The start list showed no 2026-05-13 submissions; R22, R23, and R24 were the three accepted records for the day.
+- Kaggle Code refresh still showed no newer public notebook than the 2026-04-30 YOLOv8n/label-QA public code. A 2026-05-06 Discussion clarification remains relevant: scripts may help find label issues, but any label changes must be recorded as a new 3LC table revision and use only official data.
+- Rules remained unchanged: YOLOv8n only, from scratch for training runs, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no external data, and three submissions per day.
+- Strategy: first test a new compliant YOLOv8n scratch seed/augmentation run because R15 post-processing had saturated, then use the remaining quota on tightly bounded R1 NMS checks after the new checkpoint underperformed.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R22 | `submissions/r22/r22_yolov8n_scratch_e10_seed7_640_submission.csv` | YOLOv8n scratch, seed 7, 10 epochs, conf 0.001, iou 0.46625 | val mAP50 0.811 / audit ok / 69776 boxes | 0.81336 |
+| R23 | `submissions/r23/r23_r1_conf001_iou04665_submission.csv` | R1 weights, conf 0.001, iou 0.4665 | audit ok / 50379 boxes | 0.82767 |
+| R24 | `submissions/r24/r24_r1_conf001_iou0466125_submission.csv` | R1 weights, conf 0.001, iou 0.466125 | audit ok / 50346 boxes | 0.82768 |
+
+Current best public score: R15 `0.82769`.
+
+Error analysis:
+- R22 confirms that a new short YOLOv8n scratch checkpoint can look reasonable on validation but still miss the public split. It also produced many more boxes than R15, suggesting an unfavorable false-positive/recall balance.
+- R23 and R24 both landed in the established R1 plateau but did not beat R15. R24 tied R16 at 0.82768; R23 was one point lower at 0.82767.
+- The R1 NMS optimum remains extremely narrow around `conf=0.001, iou=0.46625`. Additional micro-sweeps have very low expected upside.
+- Kaggle API had intermittent list-query timeouts during polling, but each counted submission was confirmed only after the submission list showed a new complete record and public score.
+
+Repository/proof updates:
+- Added R22-R24 submission, summary, audit, submit, poll, and final-list artifacts.
+- Updated README, write-up, and proof index for the May 13 loop.
+
+Next candidate directions:
+- Do not prioritize more R1/R15 micro post-processing. It is now heavily saturated across confidence, NMS, and bbox scaling.
+- Higher-upside next work is a compliant data-review pass using 3LC table revisions, or a more systematic short YOLOv8n scratch training search with stronger validation diagnostics before spending submissions.

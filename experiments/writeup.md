@@ -4,7 +4,7 @@
 
 The score-chasing workflow uses the competition-provided data only and keeps the model budget fixed to YOLOv8n. The most stable public checkpoint remains R1, a YOLOv8n model trained from scratch for 10 epochs at 640 px with AdamW and no pretrained weights.
 
-The official 3LC starter code is retained, but current runs used a fallback Ultralytics entrypoint because the available runtime does not have a usable 3LC API key. No external data, pseudo-labels, ensembles, TTA, distillation, or pretrained weights were used.
+The official 3LC starter code is retained, but current runs used a fallback Ultralytics entrypoint because this environment does not have a usable 3LC API key. No external data, pseudo-labels, ensembles, TTA, distillation, or pretrained weights were used.
 
 ## Findings
 

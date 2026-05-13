@@ -18,6 +18,6 @@
     "nonempty": 982,
     "total_boxes": 50343
   },
-  "note": "R1 narrow NMS midpoint sweep between R15 and R16: conf 0.001, iou 0.466375; CPU for CPU reproducibility; no TTA/ensemble/pretraining.",
+  "note": "R1 narrow NMS midpoint sweep between R15 and R16: conf 0.001, iou 0.466375; CPU due unrelated GPU contention; no TTA/ensemble/pretraining.",
   "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
 }
