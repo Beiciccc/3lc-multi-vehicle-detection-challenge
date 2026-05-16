@@ -253,3 +253,35 @@ Repository/proof updates:
 Next candidate directions:
 - Do not prioritize more R1/R15 micro post-processing. It is now heavily saturated across confidence, NMS, and bbox scaling.
 - Higher-upside next work is a compliant data-review pass using 3LC table revisions, or a more systematic short YOLOv8n scratch training search with stronger validation diagnostics before spending submissions.
+
+## 2026-05-16 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before each submit. The start list showed no 2026-05-16 submissions; R25, R26, and R27 were the three accepted records for the day.
+- Kaggle Code refresh still showed the latest public notebook as Avik Das `3LC YOLOv8n Vehicle Detection and Label QA Process`, last run 2026-04-30. No new public discussion changed the modeling constraints.
+- The remote GPU host was unreachable during this loop, so no new training was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
+- Strategy: test class-specific low-confidence tail filtering because R21 showed global filtering hurts, while R15/R1 NMS and bbox-scale sweeps were already saturated.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R25 | `submissions/r25/r25_r15_bus_conf00105_submission.csv` | R15 output, remove only bus detections below conf 0.00105 | audit ok / 50236 boxes / 132 dropped | 0.82769 |
+| R26 | `submissions/r26/r26_r15_noncar_conf00105_submission.csv` | R15 output, remove truck/van/bus detections below conf 0.00105, keep car unchanged | audit ok / 50177 boxes / 191 dropped | 0.82695 |
+| R27 | `submissions/r27/r27_r15_bus_conf00110_submission.csv` | R15 output, remove only bus detections below conf 0.00110 | audit ok / 50121 boxes / 247 dropped | 0.82769 |
+
+Current best public score: R15/R25/R27 tie at `0.82769`.
+
+Error analysis:
+- R25 and R27 show that removing a small amount of extremely low-confidence bus tail is public-neutral, but not beneficial.
+- R26 falling to 0.82695, matching the failed R21 global filtering score, shows that the truck/van low-confidence tail is important on the public split.
+- The low-confidence car tail was intentionally preserved in R25-R27; prior R21 already showed that global tail removal is harmful.
+- This loop adds evidence that output-only post-processing is saturated. Further improvement likely requires compliant label review or better scratch training/validation, not more tail filtering.
+
+Repository/proof updates:
+- Added `scripts/filter_submission.py` for reproducible class-specific submission filtering.
+- Added R25-R27 submission, summary, audit, submit, poll, and final-list artifacts.
+
+Next candidate directions:
+- Stop spending submissions on R15 output-only filtering unless a new diagnosis identifies a specific systematic error.
+- If the remote GPU becomes available, prioritize a stronger validation protocol or a 3LC-sanctioned label-review loop before training more scratch variants.
