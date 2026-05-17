@@ -1,0 +1,24 @@
+{
+  "source": "submissions/r15/r15_r1_conf001_iou046625_submission.csv",
+  "submission": "submissions/r29/r29_r15_van_conf00105_submission.csv",
+  "thresholds": {
+    "2": 0.00105
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 50340,
+  "kept_by_class": {
+    "0": 1300,
+    "1": 41924,
+    "2": 2209,
+    "3": 4907
+  },
+  "dropped_by_class": {
+    "0": 0,
+    "1": 0,
+    "2": 28,
+    "3": 0
+  },
+  "note": "R15 output with only van class detections below 0.00105 removed; other classes unchanged",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

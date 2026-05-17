@@ -1,6 +1,6 @@
 # UA-DETRAC vehicle detection - starter kit
 
-Self-contained folder for **local training** and **Kaggle submission**.  
+Self-contained folder for **local training** and **Kaggle submission**.
 **YOLOv8n** only · **3LC** tables · CSV submission **`id`**, **`image_id`**, **`prediction_string`**.
 
 Install Python packages per the competition **Environment Setup** page (e.g. `3lc-ultralytics`, `umap-learn`, `torch`, `PyYAML`, `tqdm`). **Git is not required** for this kit.
@@ -101,14 +101,14 @@ Do **not** hardcode paths inside the `.py` files; change **`config.yaml`** inste
 
 ## Submission CSV
 
-Must match **`sample_submission.csv`**: columns **`id`**, **`image_id`**, **`prediction_string`**.  
+Must match **`sample_submission.csv`**: columns **`id`**, **`image_id`**, **`prediction_string`**.
 Per image, **`prediction_string`** is space-separated **`class conf xc yc w h`** (normalized YOLO), repeated for each box, or the literal **`no box`**.
 
 ---
 
 ## Before you zip this kit for upload
 
-**Include:** all of the layout above (with real images/labels as distributed by the competition host).  
+**Include:** all of the layout above (with real images/labels as distributed by the competition host).
 **Exclude** (optional, smaller zip / no leakage):
 
 - `runs/` (local training outputs)

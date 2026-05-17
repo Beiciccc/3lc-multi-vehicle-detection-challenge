@@ -285,3 +285,36 @@ Repository/proof updates:
 Next candidate directions:
 - Stop spending submissions on R15 output-only filtering unless a new diagnosis identifies a specific systematic error.
 - If the remote GPU becomes available, prioritize a stronger validation protocol or a 3LC-sanctioned label-review loop before training more scratch variants.
+
+## 2026-05-17 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before each submit. The start list showed no 2026-05-17 submissions; R28, R29, and R30 were the three accepted records for the day.
+- Kaggle Code refresh still showed Avik Das `3LC YOLOv8n Vehicle Detection and Label QA Process` as the newest public notebook, last run 2026-04-30. No new public rule or discussion changed the modeling constraints.
+- The remote GPU host was unreachable during this loop, so no new training was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
+- Strategy: isolate the R26 failure by testing truck-only and van-only low-confidence tail filtering, then combine only filters that had already proven public-neutral.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R28 | `submissions/r28/r28_r15_truck_conf00105_submission.csv` | R15 output, remove only truck detections below conf 0.00105 | audit ok / 50337 boxes / 31 dropped | 0.82769 |
+| R29 | `submissions/r29/r29_r15_van_conf00105_submission.csv` | R15 output, remove only van detections below conf 0.00105 | audit ok / 50340 boxes / 28 dropped | 0.82695 |
+| R30 | `submissions/r30/r30_r15_truck00105_bus00110_submission.csv` | R15 output, remove truck below conf 0.00105 and bus below conf 0.00110 | audit ok / 50090 boxes / 278 dropped | 0.82769 |
+
+Current best public score: R15/R25/R27/R28/R30 tie at `0.82769`.
+
+Error analysis:
+- R28 shows that the 31 truck detections below confidence 0.00105 are public-neutral when removed alone.
+- R29 shows that the 28 van detections below confidence 0.00105 are public-critical; removing them reproduces the R26/R21 drop to 0.82695.
+- R30 confirms that combining the public-neutral truck filter with the already neutral bus filter remains neutral, but still does not improve the public score.
+- The post-processing search is now strongly saturated. Public score is sensitive to small recall losses in van and generally does not reward removing low-confidence tails.
+
+Repository/proof updates:
+- Added R28-R30 submission, summary, audit, submit, poll, and final-list artifacts.
+- Updated README, write-up, proof index, and chronological experiment log for the May 17 loop.
+
+Next candidate directions:
+- Do not remove low-confidence van detections from the R15 output.
+- Do not prioritize further output-only filtering around R15 unless a new systematic error is found.
+- Higher-upside next work remains a compliant label-review revision or a better scratch-training/validation protocol once GPU access is restored.

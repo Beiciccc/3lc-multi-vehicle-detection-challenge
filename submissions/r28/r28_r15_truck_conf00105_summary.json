@@ -1,0 +1,24 @@
+{
+  "source": "submissions/r15/r15_r1_conf001_iou046625_submission.csv",
+  "submission": "submissions/r28/r28_r15_truck_conf00105_submission.csv",
+  "thresholds": {
+    "0": 0.00105
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 50337,
+  "kept_by_class": {
+    "0": 1269,
+    "1": 41924,
+    "2": 2237,
+    "3": 4907
+  },
+  "dropped_by_class": {
+    "0": 31,
+    "1": 0,
+    "2": 0,
+    "3": 0
+  },
+  "note": "R15 output with only truck class detections below 0.00105 removed; other classes unchanged",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

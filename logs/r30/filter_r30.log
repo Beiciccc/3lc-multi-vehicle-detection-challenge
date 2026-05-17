@@ -1,0 +1,25 @@
+{
+  "source": "submissions/r15/r15_r1_conf001_iou046625_submission.csv",
+  "submission": "submissions/r30/r30_r15_truck00105_bus00110_submission.csv",
+  "thresholds": {
+    "0": 0.00105,
+    "3": 0.0011
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 50090,
+  "kept_by_class": {
+    "0": 1269,
+    "1": 41924,
+    "2": 2237,
+    "3": 4660
+  },
+  "dropped_by_class": {
+    "0": 31,
+    "1": 0,
+    "2": 0,
+    "3": 247
+  },
+  "note": "R15 output with truck below 0.00105 and bus below 0.00110 removed; car and van unchanged",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}
