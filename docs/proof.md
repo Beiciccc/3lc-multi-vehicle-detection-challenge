@@ -18,6 +18,8 @@ This page indexes the reproducibility and leaderboard proof artifacts.
 - Final May 16 list: `logs/final_submissions_2026-05-16.txt`
 - Start/before-submit May 17 lists: `logs/submissions_2026-05-17_start.txt`, `logs/submissions_2026-05-17_before_r28.txt`, `logs/submissions_2026-05-17_before_r29.txt`, `logs/submissions_2026-05-17_before_r30.txt`
 - Final May 17 list: `logs/final_submissions_2026-05-17.txt`
+- Start/before-submit May 18 lists: `logs/submissions_2026-05-18_start.txt`, `logs/submissions_2026-05-18_before_r31.txt`, `logs/submissions_2026-05-18_before_r32.txt`, `logs/submissions_2026-05-18_before_r33.txt`
+- Final May 18 list: `logs/final_submissions_2026-05-18.txt`
 
 ## May 5 Submission Proof
 
@@ -95,3 +97,13 @@ Final May 16 submission list snapshot: `logs/final_submissions_2026-05-16.txt`. 
 | R30 | `submissions/r30/r30_r15_truck00105_bus00110_submission.csv` | `submissions/r30/r30_r15_truck00105_bus00110_summary.json` | `logs/r30/audit_r30.txt` | `logs/r30/submit_r30.txt` | `logs/r30/submissions_poll_*.txt` | 0.82769 |
 
 Final May 17 submission list snapshot: `logs/final_submissions_2026-05-17.txt`. R15, R25, R27, R28, and R30 are tied at the current best public score of 0.82769.
+
+## May 18 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R31 | `submissions/r31/r31_r15_bus_conf00120_submission.csv` | `submissions/r31/r31_r15_bus_conf00120_summary.json` | `logs/r31/audit_r31.txt` | `logs/r31/submit_r31.txt` | `logs/r31/submissions_poll_*.txt` | 0.82769 |
+| R32 | `submissions/r32/r32_r15_truck_conf00110_submission.csv` | `submissions/r32/r32_r15_truck_conf00110_summary.json` | `logs/r32/audit_r32.txt` | `logs/r32/submit_r32.txt` | `logs/r32/submissions_poll_*.txt` | 0.82769 |
+| R33 | `submissions/r33/r33_r15_bus_conf00130_submission.csv` | `submissions/r33/r33_r15_bus_conf00130_summary.json` | `logs/r33/audit_r33.txt` | `logs/r33/submit_r33.txt` | `logs/r33/submissions_poll_*.txt` | 0.82769 |
+
+Final May 18 submission list snapshot: `logs/final_submissions_2026-05-18.txt`. R15, R25, R27, R28, R30, R31, R32, and R33 are tied at the current best public score of 0.82769.

@@ -318,3 +318,36 @@ Next candidate directions:
 - Do not remove low-confidence van detections from the R15 output.
 - Do not prioritize further output-only filtering around R15 unless a new systematic error is found.
 - Higher-upside next work remains a compliant label-review revision or a better scratch-training/validation protocol once GPU access is restored.
+
+## 2026-05-18 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before each submit. The start list showed no 2026-05-18 submissions; R31, R32, and R33 were the three accepted records for the day.
+- Kaggle Code refresh still showed only the same three public notebooks. Rules, evaluation, and the single public Discussion topic did not change in a way that affected modeling or submission constraints.
+- The remote GPU host remained unreachable, so no new training or remote sync was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
+- Strategy: avoid van/car filtering after R29 and R21/R26, then probe only the previously neutral bus and truck low-confidence axes.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R31 | `submissions/r31/r31_r15_bus_conf00120_submission.csv` | R15 output, remove only bus detections below conf 0.00120 | audit ok / 49919 boxes / 449 dropped | 0.82769 |
+| R32 | `submissions/r32/r32_r15_truck_conf00110_submission.csv` | R15 output, remove only truck detections below conf 0.00110 | audit ok / 50307 boxes / 61 dropped | 0.82769 |
+| R33 | `submissions/r33/r33_r15_bus_conf00130_submission.csv` | R15 output, remove only bus detections below conf 0.00130 | audit ok / 49730 boxes / 638 dropped | 0.82769 |
+
+Current best public score: R15/R25/R27/R28/R30/R31/R32/R33 tie at `0.82769`.
+
+Error analysis:
+- R31 and R33 show that bus-only low-confidence filtering remains public-neutral through 0.00130, but still does not improve the score.
+- R32 shows that truck-only filtering remains public-neutral through 0.00110.
+- Combined with R29, the class-specific picture is now clear: van low-confidence detections are public-critical, while moderate bus/truck tail filtering is mostly score-neutral.
+- Output-only post-processing is exhausted for public-score improvement. The next meaningful work requires either restored GPU access for better scratch-training diagnostics or a compliant 3LC label-review revision.
+
+Repository/proof updates:
+- Added R31-R33 submission, summary, audit, submit, poll, and final-list artifacts.
+- Updated README, write-up, proof index, and chronological experiment log for the May 18 loop.
+
+Next candidate directions:
+- Do not spend further quota on bus/truck low-confidence filtering unless needed as a control.
+- Continue to avoid van low-confidence filtering, global confidence increases, bbox scaling, and R1 NMS micro-sweeps.
+- Prioritize restoring GPU/server access or setting up a documented 3LC table-revision workflow before the next high-value submissions.

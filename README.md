@@ -69,7 +69,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce current best public submission
 
-Current best public score after the May 17 loop is a tie: R15/R25/R27/R28/R30 at `0.82769`.
+Current best public score after the May 18 loop is a tie: R15/R25/R27/R28/R30/R31/R32/R33 at `0.82769`.
 
 ```bash
 python scripts/make_inference_submission.py \

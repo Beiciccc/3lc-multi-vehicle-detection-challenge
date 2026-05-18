@@ -1,0 +1,24 @@
+{
+  "source": "submissions/r15/r15_r1_conf001_iou046625_submission.csv",
+  "submission": "submissions/r33/r33_r15_bus_conf00130_submission.csv",
+  "thresholds": {
+    "3": 0.0013
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 49730,
+  "kept_by_class": {
+    "0": 1300,
+    "1": 41924,
+    "2": 2237,
+    "3": 4269
+  },
+  "dropped_by_class": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 638
+  },
+  "note": "R15 output with only bus class detections below 0.00130 removed; car, truck, and van unchanged",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

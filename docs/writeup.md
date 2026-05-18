@@ -34,18 +34,21 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R28 | 2026-05-17 | R15 output, truck conf floor 0.00105 | 0.82769 |
 | R29 | 2026-05-17 | R15 output, van conf floor 0.00105 | 0.82695 |
 | R30 | 2026-05-17 | R15 output, truck conf floor 0.00105 plus bus conf floor 0.00110 | 0.82769 |
+| R31 | 2026-05-18 | R15 output, bus conf floor 0.00120 | 0.82769 |
+| R32 | 2026-05-18 | R15 output, truck conf floor 0.00110 | 0.82769 |
+| R33 | 2026-05-18 | R15 output, bus conf floor 0.00130 | 0.82769 |
 
-Current best public score: **R15/R25/R27/R28/R30 tie, 0.82769**.
+Current best public score: **R15/R25/R27/R28/R30/R31/R32/R33 tie, 0.82769**.
 
 ## Analysis
 
 Longer training and stricter confidence filtering did not generalize to the public split. R3 used a higher confidence threshold and dropped many boxes; it scored much worse publicly despite stronger local validation. The successful direction was to keep low confidence for recall while reducing duplicate/overlapping boxes through NMS IoU tuning.
 
-The useful NMS range is narrow. R8 at 0.45 scored lower than R7 at 0.475. R10 at 0.4625 tied R7, R11 at 0.46875 improved slightly, and R15 at 0.46625 remains tied for the best public score after the May 17 sweep. R16 at 0.46675 was lower by 0.00001, R23 at 0.4665 scored 0.82767, and R24 at 0.466125 tied R16 at 0.82768, so the R1 inference-only NMS band appears saturated. R19-R21 showed that output-only bbox scaling and global ultra-low-confidence filtering underperform R15. R25/R27 showed that bus-only low-confidence filtering is neutral, R28 showed that truck-only filtering at 0.00105 is also neutral, and R30 showed that combining the neutral truck and bus filters remains neutral. R29 isolated the R26 failure mode: removing only 28 ultra-low-confidence van boxes dropped public score to 0.82695, so van recall is highly sensitive. R22 showed that a new YOLOv8n scratch seed can underperform public despite reasonable validation, reinforcing that validation alone is not enough to spend submissions confidently. R13 showed that raising confidence to 0.0011 hurts public recall; R14 showed that lowering confidence to 0.0009 only ties the prior best.
+The useful NMS range is narrow. R8 at 0.45 scored lower than R7 at 0.475. R10 at 0.4625 tied R7, R11 at 0.46875 improved slightly, and R15 at 0.46625 remains tied for the best public score after the May 18 sweep. R16 at 0.46675 was lower by 0.00001, R23 at 0.4665 scored 0.82767, and R24 at 0.466125 tied R16 at 0.82768, so the R1 inference-only NMS band appears saturated. R19-R21 showed that output-only bbox scaling and global ultra-low-confidence filtering underperform R15. R25/R27/R31/R33 showed that bus-only low-confidence filtering is neutral from 0.00105 through 0.00130, R28/R32 showed that truck-only filtering is neutral through 0.00110, and R30 showed that combining neutral truck and bus filters remains neutral. R29 isolated the R26 failure mode: removing only 28 ultra-low-confidence van boxes dropped public score to 0.82695, so van recall is highly sensitive. R22 showed that a new YOLOv8n scratch seed can underperform public despite reasonable validation, reinforcing that validation alone is not enough to spend submissions confidently. R13 showed that raising confidence to 0.0011 hurts public recall; R14 showed that lowering confidence to 0.0009 only ties the prior best.
 
 ## Next Steps
 
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Stop spending quota on pure R1 NMS micro-sweeps or R15 output-only geometry/confidence tweaks unless no stronger candidate is available; R16-R30 did not beat R15.
+- Stop spending quota on pure R1 NMS micro-sweeps or R15 output-only geometry/confidence tweaks unless no stronger candidate is available; R16-R33 did not beat R15.
 - Next higher-upside work should use 3LC label-review workflow if credentials are available, or a compliant short YOLOv8n scratch seed/augmentation variant followed by the R15 calibration.
