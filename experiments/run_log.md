@@ -351,3 +351,37 @@ Next candidate directions:
 - Do not spend further quota on bus/truck low-confidence filtering unless needed as a control.
 - Continue to avoid van low-confidence filtering, global confidence increases, bbox scaling, and R1 NMS micro-sweeps.
 - Prioritize restoring GPU/server access or setting up a documented 3LC table-revision workflow before the next high-value submissions.
+
+## 2026-05-19 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before each submit. The start list showed no 2026-05-19 submissions; R34, R35, and R36 were the three accepted records for the day.
+- Rules, evaluation, Code, and Discussion were refreshed before experiments. No new public rule, notebook, or discussion update changed the modeling constraints.
+- Remote GPU access was restored. R34 trained a fresh YOLOv8n scratch seed; R35 and R36 ran single-checkpoint inference experiments. All submitted files were clipped and passed strict local audits before upload.
+- Strategy: after output-only post-processing saturated through R33, test a new scratch checkpoint, then test whether R2 was hurt by inference settings, then test a higher single-scale inference resolution from the proven R1 checkpoint.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R34 | `submissions/r34/r34_yolov8n_scratch_e10_seed123_640_submission_clipped.csv` | YOLOv8n scratch, seed 123, 10 epochs, 640, conf 0.001, iou 0.46625 | val mAP50 0.8116 / audit ok / 50859 boxes | 0.82359 |
+| R35 | `submissions/r35/r35_r2_conf001_iou046625_submission_clipped.csv` | R2 weights, 640, conf 0.001, iou 0.46625 | val mAP50 0.8219 / audit ok / 29286 boxes | 0.82088 |
+| R36 | `submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv` | R1 weights, 768 single-scale inference, conf 0.001, iou 0.46625 | val mAP50 0.8203 / audit ok / 52741 boxes | 0.83245 |
+
+Current best public score: R36 `0.83245`.
+
+Error analysis:
+- R34 confirms that new scratch seeds can underperform public even with acceptable validation and a familiar box profile.
+- R35 confirms that R2's public weakness is not simply caused by its original inference threshold/NMS settings. Despite the strongest validation metrics in this loop, its much lower test box count likely loses recall on the public split.
+- R36 shows that higher single-scale inference resolution is a real improvement axis for the R1 checkpoint. It kept the proven low confidence and NMS setting, increased box count moderately versus R15, and improved public score by +0.00476.
+- Local validation mAP50 alone remains insufficient for candidate ranking; the best public result in this loop had lower validation mAP50 than R35 but better public recall/precision balance.
+
+Repository/proof updates:
+- Added `scripts/clip_submission.py` for reproducible bbox clipping before strict audit.
+- Added R34-R36 submission, summary, audit, submit, poll, and final-list artifacts.
+- Updated README, write-up, proof index, and chronological experiment log for the May 19 loop.
+
+Next candidate directions:
+- Treat R36 as the baseline: R1 checkpoint, 768 single-scale inference, `conf=0.001`, `iou=0.46625`, clipped and strictly audited.
+- Search around R36 with resolution and NMS calibration before spending more training submissions.
+- Do not revert to R2 or fresh seed scratch checkpoints unless a stronger validation/public correlation diagnostic is added.

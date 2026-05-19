@@ -19,6 +19,7 @@ The official 3LC workflow requires a personal 3LC API key. That workflow was blo
 - `competition_starter/`: official starter kit, data layout, configs, training and prediction entrypoints.
 - `scripts/yolo_fallback_pipeline.py`: compliant fallback training + inference pipeline.
 - `scripts/make_inference_submission.py`: reproducible inference from an existing YOLOv8n checkpoint.
+- `scripts/clip_submission.py`: normalized bbox clipping before strict submission audit.
 - `scripts/audit_submission.py`: local submission validator.
 - `submissions/`: generated submission CSVs and JSON summaries.
 - `logs/`: Kaggle submit/poll logs, audit logs, and run logs.
@@ -69,23 +70,26 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce current best public submission
 
-Current best public score after the May 18 loop is a tie: R15/R25/R27/R28/R30/R31/R32/R33 at `0.82769`.
+Current best public score after the May 19 loop is R36 at `0.83245`.
 
 ```bash
 python scripts/make_inference_submission.py \
   --starter-dir competition_starter \
   --weights competition_starter/runs/detect/r1_yolov8n_scratch_e10_640/weights/best.pt \
-  --out submissions/r15/r15_r1_conf001_iou046625_submission.csv \
-  --summary submissions/r15/r15_r1_conf001_iou046625_summary.json \
-  --imgsz 640 --conf 0.001 --iou 0.46625 \
-  --max-det 300 --batch 32 --device 0 --val
+  --out submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission.csv \
+  --summary submissions/r36/r36_r1_imgsz768_conf001_iou046625_summary.json \
+  --imgsz 768 --conf 0.001 --iou 0.46625 \
+  --max-det 300 --batch 24 --device 0 --val
+python scripts/clip_submission.py \
+  submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission.csv \
+  submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv
 ```
 
 ### Audit before submitting
 
 ```bash
 python scripts/audit_submission.py \
-  submissions/r15/r15_r1_conf001_iou046625_submission.csv \
+  submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv \
   --sample competition_starter/sample_submission.csv \
   --test-images-dir competition_starter/data/test/images \
   --strict-bbox-inside
@@ -96,8 +100,8 @@ python scripts/audit_submission.py \
 ```bash
 kaggle competitions submit \
   -c 3-lc-multi-vehicle-detection-challenge \
-  -f submissions/r15/r15_r1_conf001_iou046625_submission.csv \
-  -m "r15_r1_conf0.001_iou0.46625"
+  -f submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv \
+  -m "r36_r1_imgsz768_conf0.001_iou0.46625_clipped"
 ```
 
 Always query `kaggle competitions submissions -c 3-lc-multi-vehicle-detection-challenge` immediately before and after each submit. Count quota only by API accept/reject plus submission-list records.
