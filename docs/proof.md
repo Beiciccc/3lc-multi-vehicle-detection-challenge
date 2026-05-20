@@ -22,6 +22,8 @@ This page indexes the reproducibility and leaderboard proof artifacts.
 - Final May 18 list: `logs/final_submissions_2026-05-18.txt`
 - Start/before-submit May 19 lists: `logs/submissions_2026-05-19_start.txt`, `logs/submissions_2026-05-19_before_r34.txt`, `logs/submissions_2026-05-19_before_r35.txt`, `logs/submissions_2026-05-19_before_r36.txt`
 - Final May 19 list: `logs/final_submissions_2026-05-19.txt`
+- Start/before-submit May 20 lists: `logs/submissions_2026-05-20_start.txt`, `logs/submissions_2026-05-20_before_r38.txt`, `logs/submissions_2026-05-20_before_r39.txt`, `logs/submissions_2026-05-20_before_r40.txt`
+- Final May 20 list: `logs/final_submissions_2026-05-20.txt`
 
 ## May 5 Submission Proof
 
@@ -118,4 +120,15 @@ Final May 18 submission list snapshot: `logs/final_submissions_2026-05-18.txt`. 
 | R35 | `submissions/r35/r35_r2_conf001_iou046625_submission_clipped.csv` | `submissions/r35/r35_r2_conf001_iou046625_summary.json` | `logs/r35/audit_r35_clipped.txt` | `logs/r35/submit_r35.txt` | `logs/r35/submissions_poll_*.txt` | 0.82088 |
 | R36 | `submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv` | `submissions/r36/r36_r1_imgsz768_conf001_iou046625_summary.json` | `logs/r36/audit_r36_clipped.txt` | `logs/r36/submit_r36.txt` | `logs/r36/submissions_poll_*.txt` | 0.83245 |
 
-Final May 19 submission list snapshot: `logs/final_submissions_2026-05-19.txt`. R36 is the current best public submission at 0.83245.
+Final May 19 submission list snapshot: `logs/final_submissions_2026-05-19.txt`. R36 is the highest observed public submission at 0.83245; after the May 20 rules refresh, 640 px is treated as the active input-size constraint for new submissions.
+
+
+## May 20 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R38 | `submissions/r38/r38_r1_640_conf0008_iou046625_submission.csv` | `submissions/r38/r38_r1_640_conf0008_iou046625_summary.json` | `logs/r38/audit_r38.txt` | `logs/r38/submit_r38.txt` | `logs/r38/submissions_poll_*.txt` | 0.82769 |
+| R39 | `submissions/r39/r39_r1_640_conf0006_iou046625_submission.csv` | `submissions/r39/r39_r1_640_conf0006_iou046625_summary.json` | `logs/r39/audit_r39.txt` | `logs/r39/submit_r39.txt` | `logs/r39/submissions_poll_*.txt` | 0.82769 |
+| R40 | `submissions/r40/r40_r1_640_conf0008_iou046575_submission.csv` | `submissions/r40/r40_r1_640_conf0008_iou046575_summary.json` | `logs/r40/audit_r40.txt` | `logs/r40/submit_r40.txt` | `logs/r40/submissions_poll_*.txt` | 0.82768 |
+
+Final May 20 submission list snapshot: `logs/final_submissions_2026-05-20.txt`. R38 and R39 tied the active 640 px public best at 0.82769; R36 remains the highest observed public score at 0.83245.

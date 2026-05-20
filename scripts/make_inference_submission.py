@@ -32,6 +32,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--batch", type=int, default=16)
     p.add_argument("--device", default="0")
     p.add_argument("--val", action="store_true")
+    p.add_argument("--agnostic-nms", action="store_true")
     p.add_argument("--note", default="")
     return p.parse_args()
 
@@ -152,14 +153,34 @@ def main() -> int:
     model = YOLO(str(weights))
     val_metrics = None
     if args.val:
-        vr = model.val(data=str(dataset_yaml), split="val", imgsz=args.imgsz, device=args.device, conf=args.conf, iou=args.iou, batch=args.batch, verbose=False)
+        vr = model.val(
+            data=str(dataset_yaml),
+            split="val",
+            imgsz=args.imgsz,
+            device=args.device,
+            conf=args.conf,
+            iou=args.iou,
+            batch=args.batch,
+            agnostic_nms=args.agnostic_nms,
+            verbose=False,
+        )
         val_metrics = {"map50": float(vr.box.map50), "map50_95": float(vr.box.map)}
 
     pred_by_stem: dict[str, str] = {}
     bs = max(1, int(args.batch))
     for start in range(0, len(paths), bs):
         chunk = paths[start:start + bs]
-        results = model.predict(source=[str(p) for p in chunk], imgsz=args.imgsz, conf=args.conf, iou=args.iou, max_det=args.max_det, batch=min(bs, len(chunk)), device=args.device, verbose=False)
+        results = model.predict(
+            source=[str(p) for p in chunk],
+            imgsz=args.imgsz,
+            conf=args.conf,
+            iou=args.iou,
+            max_det=args.max_det,
+            batch=min(bs, len(chunk)),
+            device=args.device,
+            agnostic_nms=args.agnostic_nms,
+            verbose=False,
+        )
         for p, res in zip(chunk, results):
             pred_by_stem[p.stem] = prediction_string(res)
         print(f"predicted {min(start + bs, len(paths))}/{len(paths)}")
@@ -183,6 +204,7 @@ def main() -> int:
         "max_det": args.max_det,
         "batch": args.batch,
         "device": args.device,
+        "agnostic_nms": args.agnostic_nms,
         "val_metrics": val_metrics,
         "audit": audit,
         "note": args.note,

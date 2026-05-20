@@ -385,3 +385,37 @@ Next candidate directions:
 - Treat R36 as the baseline: R1 checkpoint, 768 single-scale inference, `conf=0.001`, `iou=0.46625`, clipped and strictly audited.
 - Search around R36 with resolution and NMS calibration before spending more training submissions.
 - Do not revert to R2 or fresh seed scratch checkpoints unless a stronger validation/public correlation diagnostic is added.
+
+## 2026-05-20 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before each counted submit. The start list showed no 2026-05-20 submissions; R38, R39, and R40 were the three accepted records for the day.
+- Rules and Evaluation pages were re-read. The rules page explicitly states `Input size: 640 px`, so the active search for this loop used 640 px inference only. R36 remains the highest observed public score, but 640 px is treated as the rule-constrained baseline for new work.
+- Kaggle Code had one new public notebook, `quartzyu/3lc-multi-vehicle-detection-challenge-yolov8n`, last run 2026-05-19. It used 512 px, 20 epochs, conf 0.05, and self-reported about 0.72 public LB, so it was not used as a candidate.
+- Remote GPU was available. R37 tested class-agnostic NMS at 640 and was not submitted because validation mAP50 dropped to 0.7756 with 46936 boxes.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R38 | `submissions/r38/r38_r1_640_conf0008_iou046625_submission.csv` | R1 weights, 640, conf 0.0008, iou 0.46625 | val mAP50 0.8189 / audit ok / 55755 boxes | 0.82769 |
+| R39 | `submissions/r39/r39_r1_640_conf0006_iou046625_submission.csv` | R1 weights, 640, conf 0.0006, iou 0.46625 | val mAP50 0.8194 / audit ok / 63610 boxes | 0.82769 |
+| R40 | `submissions/r40/r40_r1_640_conf0008_iou046575_submission.csv` | R1 weights, 640, conf 0.0008, iou 0.46575 | val mAP50 0.8189 / audit ok / 55701 boxes | 0.82768 |
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best is tied at `0.82769` by R15/R25/R27/R28/R30/R31/R32/R33/R38/R39.
+
+Error analysis:
+- Lowering confidence below 0.001 at 640 increases recall/box count but is public-neutral through 0.0006. R39 reached 63610 boxes without dropping public score, unlike the much weaker R22/R34 scratch checkpoints.
+- Lowering NMS IoU from 0.46625 to 0.46575 with the lower confidence setting loses 0.00001, matching the earlier evidence that the 640 R1 NMS optimum is extremely narrow.
+- Class-agnostic NMS is not viable for this label set; it suppresses valid cross-class detections and caused a large validation mAP50 drop before submission.
+- Additional 640 px R1 confidence/NMS micro-sweeps have very low expected value. The next improvement likely needs rule-constrained training/label review rather than more output calibration.
+
+Repository/proof updates:
+- Added R38-R40 submission, summary, audit, submit, poll, and final-list artifacts.
+- Updated `scripts/make_inference_submission.py` with a reproducible `--agnostic-nms` switch used for the rejected R37 diagnostic.
+- Updated README, write-up, proof index, and chronological experiment log for the May 20 loop.
+
+Next candidate directions:
+- Treat R15/R38/R39 as the active 640 px baseline.
+- Do not spend more quota on R1 640 confidence/NMS micro-sweeps unless needed as controls.
+- Prioritize 3LC label-review workflow or a rule-constrained 640 px training experiment with better validation diagnostics.

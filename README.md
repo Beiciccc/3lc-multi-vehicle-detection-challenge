@@ -68,28 +68,25 @@ python scripts/yolo_fallback_pipeline.py \
   --close-mosaic 1 --pred-conf 0.001 --pred-iou 0.65
 ```
 
-### Reproduce current best public submission
+### Reproduce active 640 px baseline submission
 
-Current best public score after the May 19 loop is R36 at `0.83245`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R15/R38/R39 at `0.82769`.
 
 ```bash
 python scripts/make_inference_submission.py \
   --starter-dir competition_starter \
   --weights competition_starter/runs/detect/r1_yolov8n_scratch_e10_640/weights/best.pt \
-  --out submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission.csv \
-  --summary submissions/r36/r36_r1_imgsz768_conf001_iou046625_summary.json \
-  --imgsz 768 --conf 0.001 --iou 0.46625 \
-  --max-det 300 --batch 24 --device 0 --val
-python scripts/clip_submission.py \
-  submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission.csv \
-  submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv
+  --out submissions/r39/r39_r1_640_conf0006_iou046625_submission.csv \
+  --summary submissions/r39/r39_r1_640_conf0006_iou046625_summary.json \
+  --imgsz 640 --conf 0.0006 --iou 0.46625 \
+  --max-det 300 --batch 32 --device 0 --val
 ```
 
 ### Audit before submitting
 
 ```bash
 python scripts/audit_submission.py \
-  submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv \
+  submissions/r39/r39_r1_640_conf0006_iou046625_submission.csv \
   --sample competition_starter/sample_submission.csv \
   --test-images-dir competition_starter/data/test/images \
   --strict-bbox-inside
@@ -100,8 +97,8 @@ python scripts/audit_submission.py \
 ```bash
 kaggle competitions submit \
   -c 3-lc-multi-vehicle-detection-challenge \
-  -f submissions/r36/r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv \
-  -m "r36_r1_imgsz768_conf0.001_iou0.46625_clipped"
+  -f submissions/r39/r39_r1_640_conf0006_iou046625_submission.csv \
+  -m "r39_r1_640_conf0.0006_iou0.46625"
 ```
 
 Always query `kaggle competitions submissions -c 3-lc-multi-vehicle-detection-challenge` immediately before and after each submit. Count quota only by API accept/reject plus submission-list records.
