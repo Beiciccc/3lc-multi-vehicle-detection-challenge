@@ -24,6 +24,8 @@ This page indexes the reproducibility and leaderboard proof artifacts.
 - Final May 19 list: `logs/final_submissions_2026-05-19.txt`
 - Start/before-submit May 20 lists: `logs/submissions_2026-05-20_start.txt`, `logs/submissions_2026-05-20_before_r38.txt`, `logs/submissions_2026-05-20_before_r39.txt`, `logs/submissions_2026-05-20_before_r40.txt`
 - Final May 20 list: `logs/final_submissions_2026-05-20.txt`
+- Start/before-submit May 21 lists: `logs/submissions_2026-05-21_start.txt`, `logs/submissions_2026-05-21_before_r42.txt`, `logs/submissions_2026-05-21_before_r44.txt`, `logs/submissions_2026-05-21_before_r45.txt`
+- Final May 21 list: `logs/final_submissions_2026-05-21.txt`
 
 ## May 5 Submission Proof
 
@@ -132,3 +134,13 @@ Final May 19 submission list snapshot: `logs/final_submissions_2026-05-19.txt`. 
 | R40 | `submissions/r40/r40_r1_640_conf0008_iou046575_submission.csv` | `submissions/r40/r40_r1_640_conf0008_iou046575_summary.json` | `logs/r40/audit_r40.txt` | `logs/r40/submit_r40.txt` | `logs/r40/submissions_poll_*.txt` | 0.82768 |
 
 Final May 20 submission list snapshot: `logs/final_submissions_2026-05-20.txt`. R38 and R39 tied the active 640 px public best at 0.82769; R36 remains the highest observed public score at 0.83245.
+
+## May 21 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R42 | `submissions/r42/r42_yolov8n_scratch_e12_seed42_640_submission_clipped.csv` | `submissions/r42/r42_yolov8n_scratch_e12_seed42_640_summary.json` | `logs/r42/audit_r42_clipped.txt` | `logs/r42/submit_r42.txt` | `logs/r42/submissions_poll_r42.txt` | 0.81293 |
+| R44 | `submissions/r44/r44_r1_640_conf0007_iou046625_submission.csv` | `submissions/r44/r44_r1_640_conf0007_iou046625_summary.json` | `logs/r44/audit_r44.txt` | `logs/r44/submit_r44.txt` | `logs/r44/submissions_poll_r44.txt` | 0.82769 |
+| R45 | `submissions/r45/r45_r1_640_conf0007_iou0466375_submission.csv` | `submissions/r45/r45_r1_640_conf0007_iou0466375_summary.json` | `logs/r45/audit_r45.txt` | `logs/r45/submit_r45.txt` | `logs/r45/submissions_poll_r45.txt` | 0.82768 |
+
+Final May 21 submission list snapshot: `logs/final_submissions_2026-05-21.txt`. R44 tied the active 640 px public best at 0.82769; R36 remains the highest observed public score at 0.83245.

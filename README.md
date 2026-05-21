@@ -70,7 +70,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce active 640 px baseline submission
 
-Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R15/R38/R39 at `0.82769`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R15/R38/R39/R44 at `0.82769`.
 
 ```bash
 python scripts/make_inference_submission.py \
@@ -102,3 +102,7 @@ kaggle competitions submit \
 ```
 
 Always query `kaggle competitions submissions -c 3-lc-multi-vehicle-detection-challenge` immediately before and after each submit. Count quota only by API accept/reject plus submission-list records.
+
+## Latest Results
+
+The May 21 loop tested one new 640 px scratch-training variant and two R1 640 inference calibration points. R42 overfit the local validation split and scored `0.81293` public despite mAP50 `0.82364`. R44 returned to the active 640 px best at `0.82769`; R45 scored `0.82768`.

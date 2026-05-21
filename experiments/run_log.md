@@ -419,3 +419,40 @@ Next candidate directions:
 - Treat R15/R38/R39 as the active 640 px baseline.
 - Do not spend more quota on R1 640 confidence/NMS micro-sweeps unless needed as controls.
 - Prioritize 3LC label-review workflow or a rule-constrained 640 px training experiment with better validation diagnostics.
+
+## 2026-05-21 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before each counted submit. The start list showed no 2026-05-21 submissions; R42, R44, and R45 were the three accepted records for the day.
+- Rules, Evaluation, Code, and Discussion were refreshed before experiments. No new public rule, notebook, or discussion update changed the active 640 px, YOLOv8n-only, no-pretraining/no-external-data constraint set.
+- Remote GPU was available. R41, R42, and R43 were trained/generated first. R41 and R43 were not submitted after R42 showed that the new training direction did not generalize publicly.
+- Strategy: test whether the R1 recipe benefits from a slightly longer 12 epoch run at 640 px. After R42 failed publicly, revert the remaining quota to low-risk R1 640 inference calibration around the active best.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R42 | `submissions/r42/r42_yolov8n_scratch_e12_seed42_640_submission_clipped.csv` | YOLOv8n scratch, seed 42, 12 epochs, 640, AdamW, conf 0.0006, iou 0.46625 | val mAP50 0.8236 / audit ok / 63548 boxes | 0.81293 |
+| R44 | `submissions/r44/r44_r1_640_conf0007_iou046625_submission.csv` | R1 weights, 640, conf 0.0007, iou 0.46625 | audit ok / 59259 boxes | 0.82769 |
+| R45 | `submissions/r45/r45_r1_640_conf0007_iou0466375_submission.csv` | R1 weights, 640, conf 0.0007, iou 0.466375 | audit ok / 59275 boxes | 0.82768 |
+
+Additional generated candidates:
+- R41: YOLOv8n scratch, seed 42, 8 epochs, val mAP50 0.8181, 73812 boxes. Not submitted after R42 confirmed the training direction was public-weak.
+- R43: YOLOv8n scratch, seed 42, SGD, 10 epochs, val mAP50 0.7789, 57249 boxes. Not submitted because validation was too weak and quota was better spent on R1 controls.
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best is tied at `0.82769` by R15/R25/R27/R28/R30/R31/R32/R33/R38/R39/R44.
+
+Error analysis:
+- R42 is the clearest evidence so far that local validation can be misleading for new scratch checkpoints. It had the strongest 640 px validation mAP50 among recent training attempts but scored only 0.81293 public.
+- Longer R1-recipe training appears to overfit or shift the detection distribution away from the public split. It should not replace the original R1 checkpoint.
+- R44 confirms that `conf=0.0007, iou=0.46625` is public-neutral and ties the active 640 px best.
+- R45 confirms that nudging NMS upward to 0.466375 at the same confidence loses 0.00001, consistent with the narrow R1 640 NMS optimum.
+
+Repository/proof updates:
+- Added R42, R44, and R45 submission, summary, audit, submit, poll, and final-list artifacts.
+- Added the May 21 Kaggle refresh note and updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Do not submit more 8-12 epoch scratch variants without stronger validation/public diagnostics.
+- Treat the original R1 checkpoint, 640 px, `iou=0.46625`, and low confidence around 0.0006-0.001 as the active rule-constrained baseline.
+- The next meaningful improvement still requires label-review evidence or a different 640 px training protocol, not more narrow R1 confidence/NMS sweeps.
