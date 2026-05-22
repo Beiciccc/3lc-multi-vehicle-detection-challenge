@@ -106,3 +106,5 @@ Always query `kaggle competitions submissions -c 3-lc-multi-vehicle-detection-ch
 ## Latest Results
 
 The May 21 loop tested one new 640 px scratch-training variant and two R1 640 inference calibration points. R42 overfit the local validation split and scored `0.81293` public despite mAP50 `0.82364`. R44 returned to the active 640 px best at `0.82769`; R45 scored `0.82768`.
+
+The May 22 loop found a new 640 px active best using the R1 checkpoint with lower confidence. `conf=0.0005, iou=0.46625` scored `0.82864`, and `conf=0.00045, iou=0.46625` also scored `0.82864`. A higher nearby point, `conf=0.00065`, tied the older baseline at `0.82769`.

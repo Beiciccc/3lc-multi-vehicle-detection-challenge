@@ -1,0 +1,4 @@
+Submission accepted by Kaggle; dedicated upload console log was not captured in this local artifact set.
+Accepted submission-list record:
+r46_r1_640_conf00065_iou046625_submission.csv  2026-05-22 02:31:44.023000  r46_r1_640_conf0.00065_iou0.46625  SubmissionStatus.COMPLETE  0.82769
+See logs/final_submissions_2026-05-22.txt and logs/r46/submissions_poll_r46.txt.

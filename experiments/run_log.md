@@ -456,3 +456,40 @@ Next candidate directions:
 - Do not submit more 8-12 epoch scratch variants without stronger validation/public diagnostics.
 - Treat the original R1 checkpoint, 640 px, `iou=0.46625`, and low confidence around 0.0006-0.001 as the active rule-constrained baseline.
 - The next meaningful improvement still requires label-review evidence or a different 640 px training protocol, not more narrow R1 confidence/NMS sweeps.
+
+## 2026-05-22 submission loop x3
+
+Context:
+- Submission list was queried at loop start and before counted submits. The start list showed no 2026-05-22 submissions.
+- Rules and Evaluation pages were unchanged versus 2026-05-21 by SHA256. Code listing had no relevant new notebook. Discussion refresh through the available CLI was unavailable, but no rule/evaluation/page change was detected.
+- Remote GPU was available and the R1 checkpoint was present. No training was run; all candidates were single-checkpoint, 640 px, no-TTA/no-ensemble R1 inference sweeps.
+- Strategy: after R44 confirmed `conf=0.0007, iou=0.46625` tied the old 640 best, test lower confidence at the same NMS point to see whether additional recall helps.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R46a | `submissions/r46/r46_r1_640_conf0005_iou046625_submission.csv` | R1 weights, 640, conf 0.0005, iou 0.46625 | audit ok / 69462 boxes | 0.82864 |
+| R46b | `submissions/r46/r46_r1_640_conf00065_iou046625_submission.csv` | R1 weights, 640, conf 0.00065, iou 0.46625 | audit ok / 61303 boxes | 0.82769 |
+| R49 | `submissions/r49/r49_r1_640_conf00045_iou046625_submission.csv` | R1 weights, 640, conf 0.00045, iou 0.46625 | audit ok / 73131 boxes | 0.82864 |
+
+Additional generated but not submitted candidates:
+- R47: R1 weights, 640, conf 0.0006, iou 0.466125, 63593 boxes, audit ok.
+- R48: R1 weights, 640, conf 0.0007, iou 0.466125, 59244 boxes, audit ok.
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best is now `0.82864` from R46a/R49.
+
+Error analysis:
+- Lowering confidence from the old neutral band (`0.0006-0.001`) to `0.0005` improved the 640 px public score by +0.00095, showing that public recall still benefits from a larger low-confidence tail.
+- Moving from `0.0005` to `0.00045` added 3669 more boxes but did not improve beyond 0.82864. This suggests the immediate left side of the optimum is flat or saturated.
+- The `0.00065` control returned to 0.82769, so the useful threshold appears below about 0.0006 for this checkpoint/NMS setting.
+
+Repository/proof updates:
+- Added R46a/R46b/R49 submission, summary, audit, submit, poll, and final-list artifacts.
+- Added R47/R48 generated candidate summaries and audits.
+- Updated README, write-up, proof index, and run log.
+
+Next candidate directions:
+- Prioritize very narrow sweeps around `conf=0.00045-0.00055, iou=0.46625`.
+- Candidate controls: `conf=0.000475`, `conf=0.000525`, and possibly `conf=0.0005` with `iou=0.466125`.
+- Avoid going much lower than `0.00045` without analyzing box quality because R49 already reaches 73131 boxes and did not improve over R46a.

@@ -1,0 +1,23 @@
+--- now ---
+2026-05-22 03:28:29 BST
+--- submissions ---
+fileName                                                    date                        description                                                       status                     publicScore  privateScore  
+----------------------------------------------------------  --------------------------  ----------------------------------------------------------------  -------------------------  -----------  ------------  
+r45_r1_640_conf0007_iou0466375_submission.csv               2026-05-21 04:44:12.263000  r45_r1_640_conf0.0007_iou0.466375                                 SubmissionStatus.COMPLETE  0.82768                    
+r44_r1_640_conf0007_iou046625_submission.csv                2026-05-21 04:43:36.497000  r44_r1_640_conf0.0007_iou0.46625                                  SubmissionStatus.COMPLETE  0.82769                    
+r42_yolov8n_scratch_e12_seed42_640_submission_clipped.csv   2026-05-21 04:41:47.040000  r42_yolov8n_scratch_e12_seed42_640_conf0.0006_iou0.46625_clipped  SubmissionStatus.COMPLETE  0.81293                    
+r40_r1_640_conf0008_iou046575_submission.csv                2026-05-20 04:49:17.963000  r40_r1_640_conf0.0008_iou0.46575                                  SubmissionStatus.COMPLETE  0.82768                    
+r39_r1_640_conf0006_iou046625_submission.csv                2026-05-20 04:48:37.273000  r39_r1_640_conf0.0006_iou0.46625                                  SubmissionStatus.COMPLETE  0.82769                    
+r38_r1_640_conf0008_iou046625_submission.csv                2026-05-20 04:47:56.540000  r38_r1_640_conf0.0008_iou0.46625                                  SubmissionStatus.COMPLETE  0.82769                    
+r36_r1_imgsz768_conf001_iou046625_submission_clipped.csv    2026-05-19 04:59:50.887000  r36_r1_imgsz768_conf0.001_iou0.46625_clipped                      SubmissionStatus.COMPLETE  0.83245                    
+r35_r2_conf001_iou046625_submission_clipped.csv             2026-05-19 04:58:48.697000  r35_r2_conf0.001_iou0.46625_clipped                               SubmissionStatus.COMPLETE  0.82088                    
+r34_yolov8n_scratch_e10_seed123_640_submission_clipped.csv  2026-05-19 04:57:12.833000  r34_yolov8n_scratch_e10_seed123_640_conf0.001_iou0.46625_clipped  SubmissionStatus.COMPLETE  0.82359                    
+r33_r15_bus_conf00130_submission.csv                        2026-05-18 05:54:08.617000  r33_r15_bus_confmin0.00130                                        SubmissionStatus.COMPLETE  0.82769                    
+r32_r15_truck_conf00110_submission.csv                      2026-05-18 05:53:16.010000  r32_r15_truck_confmin0.00110                                      SubmissionStatus.COMPLETE  0.82769                    
+r31_r15_bus_conf00120_submission.csv                        2026-05-18 05:52:18.973000  r31_r15_bus_confmin0.00120                                        SubmissionStatus.COMPLETE  0.82769                    
+r30_r15_truck00105_bus00110_submission.csv                  2026-05-17 05:22:11.953000  r30_r15_truck0.00105_bus0.00110                                   SubmissionStatus.COMPLETE  0.82769                    
+r29_r15_van_conf00105_submission.csv                        2026-05-17 05:20:57.583000  r29_r15_van_confmin0.00105                                        SubmissionStatus.COMPLETE  0.82695                    
+r28_r15_truck_conf00105_submission.csv                      2026-05-17 05:19:17.547000  r28_r15_truck_confmin0.00105                                      SubmissionStatus.COMPLETE  0.82769                    
+r27_r15_bus_conf00110_submission.csv                        2026-05-16 19:48:56.043000  r27_r15_bus_confmin0.00110                                        SubmissionStatus.COMPLETE  0.82769                    
+r26_r15_noncar_conf00105_submission.csv                     2026-05-16 19:47:12.730000  r26_r15_noncar_confmin0.00105                                     SubmissionStatus.COMPLETE  0.82695                    
+r25_r15_bus_conf00105_submission.csv                        2026-05-16 19:45:02.910000  r25_r15_bus_confmin0.00105                                        SubmissionStatus.COMPLETE  0.82769                    

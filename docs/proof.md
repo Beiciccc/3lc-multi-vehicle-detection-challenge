@@ -26,6 +26,8 @@ This page indexes the reproducibility and leaderboard proof artifacts.
 - Final May 20 list: `logs/final_submissions_2026-05-20.txt`
 - Start/before-submit May 21 lists: `logs/submissions_2026-05-21_start.txt`, `logs/submissions_2026-05-21_before_r42.txt`, `logs/submissions_2026-05-21_before_r44.txt`, `logs/submissions_2026-05-21_before_r45.txt`
 - Final May 21 list: `logs/final_submissions_2026-05-21.txt`
+- Start/before-submit May 22 lists: `logs/submissions_2026-05-22_start.txt`, `logs/submissions_2026-05-22_before_r46.txt`, `logs/submissions_2026-05-22_before_r49.txt`
+- Final May 22 list: `logs/final_submissions_2026-05-22.txt`
 
 ## May 5 Submission Proof
 
@@ -144,3 +146,13 @@ Final May 20 submission list snapshot: `logs/final_submissions_2026-05-20.txt`. 
 | R45 | `submissions/r45/r45_r1_640_conf0007_iou0466375_submission.csv` | `submissions/r45/r45_r1_640_conf0007_iou0466375_summary.json` | `logs/r45/audit_r45.txt` | `logs/r45/submit_r45.txt` | `logs/r45/submissions_poll_r45.txt` | 0.82768 |
 
 Final May 21 submission list snapshot: `logs/final_submissions_2026-05-21.txt`. R44 tied the active 640 px public best at 0.82769; R36 remains the highest observed public score at 0.83245.
+
+## May 22 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R46a | `submissions/r46/r46_r1_640_conf0005_iou046625_submission.csv` | `submissions/r46/r46_r1_640_conf0005_iou046625_summary.json` | `logs/r46/audit_r46.txt` | `logs/r46/submit_r46.txt` | `logs/r46/submissions_poll_r46.txt` | 0.82864 |
+| R46b | `submissions/r46/r46_r1_640_conf00065_iou046625_submission.csv` | `submissions/r46/r46_r1_640_conf00065_iou046625_summary.json` | `logs/r46/audit_r46_conf00065.txt` | `logs/r46/submit_r46_conf00065.txt` | `logs/r46/submissions_poll_r46.txt` | 0.82769 |
+| R49 | `submissions/r49/r49_r1_640_conf00045_iou046625_submission.csv` | `submissions/r49/r49_r1_640_conf00045_iou046625_summary.json` | `logs/r49/audit_r49.txt` | `logs/r49/submit_r49.txt` | `logs/r49/submissions_poll_r49.txt` | 0.82864 |
+
+Final May 22 submission list snapshot: `logs/final_submissions_2026-05-22.txt`. R46a and R49 are tied as the active 640 px public best at 0.82864; R36 remains the highest observed public score at 0.83245.

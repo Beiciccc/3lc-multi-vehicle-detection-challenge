@@ -1,0 +1,5 @@
+2026-05-22 read-only Kaggle refresh:
+- Submission list queried at loop start: no 2026-05-22 records; three submissions available.
+- Rules and evaluation pages are unchanged versus 2026-05-21 by SHA256. The active constraints remain YOLOv8n only, 640 px input size, competition data only, random initialization, and no pretrained/external data/ensemble/TTA/pseudo-labeling/distillation.
+- Public Code listing unchanged in relevant way; latest visible notebook remains the May 19 YOLOv8n notebook.
+- Discussion refresh through available CLI was unavailable; previous public discussion state had no rule-changing update, and no rule/evaluation/page change was detected today.

@@ -1,0 +1,24 @@
+{
+  "weights": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\competition_starter\\runs\\detect\\r1_yolov8n_scratch_e10_640\\weights\\best.pt",
+  "submission": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\submissions\\r48\\r48_r1_640_conf0007_iou0466125_submission.csv",
+  "imgsz": 640,
+  "conf": 0.0007,
+  "iou": 0.466125,
+  "max_det": 300,
+  "batch": 32,
+  "device": "0",
+  "agnostic_nms": false,
+  "val_metrics": {
+    "map50": 0.8194211346777076,
+    "map50_95": 0.6331861719867213
+  },
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 59244
+  },
+  "note": "R1 640 interpolation sweep, conf 0.0007 iou 0.466125",
+  "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
+}

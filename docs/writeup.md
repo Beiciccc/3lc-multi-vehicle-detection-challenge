@@ -46,8 +46,11 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R42 | 2026-05-21 | YOLOv8n scratch seed 42, 12 epochs, 640, conf 0.0006, iou 0.46625 | 0.81293 |
 | R44 | 2026-05-21 | R1 weights, 640, conf 0.0007, iou 0.46625 | 0.82769 |
 | R45 | 2026-05-21 | R1 weights, 640, conf 0.0007, iou 0.466375 | 0.82768 |
+| R46a | 2026-05-22 | R1 weights, 640, conf 0.0005, iou 0.46625 | 0.82864 |
+| R46b | 2026-05-22 | R1 weights, 640, conf 0.00065, iou 0.46625 | 0.82769 |
+| R49 | 2026-05-22 | R1 weights, 640, conf 0.00045, iou 0.46625 | 0.82864 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82769** from R15/R25/R27/R28/R30/R31/R32/R33/R38/R39/R44.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49.
 
 ## Analysis
 
@@ -61,12 +64,14 @@ The May 20 loop retested the R1 checkpoint under the 640 px constraint. Class-ag
 
 The May 21 loop tested whether the R1 training recipe benefits from different training duration at 640 px. R42 trained for 12 epochs and achieved local val mAP50 0.8236 with 63548 test boxes, but public score dropped sharply to 0.81293. This confirms that the validation split is not reliable for ranking fresh scratch checkpoints and that longer training can overfit away from the public distribution. The remaining quota was redirected to R1 inference controls: R44 at `conf=0.0007, iou=0.46625` tied the active 640 px best at 0.82769, while R45 at `iou=0.466375` scored 0.82768.
 
+The May 22 loop found that the R1 640 operating point was not fully saturated on the low-confidence side. At the same `iou=0.46625`, lowering confidence to `0.0005` produced 69462 boxes and improved public score to 0.82864. A nearby higher threshold, `0.00065`, returned to 0.82769, while a lower threshold, `0.00045`, produced 73131 boxes and tied 0.82864. The useful 640 px region therefore shifted to `conf≈0.00045-0.0005` with the original R1 checkpoint and `iou=0.46625`.
+
 ## Next Steps
 
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Use R15/R38/R39 as the active 640 px baseline: R1 checkpoint, 640 px inference, low confidence, `iou` near 0.46625, strictly audited before submission.
-- Include R44 in the active 640 px baseline set; it confirms `conf=0.0007, iou=0.46625` is public-neutral.
+- Use R46a/R49 as the active 640 px baseline: R1 checkpoint, 640 px inference, `conf≈0.00045-0.0005`, `iou=0.46625`, strictly audited before submission.
+- Continue narrow sweeps around `conf=0.00045-0.00055`; do not jump far lower without box-quality analysis.
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15/R36-style output; R29 showed a large public drop from removing only 28 boxes.
 - Next higher-upside work should use the 3LC label-review workflow if credentials are available, or run rule-constrained 640 px training/label diagnostics rather than more R1 confidence/NMS micro-sweeps.
