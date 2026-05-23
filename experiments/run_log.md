@@ -493,3 +493,41 @@ Next candidate directions:
 - Prioritize very narrow sweeps around `conf=0.00045-0.00055, iou=0.46625`.
 - Candidate controls: `conf=0.000475`, `conf=0.000525`, and possibly `conf=0.0005` with `iou=0.466125`.
 - Avoid going much lower than `0.00045` without analyzing box quality because R49 already reaches 73131 boxes and did not improve over R46a.
+
+## 2026-05-23 submission loop x3
+
+Context:
+- Submission list was queried at loop start. The start list showed no 2026-05-23 submissions; R50, R51, and R52 became the three accepted records for the day.
+- Rules, Evaluation, and Main sauce pages were refreshed. SHA256 checks matched the May 22 copies, so the active constraint set remained unchanged: YOLOv8n only, 640 px input size, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no distillation, and official data only.
+- Public Code listing was unchanged; the latest visible notebook remained Quartz Yu's 2026-05-19 YOLOv8n notebook. The available Kaggle CLI still did not support a discussions subcommand.
+- Remote GPU inference was available on an RTX 4080. All submitted candidates used the original R1 checkpoint, 640 px, single-checkpoint inference, and strict local audits before upload.
+- Strategy: refine the low-confidence plateau found on May 22 around `conf=0.00045-0.000525` and test one NMS left-shoulder control.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R50 | `submissions/r50/r50_r1_640_conf000475_iou046625_submission.csv` | R1 weights, 640, conf 0.000475, iou 0.46625 | audit ok / 71256 boxes | 0.82864 |
+| R51 | `submissions/r51/r51_r1_640_conf000525_iou046625_submission.csv` | R1 weights, 640, conf 0.000525, iou 0.46625 | audit ok / 67763 boxes | 0.82864 |
+| R52 | `submissions/r52/r52_r1_640_conf0005_iou0466125_submission.csv` | R1 weights, 640, conf 0.0005, iou 0.466125 | audit ok / 69444 boxes | 0.82862 |
+
+Additional generated but not accepted:
+- R53: post-processing of R49 that kept van detections down to 0.00045 while filtering truck/car/bus below 0.0005. It passed local audit with 69526 boxes, but Kaggle returned HTTP 400 on upload and no R53 row appeared in the submission list, so it is not counted as an accepted submission.
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51.
+
+Error analysis:
+- R50 and R51 both tied the current 640 px best, confirming that the useful R1 640 confidence plateau spans at least `0.00045-0.000525` at `iou=0.46625`.
+- R51 reduced the test box count by 1699 versus R46a and 5368 versus R49 without changing public score, so a small amount of low-confidence noise can be removed safely.
+- R52 lowered NMS IoU from 0.46625 to 0.466125 at the proven 0.0005 confidence setting and lost 0.00002 public. This confirms that the NMS left shoulder remains slightly worse even after the lower-confidence improvement.
+- The plateau appears score-saturated under R1 640 inference-only tuning. More progress likely requires a new signal, such as compliant label review or stronger diagnostics, rather than more tiny confidence/NMS perturbations.
+
+Repository/proof updates:
+- Added R50-R52 submission, summary, audit, submit, poll, and final-list artifacts.
+- Added R53 generated candidate, audit, and rejected-submit log as a non-counted candidate.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Treat R50/R51 as compact active 640 px baselines when a lower box count is preferred without score loss.
+- Do not prioritize further NMS-left sweeps below 0.46625.
+- If using another inference-only control, test class-aware post-processing only if the upload issue is resolved and the daily quota is available; otherwise prioritize compliant label-review or training diagnostics.

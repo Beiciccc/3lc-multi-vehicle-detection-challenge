@@ -1,0 +1,52 @@
+predicted 32/982
+predicted 64/982
+predicted 96/982
+predicted 128/982
+predicted 160/982
+predicted 192/982
+predicted 224/982
+predicted 256/982
+predicted 288/982
+predicted 320/982
+predicted 352/982
+predicted 384/982
+predicted 416/982
+predicted 448/982
+predicted 480/982
+predicted 512/982
+predicted 544/982
+predicted 576/982
+predicted 608/982
+predicted 640/982
+predicted 672/982
+predicted 704/982
+predicted 736/982
+predicted 768/982
+predicted 800/982
+predicted 832/982
+predicted 864/982
+predicted 896/982
+predicted 928/982
+predicted 960/982
+predicted 982/982
+{
+  "weights": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\competition_starter\\runs\\detect\\r1_yolov8n_scratch_e10_640\\weights\\best.pt",
+  "submission": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\submissions\\r51\\r51_r1_640_conf000525_iou046625_submission.csv",
+  "imgsz": 640,
+  "conf": 0.000525,
+  "iou": 0.46625,
+  "max_det": 300,
+  "batch": 32,
+  "device": "0",
+  "agnostic_nms": false,
+  "val_metrics": null,
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 67763
+  },
+  "note": "r51_r1_640_conf0.000525_iou0.46625",
+  "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
+}

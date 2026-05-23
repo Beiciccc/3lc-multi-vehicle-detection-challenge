@@ -156,3 +156,15 @@ Final May 21 submission list snapshot: `logs/final_submissions_2026-05-21.txt`. 
 | R49 | `submissions/r49/r49_r1_640_conf00045_iou046625_submission.csv` | `submissions/r49/r49_r1_640_conf00045_iou046625_summary.json` | `logs/r49/audit_r49.txt` | `logs/r49/submit_r49.txt` | `logs/r49/submissions_poll_r49.txt` | 0.82864 |
 
 Final May 22 submission list snapshot: `logs/final_submissions_2026-05-22.txt`. R46a and R49 are tied as the active 640 px public best at 0.82864; R36 remains the highest observed public score at 0.83245.
+
+## May 23 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R50 | `submissions/r50/r50_r1_640_conf000475_iou046625_submission.csv` | `submissions/r50/r50_r1_640_conf000475_iou046625_summary.json` | `logs/r50/audit_r50.txt` | `logs/r50/submit_r50.txt` | `logs/r50/submissions_poll_r50_1.txt` | 0.82864 |
+| R51 | `submissions/r51/r51_r1_640_conf000525_iou046625_submission.csv` | `submissions/r51/r51_r1_640_conf000525_iou046625_summary.json` | `logs/r51/audit_r51.txt` | `logs/r51/submit_r51.txt` | `logs/r51/submissions_poll_r51_1.txt` | 0.82864 |
+| R52 | `submissions/r52/r52_r1_640_conf0005_iou0466125_submission.csv` | `submissions/r52/r52_r1_640_conf0005_iou0466125_summary.json` | `logs/r52/audit_r52.txt` | `logs/r52/submit_r52.txt` | `logs/r52/submissions_poll_r52.txt` | 0.82862 |
+
+Final May 23 submission list snapshot: `logs/final_submissions_2026-05-23.txt`. R50 and R51 tied the active 640 px public best at 0.82864; R52 scored 0.82862. R36 remains the highest observed public score at 0.83245, but it is not the active 640 px baseline for new submissions.
+
+Non-counted May 23 candidate: R53 (`submissions/r53/r53_r49_keep_van00045_others0005_submission.csv`) passed local audit with 69526 boxes, but Kaggle returned HTTP 400 and no R53 row appeared in the submission list. It is not counted as an accepted submission.

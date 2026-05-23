@@ -70,15 +70,15 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce active 640 px baseline submission
 
-Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R15/R38/R39/R44 at `0.82769`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R46a/R49/R50/R51 at `0.82864`.
 
 ```bash
 python scripts/make_inference_submission.py \
   --starter-dir competition_starter \
   --weights competition_starter/runs/detect/r1_yolov8n_scratch_e10_640/weights/best.pt \
-  --out submissions/r39/r39_r1_640_conf0006_iou046625_submission.csv \
-  --summary submissions/r39/r39_r1_640_conf0006_iou046625_summary.json \
-  --imgsz 640 --conf 0.0006 --iou 0.46625 \
+  --out submissions/r50/r50_r1_640_conf000475_iou046625_submission.csv \
+  --summary submissions/r50/r50_r1_640_conf000475_iou046625_summary.json \
+  --imgsz 640 --conf 0.000475 --iou 0.46625 \
   --max-det 300 --batch 32 --device 0 --val
 ```
 
@@ -86,7 +86,7 @@ python scripts/make_inference_submission.py \
 
 ```bash
 python scripts/audit_submission.py \
-  submissions/r39/r39_r1_640_conf0006_iou046625_submission.csv \
+  submissions/r50/r50_r1_640_conf000475_iou046625_submission.csv \
   --sample competition_starter/sample_submission.csv \
   --test-images-dir competition_starter/data/test/images \
   --strict-bbox-inside
@@ -97,8 +97,8 @@ python scripts/audit_submission.py \
 ```bash
 kaggle competitions submit \
   -c 3-lc-multi-vehicle-detection-challenge \
-  -f submissions/r39/r39_r1_640_conf0006_iou046625_submission.csv \
-  -m "r39_r1_640_conf0.0006_iou0.46625"
+  -f submissions/r50/r50_r1_640_conf000475_iou046625_submission.csv \
+  -m "r50_r1_640_conf0.000475_iou0.46625"
 ```
 
 Always query `kaggle competitions submissions -c 3-lc-multi-vehicle-detection-challenge` immediately before and after each submit. Count quota only by API accept/reject plus submission-list records.
@@ -108,3 +108,5 @@ Always query `kaggle competitions submissions -c 3-lc-multi-vehicle-detection-ch
 The May 21 loop tested one new 640 px scratch-training variant and two R1 640 inference calibration points. R42 overfit the local validation split and scored `0.81293` public despite mAP50 `0.82364`. R44 returned to the active 640 px best at `0.82769`; R45 scored `0.82768`.
 
 The May 22 loop found a new 640 px active best using the R1 checkpoint with lower confidence. `conf=0.0005, iou=0.46625` scored `0.82864`, and `conf=0.00045, iou=0.46625` also scored `0.82864`. A higher nearby point, `conf=0.00065`, tied the older baseline at `0.82769`.
+
+The May 23 loop refined the same 640 px low-confidence plateau. `conf=0.000475, iou=0.46625` and `conf=0.000525, iou=0.46625` both scored `0.82864`, while moving NMS left to `iou=0.466125` at `conf=0.0005` scored `0.82862`. The active 640 px best remains `0.82864`.
