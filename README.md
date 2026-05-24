@@ -70,7 +70,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce active 640 px baseline submission
 
-Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R46a/R49/R50/R51 at `0.82864`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R46a/R49/R50/R51/R53/R54/R55 at `0.82864`.
 
 ```bash
 python scripts/make_inference_submission.py \
@@ -110,3 +110,5 @@ The May 21 loop tested one new 640 px scratch-training variant and two R1 640 in
 The May 22 loop found a new 640 px active best using the R1 checkpoint with lower confidence. `conf=0.0005, iou=0.46625` scored `0.82864`, and `conf=0.00045, iou=0.46625` also scored `0.82864`. A higher nearby point, `conf=0.00065`, tied the older baseline at `0.82769`.
 
 The May 23 loop refined the same 640 px low-confidence plateau. `conf=0.000475, iou=0.46625` and `conf=0.000525, iou=0.46625` both scored `0.82864`, while moving NMS left to `iou=0.466125` at `conf=0.0005` scored `0.82862`. The active 640 px best remains `0.82864`.
+
+The May 24 loop tested class-specific post-processing from the R49 low-threshold output. R53, R54, and R55 all scored `0.82864`, confirming that selected low-confidence tail filtering is public-neutral but does not improve beyond the active 640 px plateau.

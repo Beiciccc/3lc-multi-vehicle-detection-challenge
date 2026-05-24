@@ -1,0 +1,25 @@
+{
+  "source": "submissions/r49/r49_r1_640_conf00045_iou046625_submission.csv",
+  "submission": "submissions/r55/r55_r49_keep_van_bus00045_truck_car0005_submission.csv",
+  "thresholds": {
+    "0": 0.0005,
+    "1": 0.0005
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 69931,
+  "kept_by_class": {
+    "0": 1894,
+    "1": 57827,
+    "2": 2721,
+    "3": 7489
+  },
+  "dropped_by_class": {
+    "0": 120,
+    "1": 3080,
+    "2": 0,
+    "3": 0
+  },
+  "note": "R55 post-processing of R49: keep van/bus to 0.00045, filter truck/car below 0.0005",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

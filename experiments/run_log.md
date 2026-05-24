@@ -531,3 +531,36 @@ Next candidate directions:
 - Treat R50/R51 as compact active 640 px baselines when a lower box count is preferred without score loss.
 - Do not prioritize further NMS-left sweeps below 0.46625.
 - If using another inference-only control, test class-aware post-processing only if the upload issue is resolved and the daily quota is available; otherwise prioritize compliant label-review or training diagnostics.
+
+## 2026-05-24 submission loop x3
+
+Context:
+- Submission list was queried at loop start. The start list showed no 2026-05-24 submissions; R53, R54, and R55 became the three accepted records for the day.
+- Rules and Evaluation pages were refreshed and matched the May 23 copies by SHA256. The active constraints remained YOLOv8n only, 640 px input size, from-scratch training only, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no distillation, and official data only.
+- Public Code listing was unchanged; the latest visible notebook remained Quartz Yu's 2026-05-19 YOLOv8n notebook. The old discussions command was unavailable; the newer topics command was also not usable in this CLI build, so no readable discussion change was found through the available interfaces.
+- Strategy: since R50/R51 confirmed a flat low-confidence plateau at `0.82864`, test class-specific post-processing derived from the R49 low-threshold output. All accepted candidates were single-submission post-processing of one R1 640 output, with no TTA, no ensemble, and strict local audit before upload.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R53 | `submissions/r53/r53_r49_keep_van00045_others0005_submission.csv` | R49 output, keep van to 0.00045, filter truck/car/bus below 0.0005 | audit ok / 69526 boxes | 0.82864 |
+| R54 | `submissions/r54/r54_r49_keep_carvan00045_filter_truckbus0005_submission.csv` | R49 output, keep car/van to 0.00045, filter truck/bus below 0.0005 | audit ok / 72606 boxes | 0.82864 |
+| R55 | `submissions/r55/r55_r49_filter_car0005_keep_others00045_submission.csv` | R49 output, filter only car below 0.0005, keep truck/van/bus to 0.00045 | audit ok / 70051 boxes | 0.82864 |
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51/R53/R54/R55.
+
+Error analysis:
+- R53, R54, and R55 all tied the active 640 px best, so removing selected low-confidence tails from R49 is public-neutral, not beneficial.
+- Van low-confidence retention remains important by historical evidence from R29, but today's class-aware variants show that keeping or filtering other low-confidence tails does not move the public score above the plateau.
+- The 640 px R1 inference/post-processing region is now strongly saturated: global confidence, NMS left shoulder, and class-aware filtering all converge around 0.82864.
+- Further quota should not prioritize more R49 tail-filter combinations unless needed for controls. A new signal is needed, most likely compliant label review or a materially different validation/training diagnostic.
+
+Repository/proof updates:
+- Added R53-R55 submission, summary, audit, submit, poll, and final-list artifacts.
+- Added May 24 rules/code/discussion refresh logs.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Stop spending primary quota on R1/R49 inference-only micro-variants unless no higher-value experiment is available.
+- If continuing within current constraints, use R50/R51/R53/R54/R55 as compact tie baselines and focus on label-review evidence or a fresh diagnostic that explains the gap to the public leaderboard leaders.

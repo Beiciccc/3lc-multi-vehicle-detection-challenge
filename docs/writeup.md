@@ -52,8 +52,11 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R50 | 2026-05-23 | R1 weights, 640, conf 0.000475, iou 0.46625 | 0.82864 |
 | R51 | 2026-05-23 | R1 weights, 640, conf 0.000525, iou 0.46625 | 0.82864 |
 | R52 | 2026-05-23 | R1 weights, 640, conf 0.0005, iou 0.466125 | 0.82862 |
+| R53 | 2026-05-24 | R49 output, keep van to 0.00045, filter truck/car/bus below 0.0005 | 0.82864 |
+| R54 | 2026-05-24 | R49 output, keep car/van to 0.00045, filter truck/bus below 0.0005 | 0.82864 |
+| R55 | 2026-05-24 | R49 output, filter car below 0.0005, keep truck/van/bus to 0.00045 | 0.82864 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55.
 
 ## Analysis
 
@@ -69,13 +72,15 @@ The May 21 loop tested whether the R1 training recipe benefits from different tr
 
 The May 22 loop found that the R1 640 operating point was not fully saturated on the low-confidence side. At the same `iou=0.46625`, lowering confidence to `0.0005` produced 69462 boxes and improved public score to 0.82864. A nearby higher threshold, `0.00065`, returned to 0.82769, while a lower threshold, `0.00045`, produced 73131 boxes and tied 0.82864. The useful 640 px region therefore shifted to `conf≈0.00045-0.0005` with the original R1 checkpoint and `iou=0.46625`.
 
-The May 23 loop refined the low-confidence plateau under the 640 px constraint. R50 at `conf=0.000475` and R51 at `conf=0.000525`, both with `iou=0.46625`, tied the active 640 px best at 0.82864. R52 kept `conf=0.0005` but moved NMS left to `iou=0.466125` and scored 0.82862, confirming that the NMS left shoulder remains slightly worse than the established `0.46625` setting. R53, a class-aware post-processing candidate derived from R49, passed local audit but was rejected by Kaggle with HTTP 400 and produced no submission-list record.
+The May 23 loop refined the low-confidence plateau under the 640 px constraint. R50 at `conf=0.000475` and R51 at `conf=0.000525`, both with `iou=0.46625`, tied the active 640 px best at 0.82864. R52 kept `conf=0.0005` but moved NMS left to `iou=0.466125` and scored 0.82862, confirming that the NMS left shoulder remains slightly worse than the established `0.46625` setting. R53, a class-aware post-processing candidate derived from R49, passed local audit but was rejected by Kaggle with HTTP 400 and produced no submission-list record on May 23.
+
+The May 24 loop tested class-aware filtering from the R49 low-threshold output. R53 kept van detections down to 0.00045 while filtering truck/car/bus below 0.0005; R54 kept car/van down to 0.00045 while filtering truck/bus; R55 filtered only car below 0.0005. All three scored 0.82864. This confirms that these low-confidence class tails can be altered without hurting public score, but the R1 640 px inference-only region remains capped at the same plateau.
 
 ## Next Steps
 
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Use R46a/R49/R50/R51 as the active 640 px baseline: R1 checkpoint, 640 px inference, `conf≈0.00045-0.000525`, `iou=0.46625`, strictly audited before submission.
+- Use R46a/R49/R50/R51/R53/R54/R55 as active 640 px tie baselines, but treat further inference-only tail filtering as saturated unless a new diagnostic identifies a specific error mode.
 - Further R1 confidence/NMS micro-sweeps have low expected value; avoid NMS-left moves below `0.46625` unless needed as controls.
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15/R36-style output; R29 showed a large public drop from removing only 28 boxes.
