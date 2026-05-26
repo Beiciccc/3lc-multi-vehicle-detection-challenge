@@ -55,8 +55,14 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R53 | 2026-05-24 | R49 output, keep van to 0.00045, filter truck/car/bus below 0.0005 | 0.82864 |
 | R54 | 2026-05-24 | R49 output, keep car/van to 0.00045, filter truck/bus below 0.0005 | 0.82864 |
 | R55 | 2026-05-24 | R49 output, filter car below 0.0005, keep truck/van/bus to 0.00045 | 0.82864 |
+| R58 | 2026-05-25 | R1 weights, 640, conf 0.00055, iou 0.46625 | 0.82833 |
+| R59 | 2026-05-25 | R1 weights, 640, conf 0.0005, iou 0.466375 | 0.82862 |
+| R56 | 2026-05-25 | R1 weights, 640, conf 0.0005, iou 0.466375 | 0.82862 |
+| R61 | 2026-05-26 | R49 output, filter truck below 0.0005, keep car/van/bus to 0.00045 | 0.82864 |
+| R62 | 2026-05-26 | R49 output, filter bus below 0.0005, keep truck/car/van to 0.00045 | 0.82864 |
+| R60 | 2026-05-26 | R49 output, filter truck/car below 0.0005, keep van/bus to 0.00045 | 0.82864 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62.
 
 ## Analysis
 
@@ -76,12 +82,16 @@ The May 23 loop refined the low-confidence plateau under the 640 px constraint. 
 
 The May 24 loop tested class-aware filtering from the R49 low-threshold output. R53 kept van detections down to 0.00045 while filtering truck/car/bus below 0.0005; R54 kept car/van down to 0.00045 while filtering truck/bus; R55 filtered only car below 0.0005. All three scored 0.82864. This confirms that these low-confidence class tails can be altered without hurting public score, but the R1 640 px inference-only region remains capped at the same plateau.
 
+The May 25 loop closed the remaining R1 640 inference boundary checks. R58 at `conf=0.00055, iou=0.46625` dropped to 0.82833, showing that the right confidence edge is below 0.00055. R59 and R56 both tested `conf=0.0005, iou=0.466375` and scored 0.82862, matching the earlier conclusion that moving away from `iou=0.46625` in either direction is slightly worse.
+
+The May 26 loop completed R49 class-tail filtering controls under the active 640 px constraint. R61 removed only 120 low-confidence truck boxes, R62 removed only 405 low-confidence bus boxes, and R60 removed 120 truck plus 3080 car low-confidence boxes. All three scored 0.82864. Together with R53-R55, this closes the main safe class-filter combinations from the R49 output: truck, car, bus, and their low-confidence combinations are public-neutral when van is retained, but none improves beyond the plateau.
+
 ## Next Steps
 
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Use R46a/R49/R50/R51/R53/R54/R55 as active 640 px tie baselines, but treat further inference-only tail filtering as saturated unless a new diagnostic identifies a specific error mode.
-- Further R1 confidence/NMS micro-sweeps have low expected value; avoid NMS-left moves below `0.46625` unless needed as controls.
+- Use R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62 as active 640 px tie baselines, but treat further inference-only tail filtering as saturated unless a new diagnostic identifies a specific error mode.
+- Further R1 confidence/NMS micro-sweeps have low expected value; both NMS shoulders and the confidence right edge underperformed the 0.82864 plateau.
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15/R36-style output; R29 showed a large public drop from removing only 28 boxes.
-- Next higher-upside work should use the 3LC label-review workflow if credentials are available, or run rule-constrained 640 px training/label diagnostics rather than more R1 confidence/NMS micro-sweeps.
+- Next higher-upside work should use the 3LC label-review workflow if credentials are available, or run rule-constrained 640 px training/label diagnostics rather than more R1 confidence/NMS/class-tail micro-sweeps.

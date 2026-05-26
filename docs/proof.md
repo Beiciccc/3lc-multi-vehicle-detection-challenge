@@ -178,3 +178,23 @@ Non-counted May 23 candidate: R53 (`submissions/r53/r53_r49_keep_van00045_others
 | R55 | `submissions/r55/r55_r49_filter_car0005_keep_others00045_submission.csv` | `submissions/r55/r55_r49_filter_car0005_keep_others00045_summary.json` | `logs/r55/audit_r55_pre_submit.txt` | `logs/r55/submit_r55.txt` | `logs/r55/submissions_poll_r55.txt` | 0.82864 |
 
 Final May 24 submission list snapshot: `logs/final_submissions_2026-05-24.txt`. R53, R54, and R55 all tied the active 640 px public best at 0.82864. R36 remains the highest observed public score at 0.83245, but it is not the active 640 px baseline for new submissions.
+
+## May 25 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R58 | `submissions/r58/r58_r1_640_conf00055_iou046625_submission.csv` | `submissions/r58/r58_r1_640_conf00055_iou046625_summary.json` | `logs/r58/audit_r58_pre_submit.txt` | `logs/r58/submit_r58.txt` | `logs/r58/submissions_poll_r58.txt` | 0.82833 |
+| R59 | `submissions/r59/r59_r1_640_conf0005_iou0466375_submission.csv` | `submissions/r59/r59_r1_640_conf0005_iou0466375_summary.json` | `logs/r59/audit_r59_pre_submit.txt` | `logs/r59/submit_r59.txt` | `logs/r59/submissions_poll_r59.txt` | 0.82862 |
+| R56 | `submissions/r56/r56_r1_640_conf0005_iou0466375_submission.csv` | `submissions/r56/r56_r1_640_conf0005_iou0466375_summary.json` | `logs/r56/audit_r56.txt` | `logs/r56/submit_r56.txt` | `logs/final_submissions_2026-05-25.txt` | 0.82862 |
+
+Final May 25 submission list snapshot: `logs/final_submissions_2026-05-25.txt`. R58 scored 0.82833, while R59 and R56 scored 0.82862. R36 remains the highest observed public score at 0.83245; the active 640 px public best remains 0.82864.
+
+## May 26 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R61 | `submissions/r61/r61_r49_filter_truck0005_keep_others00045_submission.csv` | `submissions/r61/r61_r49_filter_truck0005_keep_others00045_summary.json` | `logs/r61/audit_r61.txt` | `logs/r61/submit_r61.txt` | `logs/r61/submissions_poll_r61_*.txt` | 0.82864 |
+| R62 | `submissions/r62/r62_r49_filter_bus0005_keep_others00045_submission.csv` | `submissions/r62/r62_r49_filter_bus0005_keep_others00045_summary.json` | `logs/r62/audit_r62.txt` | `logs/r62/submit_r62.txt` | `logs/r62/submissions_poll_r62_*.txt` | 0.82864 |
+| R60 | `submissions/r60/r60_r49_keep_vanbus00045_filter_truckcar0005_submission.csv` | `submissions/r60/r60_r49_keep_vanbus00045_filter_truckcar0005_summary.json` | `logs/r60/audit_r60_2026-05-26.txt` | `logs/r60/submit_r60.txt` | `logs/r60/submissions_poll_r60_*.txt` | 0.82864 |
+
+Final May 26 submission list snapshot: `logs/final_submissions_2026-05-26.txt`. R60, R61, and R62 all tied the active 640 px public best at 0.82864. R36 remains the highest observed public score at 0.83245; the active 640 px public best remains 0.82864.

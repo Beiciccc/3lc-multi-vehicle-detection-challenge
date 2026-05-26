@@ -564,3 +564,73 @@ Repository/proof updates:
 Next candidate directions:
 - Stop spending primary quota on R1/R49 inference-only micro-variants unless no higher-value experiment is available.
 - If continuing within current constraints, use R50/R51/R53/R54/R55 as compact tie baselines and focus on label-review evidence or a fresh diagnostic that explains the gap to the public leaderboard leaders.
+
+## 2026-05-25 submission loop x3
+
+Context:
+- Submission list was queried at loop start. The start list showed no 2026-05-25 submissions; R58, R59, and R56 became the three accepted records for the day.
+- Rules and Evaluation pages were refreshed and matched the May 24 copies by SHA256. The active constraints remained YOLOv8n only, 640 px input size, from-scratch training only, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no distillation, and official data only.
+- Public Code listing was unchanged; the latest visible notebook remained Quartz Yu's 2026-05-19 YOLOv8n notebook. The topics interface was still not usable in the available Kaggle CLI build.
+- Strategy: after May 24 showed class-specific R49 filtering is public-neutral, test the remaining R1 640 inference boundary controls that had already been generated and audited: a confidence right-edge point and an NMS right-shoulder point.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R58 | `submissions/r58/r58_r1_640_conf00055_iou046625_submission.csv` | R1 weights, 640, conf 0.00055, iou 0.46625 | audit ok / 66289 boxes | 0.82833 |
+| R59 | `submissions/r59/r59_r1_640_conf0005_iou0466375_submission.csv` | R1 weights, 640, conf 0.0005, iou 0.466375 | audit ok / 69483 boxes | 0.82862 |
+| R56 | `submissions/r56/r56_r1_640_conf0005_iou0466375_submission.csv` | R1 weights, 640, conf 0.0005, iou 0.466375 | audit ok / 69483 boxes | 0.82862 |
+
+Additional generated but not submitted:
+- R60: R49 post-processing that kept van/bus down to 0.00045 while filtering truck/car below 0.0005. It passed local audit with 69931 boxes, but was not submitted because the three accepted May 25 records had already consumed the daily quota.
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51/R53/R54/R55.
+
+Error analysis:
+- R58 scored 0.82833, confirming that raising the R1 640 confidence threshold to 0.00055 leaves the useful low-confidence plateau. The viable band is below this point and includes 0.00045-0.000525.
+- R59 and R56 duplicated the `conf=0.0005, iou=0.466375` right-shoulder NMS control and both scored 0.82862. Together with R52 at `iou=0.466125`, this shows both immediate NMS shoulders around 0.46625 are slightly worse than the center point.
+- The R1 640 inference-only search is now exhausted: confidence right edge, NMS left/right shoulders, and class-aware filtering have not improved beyond 0.82864.
+
+Repository/proof updates:
+- Added R58/R59/R56 submission, summary, audit, submit/poll/final-list artifacts.
+- Added R60 generated candidate summary and audit as a non-submitted candidate.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Do not spend further primary quota on R1 640 confidence/NMS micro-sweeps.
+- Do not repeat R49 class-tail filtering unless needed as a control.
+- The next meaningful improvement requires a new signal: compliant 3LC label review, stronger split diagnostics, or a materially different rule-compliant training protocol.
+
+## 2026-05-26 submission loop x3
+
+Context:
+- Submission list was queried at loop start. The start list showed no 2026-05-26 submissions; R61, R62, and R60 became the three accepted records for the day.
+- Rules and Evaluation pages were refreshed and matched the May 25 copies by SHA256. The active constraints remained YOLOv8n only, 640 px input size, from-scratch training only for training runs, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no distillation, and official data only.
+- Public Code listing was unchanged; the latest visible competition notebook remained the 2026-05-19 YOLOv8n notebook. Discussion/topic access through the available Kaggle CLI remained unreliable, so command output was captured but no readable new signal was found.
+- Strategy: because R1 global confidence/NMS micro-sweeps were exhausted by May 25, complete the remaining low-risk class-tail controls from the R49 low-threshold output while retaining van detections.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R61 | `submissions/r61/r61_r49_filter_truck0005_keep_others00045_submission.csv` | R49 output, filter only truck below 0.0005, keep car/van/bus to 0.00045 | audit ok / 73011 boxes | 0.82864 |
+| R62 | `submissions/r62/r62_r49_filter_bus0005_keep_others00045_submission.csv` | R49 output, filter only bus below 0.0005, keep truck/car/van to 0.00045 | audit ok / 72726 boxes | 0.82864 |
+| R60 | `submissions/r60/r60_r49_keep_vanbus00045_filter_truckcar0005_submission.csv` | R49 output, filter truck/car below 0.0005, keep van/bus to 0.00045 | audit ok / 69931 boxes | 0.82864 |
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62.
+
+Error analysis:
+- R61 shows that removing only the 120 lowest-confidence truck boxes from R49 is public-neutral.
+- R62 shows that removing only the 405 lowest-confidence bus boxes from R49 is also public-neutral.
+- R60 shows that combining truck and car low-confidence filtering remains public-neutral, consistent with R55's car-only neutral result and R53/R54's broader neutral class-tail controls.
+- The R49 class-tail filtering space is now effectively saturated when van is retained. Further output-only filtering has low expected value unless a new diagnostic identifies a specific false-positive cluster.
+
+Repository/proof updates:
+- Added R60/R61/R62 submission, summary, audit, submit/poll/final-list artifacts.
+- Added May 26 rules/code/discussion refresh logs and remote read-only check.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Do not spend primary quota on additional R1/R49 confidence, NMS, or class-tail micro-variants.
+- Prioritize compliant label-review evidence if 3LC table credentials are available.
+- If 3LC label review remains blocked, use stronger split diagnostics or a materially different 640 px YOLOv8n scratch training protocol before spending more submissions.

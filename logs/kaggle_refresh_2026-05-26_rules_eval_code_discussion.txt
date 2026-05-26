@@ -1,0 +1,20 @@
+2026-05-26 Kaggle refresh summary
+
+Commands run:
+- kaggle competitions submissions -c 3-lc-multi-vehicle-detection-challenge
+- kaggle kernels list --competition 3-lc-multi-vehicle-detection-challenge
+- kaggle competitions pages 3-lc-multi-vehicle-detection-challenge --content --page-name rules
+- kaggle competitions pages 3-lc-multi-vehicle-detection-challenge --content --page-name evaluation
+- kaggle competitions topics/discussions attempted; installed CLI access remains unreliable/unsupported, output captured in logs/discussions_2026-05-26/.
+
+Findings:
+- No 2026-05-26 submissions at start; three slots were available.
+- Rules SHA matches 2026-05-25.
+- Evaluation SHA matches 2026-05-25.
+- Code list has no new competition notebook beyond the existing 2026-05-19 entries.
+
+SHA refresh:
+a1b34f9fde54fdbabc5e85f4ff732db6e22691b42930676230d4e67d658a9437  logs/rules_2026-05-25.txt
+a1b34f9fde54fdbabc5e85f4ff732db6e22691b42930676230d4e67d658a9437  logs/rules_2026-05-26.txt
+702fe4526429e5dddebbe2f073d82103648ede2ff37a05f5f8e3a0045f358678  logs/evaluation_2026-05-25.txt
+702fe4526429e5dddebbe2f073d82103648ede2ff37a05f5f8e3a0045f358678  logs/evaluation_2026-05-26.txt
