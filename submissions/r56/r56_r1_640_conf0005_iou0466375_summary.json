@@ -1,9 +1,9 @@
 {
   "weights": "competition_starter\\runs\\detect\\r1_yolov8n_scratch_e10_640\\weights\\best.pt",
-  "submission": "submissions\\r51\\r51_r1_640_conf000525_iou046625_submission.csv",
+  "submission": "submissions\\r56\\r56_r1_640_conf0005_iou0466375_submission.csv",
   "imgsz": 640,
-  "conf": 0.000525,
-  "iou": 0.46625,
+  "conf": 0.0005,
+  "iou": 0.466375,
   "max_det": 300,
   "batch": 32,
   "device": "0",
@@ -14,8 +14,8 @@
     "errors": [],
     "rows": 982,
     "nonempty": 982,
-    "total_boxes": 67763
+    "total_boxes": 69483
   },
-  "note": "r51_r1_640_conf0.000525_iou0.46625",
+  "note": "R56 May24: R1 640 conf0.0005 iou0.466375 NMS right-shoulder control",
   "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
 }

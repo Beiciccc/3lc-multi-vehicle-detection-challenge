@@ -1,0 +1,22 @@
+{
+  "submission": "submissions/r58/r58_r1_640_conf00055_iou046625_submission.csv",
+  "imgsz": 640,
+  "conf": 0.00055,
+  "iou": 0.46625,
+  "max_det": 300,
+  "batch": 32,
+  "device": "0",
+  "agnostic_nms": false,
+  "val_metrics": null,
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 66289
+  },
+  "note": "R58 May25: R1 640 conf0.00055 iou0.46625 low-threshold plateau right-edge control, copied from pre-generated R55 artifact",
+  "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling",
+  "source_artifact": "submissions/r55/r55_r1_640_conf00055_iou046625_summary.json",
+  "weights": "competition_starter/runs/detect/r1_yolov8n_scratch_e10_640/weights/best.pt"
+}
