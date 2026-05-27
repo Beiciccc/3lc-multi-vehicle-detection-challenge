@@ -1,8 +1,5 @@
 fileName                                                    date                        description                                                       status                     publicScore  privateScore  
 ----------------------------------------------------------  --------------------------  ----------------------------------------------------------------  -------------------------  -----------  ------------  
-r49_r1_640_conf00045_iou046625_submission.csv               2026-05-22 17:54:20.267000  r49_r1_640_conf0.00045_iou0.46625                                 SubmissionStatus.COMPLETE  0.82864                    
-r46_r1_640_conf00065_iou046625_submission.csv               2026-05-22 02:31:44.023000  r46_r1_640_conf0.00065_iou0.46625                                 SubmissionStatus.COMPLETE  0.82769                    
-r46_r1_640_conf0005_iou046625_submission.csv                2026-05-22 02:31:35.993000  r46_r1_640_conf0.0005_iou0.46625                                  SubmissionStatus.COMPLETE  0.82864                    
 r45_r1_640_conf0007_iou0466375_submission.csv               2026-05-21 04:44:12.263000  r45_r1_640_conf0.0007_iou0.466375                                 SubmissionStatus.COMPLETE  0.82768                    
 r44_r1_640_conf0007_iou046625_submission.csv                2026-05-21 04:43:36.497000  r44_r1_640_conf0.0007_iou0.46625                                  SubmissionStatus.COMPLETE  0.82769                    
 r42_yolov8n_scratch_e12_seed42_640_submission_clipped.csv   2026-05-21 04:41:47.040000  r42_yolov8n_scratch_e12_seed42_640_conf0.0006_iou0.46625_clipped  SubmissionStatus.COMPLETE  0.81293                    
