@@ -1,7 +1,7 @@
 {
   "run_name": "r43_yolov8n_scratch_e10_seed42_sgd_640",
-  "best_weights": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\competition_starter\\runs\\detect\\r43_yolov8n_scratch_e10_seed42_sgd_640\\weights\\best.pt",
-  "submission": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\competition_starter\\submissions\\r43_yolov8n_scratch_e10_seed42_sgd_640_submission.csv",
+  "best_weights": "<project-root>\\competition_starter\\runs\\detect\\r43_yolov8n_scratch_e10_seed42_sgd_640\\weights\\best.pt",
+  "submission": "<project-root>\\competition_starter\\submissions\\r43_yolov8n_scratch_e10_seed42_sgd_640_submission.csv",
   "train_minutes": 6.7425962011019385,
   "val_map50": 0.7788760765827183,
   "val_map50_95": 0.5911232258166453,
@@ -13,7 +13,7 @@
     "total_boxes": 57249
   },
   "args": {
-    "starter_dir": "C:\\Users\\Kun\\3LC Multi Vehicle detection Challenge\\competition_starter",
+    "starter_dir": "<project-root>\\competition_starter",
     "run_name": "r43_yolov8n_scratch_e10_seed42_sgd_640",
     "epochs": 10,
     "batch": 16,
