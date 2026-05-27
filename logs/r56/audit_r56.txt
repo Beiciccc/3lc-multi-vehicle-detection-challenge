@@ -3,6 +3,6 @@ Submission audit summary
 - submission rows: 982
 - images with boxes: 982
 - images with no box: 0
-- total parsed boxes: 67763
+- total parsed boxes: 69483
 - errors: 0
 - warnings: 0
