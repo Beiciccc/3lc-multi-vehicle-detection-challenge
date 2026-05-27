@@ -198,3 +198,13 @@ Final May 25 submission list snapshot: `logs/final_submissions_2026-05-25.txt`. 
 | R60 | `submissions/r60/r60_r49_keep_vanbus00045_filter_truckcar0005_submission.csv` | `submissions/r60/r60_r49_keep_vanbus00045_filter_truckcar0005_summary.json` | `logs/r60/audit_r60_2026-05-26.txt` | `logs/r60/submit_r60.txt` | `logs/r60/submissions_poll_r60_*.txt` | 0.82864 |
 
 Final May 26 submission list snapshot: `logs/final_submissions_2026-05-26.txt`. R60, R61, and R62 all tied the active 640 px public best at 0.82864. R36 remains the highest observed public score at 0.83245; the active 640 px public best remains 0.82864.
+
+## May 27 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R63 | `submissions/r63/r63_r49_filter_van0005_keep_others00045_submission.csv` | `submissions/r63/r63_r49_filter_van0005_keep_others00045_summary.json` | `logs/r63/audit_r63.txt` | `logs/r63/submit_r63.txt` | `logs/r63/submissions_poll_r63.txt` | 0.82864 |
+| R64 | `submissions/r64/r64_r49_filter_truckvan0005_keep_carbus00045_submission.csv` | `submissions/r64/r64_r49_filter_truckvan0005_keep_carbus00045_summary.json` | `logs/r64/audit_r64.txt` | `logs/r64/submit_r64.txt` | `logs/r64/submissions_poll_r64.txt` | 0.82864 |
+| R65 | `submissions/r65/r65_r49_filter_busvan0005_keep_truckcar00045_submission.csv` | `submissions/r65/r65_r49_filter_busvan0005_keep_truckcar00045_summary.json` | `logs/r65/audit_r65.txt` | `logs/r65/submit_r65.txt` | `logs/r65/submissions_poll_r65.txt` | 0.82864 |
+
+Final May 27 submission list snapshot: `logs/final_submissions_2026-05-27.txt`. R63, R64, and R65 all tied the active 640 px public best at 0.82864. R36 remains the highest observed public score at 0.83245; the active 640 px public best remains 0.82864.

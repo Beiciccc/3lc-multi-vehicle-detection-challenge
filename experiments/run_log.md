@@ -634,3 +634,36 @@ Next candidate directions:
 - Do not spend primary quota on additional R1/R49 confidence, NMS, or class-tail micro-variants.
 - Prioritize compliant label-review evidence if 3LC table credentials are available.
 - If 3LC label review remains blocked, use stronger split diagnostics or a materially different 640 px YOLOv8n scratch training protocol before spending more submissions.
+
+## 2026-05-27 submission loop x3
+
+Context:
+- Submission list was queried at loop start. The start list showed no 2026-05-27 submissions; R63, R64, and R65 became the three accepted records for the day.
+- Rules and Evaluation pages were refreshed and matched the May 26 copies by SHA256. The active constraints remained YOLOv8n only, 640 px input size, from-scratch training only for training runs, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no distillation, and official data only.
+- Public Code listing contained the same visible notebooks as May 26, with only row ordering changes. Discussion/topic access through the available Kaggle CLI returned HTTP 403, so no readable new discussion signal was available.
+- Strategy: after May 26 confirmed truck/car/bus low-confidence tails are public-neutral from the R49 output, test the remaining small van tail at the same 0.0005 class floor and two neutral pairings.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R63 | `submissions/r63/r63_r49_filter_van0005_keep_others00045_submission.csv` | R49 output, filter only van below 0.0005, keep truck/car/bus to 0.00045 | audit ok / 73067 boxes | 0.82864 |
+| R64 | `submissions/r64/r64_r49_filter_truckvan0005_keep_carbus00045_submission.csv` | R49 output, filter truck/van below 0.0005, keep car/bus to 0.00045 | audit ok / 72947 boxes | 0.82864 |
+| R65 | `submissions/r65/r65_r49_filter_busvan0005_keep_truckcar00045_submission.csv` | R49 output, filter bus/van below 0.0005, keep truck/car to 0.00045 | audit ok / 72662 boxes | 0.82864 |
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65.
+
+Error analysis:
+- R63 shows that removing the 64 R49 van boxes below 0.0005 is public-neutral, unlike the earlier R15/R29 van-filter failure at a higher operating point.
+- R64 and R65 show that adding the neutral truck or bus tail removals to the van-tail removal remains public-neutral.
+- The R49 output-only class-tail space is now effectively exhausted: truck, car, bus, van, and several pairings preserve the 0.82864 plateau but do not improve it.
+
+Repository/proof updates:
+- Added R63/R64/R65 submission, summary, audit, submit/poll/final-list artifacts.
+- Added May 27 rules/code/discussion refresh logs.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Stop spending primary quota on R1/R49 confidence, NMS, or class-tail post-processing.
+- Prioritize a new signal: compliant 3LC label-review evidence, stronger split diagnostics, or a materially different 640 px YOLOv8n scratch training protocol.
+- If no new signal is available, use future submissions only for carefully chosen controls, not blind output-only micro-variants.

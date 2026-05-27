@@ -1,0 +1,7 @@
+--- discussions command attempts ---
+usage: kaggle competitions [-h]
+                           {list,files,download,submit,submissions,leaderboard,episodes,replay,logs,pages} ...
+kaggle competitions: error: argument command: invalid choice: 'discussions' (choose from list, files, download, submit, submissions, leaderboard, episodes, replay, logs, pages)
+usage: kaggle competitions [-h]
+                           {list,files,download,submit,submissions,leaderboard,episodes,replay,logs,pages} ...
+kaggle competitions: error: argument command: invalid choice: 'topics' (choose from list, files, download, submit, submissions, leaderboard, episodes, replay, logs, pages)

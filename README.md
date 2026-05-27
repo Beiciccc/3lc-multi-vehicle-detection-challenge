@@ -70,7 +70,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce active 640 px baseline submission
 
-Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62 at `0.82864`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65 at `0.82864`.
 
 ```bash
 python scripts/make_inference_submission.py \
@@ -116,3 +116,5 @@ The May 24 loop tested class-specific post-processing from the R49 low-threshold
 The May 25 loop closed the remaining R1 640 inference boundary checks. `conf=0.00055, iou=0.46625` scored `0.82833`, while `conf=0.0005, iou=0.466375` scored `0.82862` in two accepted records. These results confirm that the active 640 px plateau remains capped at `0.82864` and that further confidence/NMS micro-sweeps have low expected value.
 
 The May 26 loop completed additional class-specific R49 tail-filter controls. Filtering only truck below `0.0005`, filtering only bus below `0.0005`, and filtering truck+car below `0.0005` all scored `0.82864`. This confirms that R49 class-tail filtering is score-neutral and does not break the active 640 px plateau.
+
+The May 27 loop tested the remaining R49 van-tail controls. Filtering only van below `0.0005`, filtering truck+van below `0.0005`, and filtering bus+van below `0.0005` all scored `0.82864`. This shows that even the small R49 van tail is public-neutral at this threshold; output-only tail filtering is now effectively exhausted.
