@@ -1,7 +1,6 @@
+--- poll 2 2026-05-22 03:32:06
 fileName                                                    date                        description                                                       status                     publicScore  privateScore  
 ----------------------------------------------------------  --------------------------  ----------------------------------------------------------------  -------------------------  -----------  ------------  
-r50_r1_640_conf000475_iou046625_submission.csv              2026-05-23 05:42:48.950000  r50_r1_640_conf0.000475_iou0.46625                                SubmissionStatus.PENDING                              
-r49_r1_640_conf00045_iou046625_submission.csv               2026-05-22 17:54:20.267000  r49_r1_640_conf0.00045_iou0.46625                                 SubmissionStatus.COMPLETE  0.82864                    
 r46_r1_640_conf00065_iou046625_submission.csv               2026-05-22 02:31:44.023000  r46_r1_640_conf0.00065_iou0.46625                                 SubmissionStatus.COMPLETE  0.82769                    
 r46_r1_640_conf0005_iou046625_submission.csv                2026-05-22 02:31:35.993000  r46_r1_640_conf0.0005_iou0.46625                                  SubmissionStatus.COMPLETE  0.82864                    
 r45_r1_640_conf0007_iou0466375_submission.csv               2026-05-21 04:44:12.263000  r45_r1_640_conf0.0007_iou0.466375                                 SubmissionStatus.COMPLETE  0.82768                    
