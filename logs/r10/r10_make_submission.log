@@ -1,0 +1,97 @@
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Ultralytics 8.4.45  Python-3.11.9 torch-2.11.0+cu130 CUDA:0 (NVIDIA GeForce RTX 4080, 16376MiB)
+YOLOv8n summary (fused): 73 layers, 3,006,428 parameters, 0 gradients, 8.1 GFLOPs
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 1326.0293.8 MB/s, size: 48.5 KB)
+
+[K[34m[1mval: [0mScanning <project-root>\competition_starter\data\val\labels.cache... 982 images, 2 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 982/982  0.0s
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 3% ──────────── 1/31 9.7s/it 2.9s<4:51
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 2/31 4.6s/it 5.0s<2:13
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 3/31 3.4s/it 7.1s<1:35
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 13% ━╸────────── 4/31 2.8s/it 9.1s<1:16
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 16% ━╸────────── 5/31 2.5s/it 11.1s<1:05
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 6/31 2.3s/it 13.0s<57.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 7/31 2.2s/it 15.0s<52.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 26% ━━━───────── 8/31 2.1s/it 17.0s<48.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━───────── 9/31 2.1s/it 18.9s<45.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 32% ━━━╸──────── 10/31 2.0s/it 20.9s<42.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 35% ━━━━──────── 11/31 2.0s/it 22.8s<40.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 39% ━━━━╸─────── 12/31 2.0s/it 24.8s<37.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 13/31 2.0s/it 26.7s<35.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 45% ━━━━━─────── 14/31 2.0s/it 28.6s<33.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 15/31 2.0s/it 30.6s<31.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 52% ━━━━━━────── 16/31 2.0s/it 32.5s<29.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 17/31 1.9s/it 34.5s<27.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 58% ━━━━━━╸───── 18/31 1.9s/it 36.4s<25.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 19/31 1.8s/it 37.9s<21.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 20/31 1.9s/it 40.1s<20.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 21/31 2.0s/it 42.2s<19.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 71% ━━━━━━━━╸─── 22/31 2.0s/it 44.4s<18.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 23/31 2.1s/it 46.5s<16.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 77% ━━━━━━━━━─── 24/31 2.1s/it 48.8s<14.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 25/31 2.2s/it 51.1s<12.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 84% ━━━━━━━━━━── 26/31 2.2s/it 53.3s<10.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 27/31 2.2s/it 55.6s<8.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 90% ━━━━━━━━━━╸─ 28/31 2.2s/it 57.7s<6.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 94% ━━━━━━━━━━━─ 29/31 2.2s/it 59.9s<4.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 30/31 2.2s/it 1:02<2.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 31/31 2.1s/it 1:04
+                   all        982      11615      0.873      0.745      0.819      0.633
+Speed: 1.9ms preprocess, 6.0ms inference, 0.0ms loss, 10.0ms postprocess per image
+Results saved to [1m<project-root>\competition_starter\runs\detect\val-13[0m
+predicted 32/982
+predicted 64/982
+predicted 96/982
+predicted 128/982
+predicted 160/982
+predicted 192/982
+predicted 224/982
+predicted 256/982
+predicted 288/982
+predicted 320/982
+predicted 352/982
+predicted 384/982
+predicted 416/982
+predicted 448/982
+predicted 480/982
+predicted 512/982
+predicted 544/982
+predicted 576/982
+predicted 608/982
+predicted 640/982
+predicted 672/982
+predicted 704/982
+predicted 736/982
+predicted 768/982
+predicted 800/982
+predicted 832/982
+predicted 864/982
+predicted 896/982
+predicted 928/982
+predicted 960/982
+predicted 982/982
+{
+  "weights": "<project-root>\\competition_starter\\runs\\detect\\r1_yolov8n_scratch_e10_640\\weights\\best.pt",
+  "submission": "<project-root>\\submissions\\r10\\r10_r1_conf001_iou04625_submission.csv",
+  "imgsz": 640,
+  "conf": 0.001,
+  "iou": 0.4625,
+  "max_det": 300,
+  "batch": 32,
+  "device": "0",
+  "val_metrics": {
+    "map50": 0.8188429557998814,
+    "map50_95": 0.6327189564332711
+  },
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 50057
+  },
+  "note": "R10 public-calibrated R1 inference; conf=0.001, iou=0.4625; single YOLOv8n checkpoint, no TTA/ensemble/pseudo-label.",
+  "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
+}

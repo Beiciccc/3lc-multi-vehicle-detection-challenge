@@ -1,0 +1,85 @@
+name                               content                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+---------------------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+Main sauce - First full iteration  **Copy-paste commands** from zero to first submission. For **why** each step matters, see **[Description](https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/overview/description)**. For install details, see **[Environment Setup](https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/overview/environment-setup)**.
+
+## Prerequisites
+
+- Environment setup complete (venv, `3lc-ultralytics`, `umap-learn`, `3lc login`).
+- Starter kit unzipped: `verify_setup.py`, `register_tables.py`, `train.py`, `predict.py`, `config.yaml`, `dataset.yaml`, `sample_submission.csv`, and `data/` folder.
+
+## 1. Activate your environment
+
+```bash
+# Windows
+3lc-env\Scripts\activate
+# Linux / macOS
+# source 3lc-env/bin/activate
+```
+
+## 2. Navigate to the starter folder
+
+```bash
+cd <path-to-competition_starter>
+```
+
+## 3. Check your setup
+
+```bash
+python verify_setup.py
+```
+
+Fix any `[FAIL]` items before continuing. Warnings (`[WARN]`) are advisory.
+
+## 4. Register tables
+
+```bash
+python register_tables.py
+```
+
+Creates **train** + **val** 3LC Tables. Idempotent - safe to re-run.
+
+## 5. Train
+
+```bash
+python train.py
+```
+
+Weights: `runs/detect/<run_name>/weights/best.pt`. A 3LC Run appears in the Dashboard.
+
+**Expected time:** ~25 min (GPU) / 2–4 hours (CPU). The first ~60 sec may look frozen - this is normal (PyTorch + 3LC initialization).
+
+## 6. Dashboard (optional but recommended)
+
+Start `3lc service` → open [dashboard.3lc.ai](https://dashboard.3lc.ai) → inspect your Run and tables.
+
+## 7. Edit labels → retrain
+
+Fix labels in the Dashboard → run `python train.py` again. It picks up `.latest()` revisions automatically.
+
+## 8. Predict
+
+```bash
+python predict.py
+```
+
+Writes `submission.csv`. Format details: **[Evaluation](https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/overview/evaluation)**.
+
+**OOM?** New terminal after training, `predict.batch: 1`, or `predict.device: cpu` in `config.yaml`.
+
+## 9. Submit
+
+Upload `submission.csv` to Kaggle. Check leaderboard. Iterate.
+
+## Quick reference
+
+| Step | Command / artifact |
+|------|--------------------|
+| Check setup | `python verify_setup.py` |
+| Register | `python register_tables.py` |
+| Train | `python train.py` |
+| Config | `config.yaml`, `dataset.yaml` |
+| Weights | `runs/detect/.../weights/best.pt` |
+| Predict | `python predict.py` |
+| Submit | `submission.csv` |
+
+**Stuck?** See **[FAQ](https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/overview/faq)** · Kaggle Discussion,  [Discord](https://discord.gg/T6GS5nWGp8).  
