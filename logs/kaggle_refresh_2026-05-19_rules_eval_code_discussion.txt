@@ -1,8 +1,0 @@
-2026-05-19 Kaggle refresh
-
-Rules: no material change observed. Active constraints remain YOLOv8n only, from-scratch training for trained checkpoints, no pretrained/external weights, no external data, no ensemble, no TTA, no pseudo-labeling/distillation.
-Evaluation: no material change observed. Metric remains COCO-style mAP@0.5. Submission CSV columns remain id,image_id,prediction_string, with no detections represented as no box.
-Code: no new public notebook observed. Latest public notebook remained avikdas567/3lc-yolov8n-vehicle-detection-and-label-qa-process, last run 2026-04-30.
-Discussion: no new topic or reply after 2026-05-18 affecting modeling/submission constraints. Existing label-improvement discussion last host reply remained 2026-05-06.
-
-References checked: Kaggle Rules, Evaluation, Code, and Discussion pages for 3-lc-multi-vehicle-detection-challenge.

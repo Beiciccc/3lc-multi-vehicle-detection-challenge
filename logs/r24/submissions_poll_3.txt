@@ -1,1 +1,0 @@
-HTTPSConnectionPool(host='api.kaggle.com', port=443): Max retries exceeded with url: /v1/competitions.CompetitionApiService/ListSubmissions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107997770>, 'Connection to api.kaggle.com timed out. (connect timeout=None)'))

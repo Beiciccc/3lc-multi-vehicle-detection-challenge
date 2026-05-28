@@ -1,5 +1,0 @@
-2026-05-21 read-only Kaggle refresh:
-- Submission list queried at loop start: no 2026-05-21 records; three submissions available.
-- Rules and evaluation were re-read and unchanged versus 2026-05-20 for this workflow: YOLOv8n only, 640 px input size, competition data only, random initialization, no pretrained/external data/ensemble/TTA/pseudo-labeling/distillation.
-- Public Code listing unchanged in relevant way; latest visible notebook remained the May 19 YOLOv8n notebook and was not adopted because its configuration and reported score were weaker than the active R1 640 baseline.
-- Public Discussion listing unchanged in relevant way; no new rule clarification changed the allowed-method set.

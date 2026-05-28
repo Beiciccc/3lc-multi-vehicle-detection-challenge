@@ -208,3 +208,13 @@ Final May 26 submission list snapshot: `logs/final_submissions_2026-05-26.txt`. 
 | R65 | `submissions/r65/r65_r49_filter_busvan0005_keep_truckcar00045_submission.csv` | `submissions/r65/r65_r49_filter_busvan0005_keep_truckcar00045_summary.json` | `logs/r65/audit_r65.txt` | `logs/r65/submit_r65.txt` | `logs/r65/submissions_poll_r65.txt` | 0.82864 |
 
 Final May 27 submission list snapshot: `logs/final_submissions_2026-05-27.txt`. R63, R64, and R65 all tied the active 640 px public best at 0.82864. R36 remains the highest observed public score at 0.83245; the active 640 px public best remains 0.82864.
+
+## May 29 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R66a | `submissions/r66/r66_r49_filter_carbus0005_keep_truckvan00045_submission.csv` | `submissions/r66/r66_r49_filter_carbus0005_keep_truckvan00045_summary.json` | `logs/r66/audit_r66_r49_carbus_pre_submit.txt` | `logs/r66/submit_r66.txt` | `logs/r66/submissions_poll_r66.txt` | 0.82864 |
+| R67a | `submissions/r67/r67_r49_filter_carvan0005_keep_truckbus00045_submission.csv` | `submissions/r67/r67_r49_filter_carvan0005_keep_truckbus00045_summary.json` | `logs/r67/audit_r67_r49_carvan_pre_submit.txt` | `logs/r67/submit_r67.txt` | `logs/r67/submissions_poll_r67.txt` | 0.82864 |
+| R66b | `submissions/r66/r66_r2_640_conf00045_iou046625_submission.csv` | `submissions/r66/r66_r2_640_conf00045_iou046625_summary.json` | `logs/r66/audit_r66_r2_conf00045_pre_submit.txt` | `logs/final_submissions_2026-05-29.txt` | `logs/final_submissions_2026-05-29.txt` | 0.82271 |
+
+Final May 29 submission list snapshot: `logs/final_submissions_2026-05-29.txt`. R66a and R67a tied the active 640 px public best at 0.82864; R66b showed that R2 low-threshold inference remains below the R1/R49 plateau at 0.82271. R68 R49 was rejected with HTTP 400 and did not appear in the submission list, so it is not counted as an accepted submission.

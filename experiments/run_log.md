@@ -667,3 +667,40 @@ Next candidate directions:
 - Stop spending primary quota on R1/R49 confidence, NMS, or class-tail post-processing.
 - Prioritize a new signal: compliant 3LC label-review evidence, stronger split diagnostics, or a materially different 640 px YOLOv8n scratch training protocol.
 - If no new signal is available, use future submissions only for carefully chosen controls, not blind output-only micro-variants.
+
+## 2026-05-29 submission loop x3
+
+Context:
+- Submission list was queried at loop start. The initial visible list showed no accepted 2026-05-29 local-day records. The final Kaggle list is treated as authoritative: three accepted records were present for the 2026-05-29 local loop, so no additional submissions were counted.
+- Rules and Evaluation pages were refreshed. The active constraints remained YOLOv8n only, 640 px input size, from-scratch training only for training runs, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no distillation, and official data only.
+- Public Code listing remained unchanged in substance, with the latest visible notebook dated 2026-05-19. Discussion/topic listing remained unavailable through the installed Kaggle CLI.
+- Strategy: R49 class-tail filtering had already saturated the public plateau, so one submitted candidate tested whether the longer-trained R2 checkpoint's poor previous score was mainly a confidence-threshold mismatch. Additional R2 low-threshold candidates were generated and audited but not submitted after the daily quota was exhausted.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R66a | `submissions/r66/r66_r49_filter_carbus0005_keep_truckvan00045_submission.csv` | R49 output, filter car/bus below 0.0005, keep truck/van to 0.00045 | audit ok / 69646 boxes | 0.82864 |
+| R67a | `submissions/r67/r67_r49_filter_carvan0005_keep_truckbus00045_submission.csv` | R49 output, filter car/van below 0.0005, keep truck/bus to 0.00045 | audit ok / 69987 boxes | 0.82864 |
+| R66b | `submissions/r66/r66_r2_640_conf00045_iou046625_submission.csv` | R2 weights, 640, conf 0.00045, iou 0.46625 | audit ok / 38675 boxes | 0.82271 |
+
+Non-counted candidates / rejected attempts:
+- R68 R49 (`submissions/r68/r68_r49_filter_truckbusvan0005_keep_car00045_submission.csv`) was generated and audited, but Kaggle returned HTTP 400 after the three accepted records were already present, so it is not counted.
+- R67/R68 R2 low-threshold candidates (`conf=0.0005` and `conf=0.0006`) were generated and audited, but not submitted because the daily quota was exhausted.
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a.
+
+Error analysis:
+- R66a and R67a confirm the previous conclusion: additional R49 class-tail combinations can preserve the 0.82864 plateau but do not improve it.
+- R66b scored 0.82271 despite a much lower confidence threshold than the prior R2 submission. This rules out simple confidence under-recall as the primary R2 failure mode; R2 has a public-split generalization problem relative to R1.
+- The R2 output had only 38675 boxes at `conf=0.00045`, far below the R1/R49 low-threshold output size. Lowering confidence improved over R35's 0.82088 but remains materially below the active R1 plateau.
+
+Repository/proof updates:
+- Added R66/R67/R68 candidate, summary, audit, submit/reject, and final-list artifacts.
+- Added May 29 rules/code/discussion refresh logs.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Do not continue R49 class-tail filtering except as diagnostic proof; it is saturated.
+- Do not prioritize R2 inference calibration; the low-threshold score remains far below R1.
+- Higher-upside work now requires a new compliant training or data-centric signal, preferably 3LC label-review evidence or an altered 640 px scratch-training recipe with stronger validation diagnostics.

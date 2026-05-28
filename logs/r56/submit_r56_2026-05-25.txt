@@ -1,6 +1,0 @@
-=== submit r56 2026-05-25 ===
-Mon May 25 08:17:30 BST 2026
-/Users/beici/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
-  warnings.warn(
-  0%|          | 0.00/3.84M [00:00<?, ?B/s]  0%|          | 16.0k/3.84M [00:00<00:42, 93.6kB/s] 13%|█▎        | 496k/3.84M [00:00<00:01, 2.26MB/s]  24%|██▍       | 960k/3.84M [00:00<00:01, 2.13MB/s] 31%|███       | 1.19M/3.84M [00:00<00:01, 1.65MB/s] 40%|███▉      | 1.52M/3.84M [00:00<00:01, 2.05MB/s] 48%|████▊     | 1.86M/3.84M [00:00<00:00, 2.40MB/s] 91%|█████████ | 3.50M/3.84M [00:01<00:00, 6.13MB/s]100%|██████████| 3.84M/3.84M [00:01<00:00, 2.31MB/s]
-Successfully submitted to 3LC Multi Vehicle detection Challenge

@@ -1,0 +1,21 @@
+{
+  "weights": "competition_starter//runs//detect//r2_yolov8n_scratch_e30_b32_640//weights//best.pt",
+  "submission": "submissions//r68//r68_r2_640_conf0006_iou046625_submission.csv",
+  "imgsz": 640,
+  "conf": 0.0006,
+  "iou": 0.46625,
+  "max_det": 300,
+  "batch": 32,
+  "device": "0",
+  "agnostic_nms": false,
+  "val_metrics": null,
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 34858
+  },
+  "note": "r68_r2_640_conf0.0006_iou0.46625",
+  "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
+}

@@ -1,8 +1,0 @@
-Submission audit summary
-- sample rows: 982
-- submission rows: 982
-- images with boxes: 982
-- images with no box: 0
-- total parsed boxes: 29286
-- errors: 0
-- warnings: 0

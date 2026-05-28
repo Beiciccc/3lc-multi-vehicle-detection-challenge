@@ -1,6 +1,0 @@
-ref                                                            title                                               author           lastRunTime                 totalVotes  
--------------------------------------------------------------  --------------------------------------------------  ---------------  --------------------------  ----------  
-quartzyu/3lc-multi-vehicle-detection-challenge-yolov8n         3LC Multi Vehicle detection Challenge YOLOv8n       Quartz Yu        2026-05-19 04:54:00.617000           1  
-avikdas567/3lc-yolov8n-vehicle-detection-and-label-qa-process  3LC YOLOv8n Vehicle Detection and Label QA Process  Avik Das         2026-04-30 10:44:15.913000           9  
-hmnshudhmn24/3lc-multi-vehicle-detection-challenge             3LC Multi Vehicle detection Challenge               Himanshu Dhiman  2026-04-11 09:43:42.557000           6  
-lakhindarpal/3lc-multi-vehicle-detection-challenge             3LC Multi Vehicle detection Challenge               Lakhindar Pal    2026-04-11 00:36:46.533000          10  

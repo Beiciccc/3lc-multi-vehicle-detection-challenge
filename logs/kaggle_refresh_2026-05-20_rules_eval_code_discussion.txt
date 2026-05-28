@@ -1,7 +1,0 @@
-2026-05-20 Kaggle refresh
-
-Submission quota: start list showed no 2026-05-20 submissions; latest rows were R36/R35/R34 from 2026-05-19, so the day started with 3/3 submissions available.
-Rules: re-read Kaggle rules page. Competition-specific constraints remain YOLOv8n only, random initialization/no pretrained weights, no external data, no ensemble, no TTA, no pseudo-labeling, no distillation, and input size 640 px. This makes 640 px the active constraint for new submissions.
-Evaluation: re-read Kaggle evaluation page. Metric remains COCO-style mAP@0.5 over four classes. Submission CSV remains id,image_id,prediction_string with normalized YOLO-format boxes and no detections as `no box`.
-Code: Kaggle Code list changed. New public notebook quartzyu/3lc-multi-vehicle-detection-challenge-yolov8n last run 2026-05-19 04:54:00.617000, totalVotes 1. Pulled and reviewed locally; it trains YOLOv8n from scratch but uses 512 image size, 20 epochs, conf 0.05, iou 0.45, and self-reports public LB around 0.72, so it does not provide a stronger candidate under the 640 px constraint.
-Discussion: web/Kaggle-accessible discussion refresh did not reveal a new modeling/submission rule change. Rules and evaluation pages are treated as authoritative.

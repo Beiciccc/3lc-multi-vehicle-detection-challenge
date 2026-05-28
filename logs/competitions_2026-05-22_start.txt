@@ -1,3 +1,0 @@
-ref                                                                         deadline             category      reward  teamCount  userHasEntered  
---------------------------------------------------------------------------  -------------------  ---------  ---------  ---------  --------------  
-https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge  2026-06-09 17:00:00  Community  2,000 Usd         58            True  

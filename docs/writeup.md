@@ -64,8 +64,11 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R63 | 2026-05-27 | R49 output, filter van below 0.0005, keep truck/car/bus to 0.00045 | 0.82864 |
 | R64 | 2026-05-27 | R49 output, filter truck/van below 0.0005, keep car/bus to 0.00045 | 0.82864 |
 | R65 | 2026-05-27 | R49 output, filter bus/van below 0.0005, keep truck/car to 0.00045 | 0.82864 |
+| R66a | 2026-05-29 | R49 output, filter car/bus below 0.0005, keep truck/van to 0.00045 | 0.82864 |
+| R67a | 2026-05-29 | R49 output, filter car/van below 0.0005, keep truck/bus to 0.00045 | 0.82864 |
+| R66b | 2026-05-29 | R2 weights, 640, conf 0.00045, iou 0.46625 | 0.82271 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a.
 
 ## Analysis
 
@@ -91,11 +94,13 @@ The May 26 loop completed R49 class-tail filtering controls under the active 640
 
 The May 27 loop tested the remaining R49 van-tail question. R63 removed only 64 van boxes below 0.0005, R64 removed those van boxes plus the 120 low-confidence truck boxes, and R65 removed those van boxes plus the 405 low-confidence bus boxes. All three scored 0.82864. This differs from the earlier R15/R29 failure case: at the lower R49 threshold, the tiny van tail is public-neutral. The practical conclusion is unchanged: class-tail filtering can preserve the plateau but has not produced a public improvement.
 
+The May 29 loop confirmed both remaining failure modes. Additional R49 class-tail combinations (car+bus and car+van filtering at 0.0005) still tie 0.82864 and therefore add evidence that the R49 post-processing space is public-neutral but exhausted. The R2 checkpoint improved from its previous 0.82088 when the confidence threshold was lowered to 0.00045, but only to 0.82271, with substantially fewer boxes than the R1/R49 low-threshold operating point. This indicates R2's gap is not just threshold miscalibration; it is a generalization issue relative to R1.
+
 ## Next Steps
 
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Use R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65 as active 640 px tie baselines, but treat further inference-only tail filtering as saturated unless a new diagnostic identifies a specific error mode.
+- Use R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a as active 640 px tie baselines, but treat further inference-only tail filtering as saturated unless a new diagnostic identifies a specific error mode.
 - Further R1 confidence/NMS micro-sweeps have low expected value; both NMS shoulders and the confidence right edge underperformed the 0.82864 plateau.
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15/R36-style output; R29 showed a large public drop from removing only 28 boxes.
