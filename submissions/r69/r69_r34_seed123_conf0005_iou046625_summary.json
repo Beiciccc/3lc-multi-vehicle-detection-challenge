@@ -1,6 +1,6 @@
 {
-  "weights": "competition_starter\\runs\\detect\\r2_yolov8n_scratch_e30_b32_640\\weights\\best.pt",
-  "submission": "submissions\\r67\\r67_r2_640_conf0005_iou046625_submission.csv",
+  "weights": "<project>\\competition_starter\\runs\\detect\\r34_yolov8n_scratch_e10_seed123_640\\weights\\best.pt",
+  "submission": "<project>\\submissions\\r69\\r69_r34_seed123_conf0005_iou046625_submission.csv",
   "imgsz": 640,
   "conf": 0.0005,
   "iou": 0.46625,
@@ -14,8 +14,8 @@
     "errors": [],
     "rows": 982,
     "nonempty": 982,
-    "total_boxes": 37238
+    "total_boxes": 69795
   },
-  "note": "r67_r2_640_conf0.0005_iou0.46625",
+  "note": "May29 R69: R34 seed123 low-confidence rescue, 640, single YOLOv8n checkpoint",
   "rule_note": "single YOLOv8n checkpoint inference, no TTA, no ensemble, no pseudo-labeling"
 }

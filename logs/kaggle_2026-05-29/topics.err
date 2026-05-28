@@ -1,0 +1,5 @@
+usage: kaggle competitions topics [-h] [-s SORT_BY] [--page-size PAGE_SIZE]
+                                  [--page-token PAGE_TOKEN] [--search SEARCH]
+                                  [-v] [-q]
+                                  {show} ... [competition]
+kaggle competitions topics: error: argument command: invalid choice: 'list' (choose from show)

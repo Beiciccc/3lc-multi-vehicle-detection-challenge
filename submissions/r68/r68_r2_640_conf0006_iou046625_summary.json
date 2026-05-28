@@ -1,6 +1,6 @@
 {
-  "weights": "competition_starter//runs//detect//r2_yolov8n_scratch_e30_b32_640//weights//best.pt",
-  "submission": "submissions//r68//r68_r2_640_conf0006_iou046625_submission.csv",
+  "weights": "competition_starter\\runs\\detect\\r2_yolov8n_scratch_e30_b32_640\\weights\\best.pt",
+  "submission": "submissions\\r68\\r68_r2_640_conf0006_iou046625_submission.csv",
   "imgsz": 640,
   "conf": 0.0006,
   "iou": 0.46625,

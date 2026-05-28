@@ -1,4 +1,13 @@
-ultralytics
+ultralytics>=8.4.45
+torch
+torchvision
+kaggle
 numpy
 pandas
-pyyaml
+PyYAML
+Pillow
+tqdm
+opencv-python-headless
+# Optional official 3LC workflow dependencies, if a valid 3LC API key is available:
+# 3lc-ultralytics
+# umap-learn
