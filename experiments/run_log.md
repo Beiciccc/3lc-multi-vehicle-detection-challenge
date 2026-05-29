@@ -704,3 +704,36 @@ Next candidate directions:
 - Do not continue R49 class-tail filtering except as diagnostic proof; it is saturated.
 - Do not prioritize R2 inference calibration; the low-threshold score remains far below R1.
 - Higher-upside work now requires a new compliant training or data-centric signal, preferably 3LC label-review evidence or an altered 640 px scratch-training recipe with stronger validation diagnostics.
+
+## 2026-05-29 UTC submission loop x3
+
+Context:
+- Submission list was queried after UTC date rollover. The prior three records were at 2026-05-28 23:37-23:39 UTC, so the 2026-05-29 UTC submission list had no records yet.
+- Rules and Evaluation pages were refreshed and matched the earlier May 29 copies. The active constraints remained YOLOv8n only, 640 px input size, from-scratch training only for training runs, no pretrained weights, no ensemble, no TTA, no pseudo-labeling, no distillation, and official data only.
+- Public Code listing remained unchanged in substance, and Discussion/topic access through the Kaggle CLI remained unavailable with HTTP 403.
+- Strategy: avoid further R49 class-tail filtering and spend the UTC-day quota on non-R1 checkpoint diagnostics at the R1-style low-confidence operating point.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R72 | `submissions/r72/r72_r34_seed123_640_conf0005_iou046625_submission.csv` | R34 seed123 weights, 640, conf 0.0005, iou 0.46625 | audit ok / 69795 boxes | 0.82548 |
+| R73 | `submissions/r73/r73_r41_e8_seed42_640_conf0005_iou046625_submission.csv` | R41 early-stop seed42 weights, 640, conf 0.0005, iou 0.46625 | audit ok / 80177 boxes | 0.82838 |
+| R74 | `submissions/r74/r74_r2_640_conf0005_iou046625_submission.csv` | R2 weights, 640, conf 0.0005, iou 0.46625 | audit ok / 37238 boxes | 0.82271 |
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a.
+
+Error analysis:
+- R72 improved R34 over its original 0.82359 submission but still remained well below the R1/R49 plateau, so seed123 is not a viable replacement checkpoint.
+- R73 is the strongest non-R1 diagnostic so far at 0.82838, indicating that the 8-epoch seed42 checkpoint is closer to public distribution than R34/R2/R42, but it still misses the active best by 0.00026.
+- R74 tied R66b at 0.82271, confirming that R2's low-confidence calibration is flat and not competitive.
+
+Repository/proof updates:
+- Added R72/R73/R74 submission, summary, audit, submit/poll/final-list artifacts.
+- Added May 29 UTC rules/code/discussion refresh logs.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- R41 early-stop deserves analysis as the closest non-R1 checkpoint, but direct low-confidence inference still does not beat R1.
+- Do not spend more quota on R2 threshold calibration.
+- If continuing without 3LC label-review access, focus on training protocol changes that preserve R41-like generalization while improving final localization/recall.

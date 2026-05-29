@@ -120,3 +120,5 @@ The May 26 loop completed additional class-specific R49 tail-filter controls. Fi
 The May 27 loop tested the remaining R49 van-tail controls. Filtering only van below `0.0005`, filtering truck+van below `0.0005`, and filtering bus+van below `0.0005` all scored `0.82864`. This shows that even the small R49 van tail is public-neutral at this threshold; output-only tail filtering is now effectively exhausted.
 
 The May 29 loop added two more R49 class-tail controls and one R2 low-threshold inference check. R66a and R67a both scored `0.82864`, keeping the active 640 px best unchanged. R66b used the longer-trained R2 checkpoint at `conf=0.00045` and scored `0.82271`, confirming that R2's poor public performance is not fixed by simply lowering the confidence threshold.
+
+The May 29 UTC loop used the fresh UTC-day quota for non-R1/R49 checkpoint diagnostics. R34 seed123 at `conf=0.0005` improved to `0.82548`, R41 early-stop seed42 at `conf=0.0005` reached `0.82838`, and R2 at `conf=0.0005` tied its lower-threshold rescue at `0.82271`. None exceeded the active 640 px best of `0.82864`.

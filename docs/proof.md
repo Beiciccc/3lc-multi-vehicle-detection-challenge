@@ -218,3 +218,13 @@ Final May 27 submission list snapshot: `logs/final_submissions_2026-05-27.txt`. 
 | R66b | `submissions/r66/r66_r2_640_conf00045_iou046625_submission.csv` | `submissions/r66/r66_r2_640_conf00045_iou046625_summary.json` | `logs/r66/audit_r66_r2_conf00045_pre_submit.txt` | `logs/final_submissions_2026-05-29.txt` | `logs/final_submissions_2026-05-29.txt` | 0.82271 |
 
 Final May 29 submission list snapshot: `logs/final_submissions_2026-05-29.txt`. R66a and R67a tied the active 640 px public best at 0.82864; R66b showed that R2 low-threshold inference remains below the R1/R49 plateau at 0.82271. R68 R49 was rejected with HTTP 400 and did not appear in the submission list, so it is not counted as an accepted submission.
+
+## May 29 UTC Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R72 | `submissions/r72/r72_r34_seed123_640_conf0005_iou046625_submission.csv` | `submissions/r72/r72_r34_seed123_640_conf0005_iou046625_summary.json` | `logs/r72/audit_r72.txt` | `logs/r72/submit_r72.txt` | `logs/r72/submissions_poll_r72.txt` | 0.82548 |
+| R73 | `submissions/r73/r73_r41_e8_seed42_640_conf0005_iou046625_submission.csv` | `submissions/r73/r73_r41_e8_seed42_640_conf0005_iou046625_summary.json` | `logs/r73/audit_r73.txt` | `logs/r73/submit_r73.txt` | `logs/r73/submissions_poll_r73.txt` | 0.82838 |
+| R74 | `submissions/r74/r74_r2_640_conf0005_iou046625_submission.csv` | `submissions/r74/r74_r2_640_conf0005_iou046625_summary.json` | `logs/r74/audit_r74.txt` | `logs/r74/submit_r74.txt` | `logs/r74/submissions_poll_r74.txt` | 0.82271 |
+
+Final May 29 UTC submission list snapshot: `logs/final_submissions_2026-05-29_utc.txt`. R72, R73, and R74 were all accepted on 2026-05-29 UTC. R73 was the best of these diagnostics at 0.82838, but the active 640 px public best remains 0.82864.

@@ -67,6 +67,9 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R66a | 2026-05-29 | R49 output, filter car/bus below 0.0005, keep truck/van to 0.00045 | 0.82864 |
 | R67a | 2026-05-29 | R49 output, filter car/van below 0.0005, keep truck/bus to 0.00045 | 0.82864 |
 | R66b | 2026-05-29 | R2 weights, 640, conf 0.00045, iou 0.46625 | 0.82271 |
+| R72 | 2026-05-29 UTC | R34 seed123 weights, 640, conf 0.0005, iou 0.46625 | 0.82548 |
+| R73 | 2026-05-29 UTC | R41 early-stop seed42 weights, 640, conf 0.0005, iou 0.46625 | 0.82838 |
+| R74 | 2026-05-29 UTC | R2 weights, 640, conf 0.0005, iou 0.46625 | 0.82271 |
 
 Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a.
 
@@ -95,6 +98,8 @@ The May 26 loop completed R49 class-tail filtering controls under the active 640
 The May 27 loop tested the remaining R49 van-tail question. R63 removed only 64 van boxes below 0.0005, R64 removed those van boxes plus the 120 low-confidence truck boxes, and R65 removed those van boxes plus the 405 low-confidence bus boxes. All three scored 0.82864. This differs from the earlier R15/R29 failure case: at the lower R49 threshold, the tiny van tail is public-neutral. The practical conclusion is unchanged: class-tail filtering can preserve the plateau but has not produced a public improvement.
 
 The May 29 loop confirmed both remaining failure modes. Additional R49 class-tail combinations (car+bus and car+van filtering at 0.0005) still tie 0.82864 and therefore add evidence that the R49 post-processing space is public-neutral but exhausted. The R2 checkpoint improved from its previous 0.82088 when the confidence threshold was lowered to 0.00045, but only to 0.82271, with substantially fewer boxes than the R1/R49 low-threshold operating point. This indicates R2's gap is not just threshold miscalibration; it is a generalization issue relative to R1.
+
+The May 29 UTC loop used the next UTC-day quota to compare non-R1 checkpoints at the R1-style low-confidence operating point. R72 showed that lowering R34 seed123 from `conf=0.001` to `0.0005` improves public score from 0.82359 to 0.82548, but the checkpoint still trails the R1/R49 plateau. R73 showed that the R41 early-stop seed42 checkpoint is much closer, scoring 0.82838 with 80177 boxes, but still under the 0.82864 active best. R74 showed that R2 at `conf=0.0005` ties the 0.00045 result at 0.82271, so the R2 rescue curve is flat and far below the plateau.
 
 ## Next Steps
 
