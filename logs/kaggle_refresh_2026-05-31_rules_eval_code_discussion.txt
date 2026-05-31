@@ -1,0 +1,6 @@
+2026-05-31 refresh summary
+- Submission quota check: start list had no 2026-05-31 records; final list has R75, R76, R77 accepted.
+- Rules page refreshed: logs/rules_2026-05-31.txt; SHA256 matches logs/rules_2026-05-29_utc.txt.
+- Evaluation page refreshed: logs/evaluation_2026-05-31.txt; SHA256 matches logs/evaluation_2026-05-29_utc.txt.
+- Public Code listing refreshed: logs/kaggle_2026-05-31/kernels.txt and kernels_vote.txt; latest visible run remains Omar notebook dated 2026-05-19.
+- Discussion/topic refresh attempted through installed Kaggle CLI and web probe. CLI has no topics command in this environment; API topic listing remains unavailable/unreadable, so no substantive discussion update could be confirmed.

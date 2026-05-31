@@ -1,0 +1,24 @@
+{
+  "source": "submissions/r73/r73_r41_e8_seed42_640_conf0005_iou046625_submission.csv",
+  "submission": "submissions/r75/r75_r73_r41_filter_car0006_keep_others0005_submission.csv",
+  "thresholds": {
+    "1": 0.0006
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 74947,
+  "kept_by_class": {
+    "0": 2948,
+    "1": 61862,
+    "2": 3018,
+    "3": 7119
+  },
+  "dropped_by_class": {
+    "0": 0,
+    "1": 5230,
+    "2": 0,
+    "3": 0
+  },
+  "note": "R75 May31: R73/R41 filter car below 0.0006, keep truck/van/bus at 0.0005",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

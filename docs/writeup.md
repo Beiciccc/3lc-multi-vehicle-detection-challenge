@@ -70,8 +70,11 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R72 | 2026-05-29 UTC | R34 seed123 weights, 640, conf 0.0005, iou 0.46625 | 0.82548 |
 | R73 | 2026-05-29 UTC | R41 early-stop seed42 weights, 640, conf 0.0005, iou 0.46625 | 0.82838 |
 | R74 | 2026-05-29 UTC | R2 weights, 640, conf 0.0005, iou 0.46625 | 0.82271 |
+| R75 | 2026-05-31 | R73/R41 output, filter car below 0.0006, keep truck/van/bus at 0.0005 | 0.82838 |
+| R76 | 2026-05-31 | R73/R41 output, filter truck/car/van below 0.0006, keep bus at 0.0005 | 0.82838 |
+| R77 | 2026-05-31 | R49 output, filter truck/bus/van below 0.0005, keep car to 0.00045 | 0.82864 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77.
 
 ## Analysis
 
@@ -101,11 +104,14 @@ The May 29 loop confirmed both remaining failure modes. Additional R49 class-tai
 
 The May 29 UTC loop used the next UTC-day quota to compare non-R1 checkpoints at the R1-style low-confidence operating point. R72 showed that lowering R34 seed123 from `conf=0.001` to `0.0005` improves public score from 0.82359 to 0.82548, but the checkpoint still trails the R1/R49 plateau. R73 showed that the R41 early-stop seed42 checkpoint is much closer, scoring 0.82838 with 80177 boxes, but still under the 0.82864 active best. R74 showed that R2 at `conf=0.0005` ties the 0.00045 result at 0.82271, so the R2 rescue curve is flat and far below the plateau.
 
+
+The May 31 loop tested whether R41 could be lifted by class-tail filtering and completed the previously uncounted R49 control. R75 removed only the R41 car tail below 0.0006 and R76 removed truck/car/van tails below 0.0006 while retaining bus; both scored 0.82838, exactly tying R73. This indicates R41 is not losing public score from those low-confidence tails, but also does not gain enough to reach the R49/R1 plateau. R77 filtered the R49 truck/bus/van tails and kept car to 0.00045; it scored 0.82864, adding one more neutral R49 control and confirming that output-only R49 tail filtering remains saturated rather than improving.
+
 ## Next Steps
 
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Use R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a as active 640 px tie baselines, but treat further inference-only tail filtering as saturated unless a new diagnostic identifies a specific error mode.
+- Use R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77 as active 640 px tie baselines, but treat further inference-only tail filtering as saturated unless a new diagnostic identifies a specific error mode.
 - Further R1 confidence/NMS micro-sweeps have low expected value; both NMS shoulders and the confidence right edge underperformed the 0.82864 plateau.
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15/R36-style output; R29 showed a large public drop from removing only 28 boxes.

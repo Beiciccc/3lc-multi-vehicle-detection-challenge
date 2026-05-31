@@ -228,3 +228,13 @@ Final May 29 submission list snapshot: `logs/final_submissions_2026-05-29.txt`. 
 | R74 | `submissions/r74/r74_r2_640_conf0005_iou046625_submission.csv` | `submissions/r74/r74_r2_640_conf0005_iou046625_summary.json` | `logs/r74/audit_r74.txt` | `logs/r74/submit_r74.txt` | `logs/r74/submissions_poll_r74.txt` | 0.82271 |
 
 Final May 29 UTC submission list snapshot: `logs/final_submissions_2026-05-29_utc.txt`. R72, R73, and R74 were all accepted on 2026-05-29 UTC. R73 was the best of these diagnostics at 0.82838, but the active 640 px public best remains 0.82864.
+
+## May 31 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R75 | `submissions/r75/r75_r73_r41_filter_car0006_keep_others0005_submission.csv` | `submissions/r75/r75_r73_r41_filter_car0006_keep_others0005_summary.json` | `logs/r75/audit_r75_filter_actual.txt` | `logs/r75/submit_r75.txt` | `logs/r75/submissions_poll_r75.txt` | 0.82838 |
+| R76 | `submissions/r76/r76_r73_r41_filter_truckcarvan0006_keep_bus0005_submission.csv` | `submissions/r76/r76_r73_r41_filter_truckcarvan0006_keep_bus0005_summary.json` | `logs/r76/audit_r76.txt` | `logs/r76/submit_r76.txt` | `logs/r76/submissions_poll_r76.txt` | 0.82838 |
+| R77 | `submissions/r77/r77_r49_filter_truckbusvan0005_keep_car00045_submission.csv` | `submissions/r77/r77_r49_filter_truckbusvan0005_keep_car00045_summary.json` | `logs/r77/audit_r77.txt` | `logs/r77/submit_r77.txt` | `logs/r77/submissions_poll_r77.txt` | 0.82864 |
+
+Final May 31 submission list snapshot: `logs/final_submissions_2026-05-31.txt`. R75, R76, and R77 were all accepted on 2026-05-31 UTC. R77 tied the active 640 px public best at 0.82864; R75 and R76 stayed at the R41 baseline of 0.82838.

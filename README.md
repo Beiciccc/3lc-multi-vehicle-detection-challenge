@@ -70,7 +70,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce active 640 px baseline submission
 
-Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a at `0.82864`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77 at `0.82864`.
 
 ```bash
 python scripts/make_inference_submission.py \
@@ -122,3 +122,5 @@ The May 27 loop tested the remaining R49 van-tail controls. Filtering only van b
 The May 29 loop added two more R49 class-tail controls and one R2 low-threshold inference check. R66a and R67a both scored `0.82864`, keeping the active 640 px best unchanged. R66b used the longer-trained R2 checkpoint at `conf=0.00045` and scored `0.82271`, confirming that R2's poor public performance is not fixed by simply lowering the confidence threshold.
 
 The May 29 UTC loop used the fresh UTC-day quota for non-R1/R49 checkpoint diagnostics. R34 seed123 at `conf=0.0005` improved to `0.82548`, R41 early-stop seed42 at `conf=0.0005` reached `0.82838`, and R2 at `conf=0.0005` tied its lower-threshold rescue at `0.82271`. None exceeded the active 640 px best of `0.82864`.
+
+The May 31 loop used the fresh UTC/local-day quota for R41 and R49 post-processing diagnostics. R75 and R76 filtered low-confidence R41 tails and both scored `0.82838`, tying R73 but not the active best. R77 submitted the previously uncounted R49 truck/bus/van tail-filter control and scored `0.82864`, confirming the R49 class-tail plateau remains public-neutral.

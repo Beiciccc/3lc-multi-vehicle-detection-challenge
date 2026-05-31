@@ -737,3 +737,36 @@ Next candidate directions:
 - R41 early-stop deserves analysis as the closest non-R1 checkpoint, but direct low-confidence inference still does not beat R1.
 - Do not spend more quota on R2 threshold calibration.
 - If continuing without 3LC label-review access, focus on training protocol changes that preserve R41-like generalization while improving final localization/recall.
+
+## 2026-05-31 submission loop x3
+
+Context:
+- Submission list was queried at loop start on 2026-05-31 UTC/Europe-London. The starting list had no 2026-05-31 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R75, R76, and R77 were accepted and completed.
+- Rules and Evaluation pages were refreshed and matched the 2026-05-29 UTC copies by SHA256. Active constraints remain YOLOv8n only, 640 px input size, from-scratch/no pretrained for training runs, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+- Public Code listing was refreshed; the latest visible notebook remained Omar's 2026-05-19 run. Discussion/topic refresh was attempted, but the installed Kaggle CLI exposes no topics command in this environment and the topic API remained unavailable/unreadable, so no discussion update could be confirmed.
+- Strategy: use R41 as the closest non-R1 checkpoint and test whether removing low-confidence class tails can close the 0.00026 gap to the active best; also submit the previously uncounted R49 truck/bus/van tail-filter control as a final R49 plateau check.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R75 | `submissions/r75/r75_r73_r41_filter_car0006_keep_others0005_submission.csv` | R73/R41 output, filter car below 0.0006, keep truck/van/bus at 0.0005 | audit ok / 74947 boxes | 0.82838 |
+| R76 | `submissions/r76/r76_r73_r41_filter_truckcarvan0006_keep_bus0005_submission.csv` | R73/R41 output, filter truck/car/van below 0.0006, keep bus at 0.0005 | audit ok / 74539 boxes | 0.82838 |
+| R77 | `submissions/r77/r77_r49_filter_truckbusvan0005_keep_car00045_submission.csv` | R49 output, filter truck/bus/van below 0.0005, keep car to 0.00045 | audit ok / 72542 boxes | 0.82864 |
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77.
+
+Error analysis:
+- R75 and R76 both tied R73 at 0.82838, so R41's 0.00026 gap to the active best is not fixed by simple class-tail filtering. The low-confidence R41 tails are removable without damage, but not beneficial.
+- R77 tied 0.82864, confirming the last uncounted R49 truck/bus/van tail-filter control is public-neutral. R49 output-only tail filtering is now exhausted as a scoring direction.
+- No new best was found. The next useful work should move away from R1/R49/R41 output-only calibration and toward compliant data-centric checks or a new 640 px scratch-training signal.
+
+Repository/proof updates:
+- Added R75/R76/R77 submission, summary, audit, submit/poll/final-list artifacts.
+- Added May 31 rules/evaluation/code/discussion refresh logs and summary.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Stop spending quota on R49 class-tail filtering; it consistently preserves but does not exceed 0.82864.
+- Stop spending quota on R41 tail filtering at 0.0006; it preserves the R73 score but does not close the gap.
+- Prioritize compliant training/data diagnostics: label-quality review evidence, alternate 640 px scratch training schedules that keep R41-like generalization, or validation diagnostics that explain the R1/R41 public split.
