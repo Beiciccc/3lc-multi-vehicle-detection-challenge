@@ -1,6 +1,6 @@
 2026-06-01 refresh summary
-- Submission quota check: start list had no 2026-06-01 records; R78, R80, and R79 became the three accepted records for the UTC day.
+- Submission quota check: initial refresh list had no 2026-06-01 records; R78, R80, and R79 became the three accepted records for the UTC day.
 - Rules page refreshed with kaggle competitions pages --content --page-name rules. SHA256 matched 2026-05-31.
 - Evaluation page refreshed with kaggle competitions pages --content --page-name evaluation. SHA256 matched 2026-05-31.
 - Public Code listing refreshed with kaggle kernels list --competition; latest visible notebook remains Omar / notebookb217734f72, lastRunTime 2026-05-19 16:40:40.170000, 2 votes.
-- Discussion/topic page refresh produced no readable output through the available Kaggle API/pages interface ("No pages found"). No discussion update was confirmed.
+- Discussion/topic page refresh produced only the Kaggle shell/HTML through the available interface, not a readable topic listing. No discussion update was confirmed.

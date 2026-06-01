@@ -41,7 +41,7 @@ An additional local candidate `submissions/r12/r12_r1_conf001_iou0471875_submiss
 
 ## May 6 Submission Proof
 
-| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+| Run | Candidate | Summary | Audit | Submit/list evidence | Poll logs | Public LB |
 |---|---|---|---|---|---|---:|
 | R13 | `submissions/r13/r13_r1_conf0011_iou046875_submission.csv` | `submissions/r13/r13_r1_conf0011_iou046875_summary.json` | `logs/r13/audit_r13.txt` | `logs/r13/submit_r13.txt` | `logs/r13/submissions_poll_*.txt` | 0.82691 |
 | R14 | `submissions/r14/r14_r1_conf0009_iou046875_submission.csv` | `submissions/r14/r14_r1_conf0009_iou046875_summary.json` | `logs/r14/audit_r14.txt` | `logs/r14/submit_r14.txt` | `logs/r14/submissions_poll_*.txt` | 0.82765 |
@@ -51,7 +51,7 @@ R15 became the best public submission at that time. All three May 6 candidates p
 
 ## May 7 Submission Proof
 
-| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+| Run | Candidate | Summary | Audit | Submit/list evidence | Poll logs | Public LB |
 |---|---|---|---|---|---|---:|
 | R16 | `submissions/r16/r16_r1_conf001_iou046675_submission.csv` | `submissions/r16/r16_r1_conf001_iou046675_summary.json` | `logs/r16/audit_r16.txt` | `logs/r16/submit_r16.txt` | `logs/r16/submissions_poll_*.txt` | 0.82768 |
 | R17 | `submissions/r17/r17_r1_conf001_iou046575_submission.csv` | `submissions/r17/r17_r1_conf001_iou046575_summary.json` | `logs/r17/audit_r17.txt` | `logs/r17/submit_r17_retry1.txt` | `logs/r17/submissions_poll_*.txt` | 0.82765 |
@@ -243,8 +243,8 @@ Final May 31 submission list snapshot: `logs/final_submissions_2026-05-31.txt`. 
 
 | Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
 |---|---|---|---|---|---|---:|
-| R78 | `submissions/r78/r78_r49_boxscale1005_submission.csv` | `submissions/r78/r78_r49_boxscale1005_summary.json` | `logs/r78/audit_r78.txt` | `logs/r78/submit_r78.txt` | `logs/r78/submissions_poll_r78.txt` | 0.82855 |
+| R78 | `submissions/r78/r78_r49_boxscale1005_submission.csv` | `submissions/r78/r78_r49_boxscale1005_summary.json` | `logs/r78/audit_r78.txt` | `logs/r78/submissions_after_r78.txt` | `logs/r78/submissions_poll_r78.txt` | 0.82855 |
 | R80 | `submissions/r80/r80_r49_boxscale10025_submission.csv` | `submissions/r80/r80_r49_boxscale10025_summary.json` | `logs/r80/audit_r80.txt` | `logs/r80/submit_r80.txt` | `logs/r80/submissions_poll_r80.txt` | 0.82862 |
 | R79 | `submissions/r79/r79_r49_boxscale09975_submission.csv` | `submissions/r79/r79_r49_boxscale09975_summary.json` | `logs/r79/audit_r79.txt` | `logs/r79/submit_r79.txt` | `logs/r79/submissions_poll_r79.txt` | 0.82859 |
 
-Final June 1 submission list snapshot: `logs/final_submissions_2026-06-01.txt`. R78, R80, and R79 were all accepted on 2026-06-01 UTC. None improved the active 640 px public best of 0.82864.
+Final June 1 submission list snapshot: `logs/final_submissions_2026-06-01.txt`. R78, R80, and R79 were all accepted on 2026-06-01 UTC. R78's decisive accounting evidence is the new submission-list record plus completed poll result, because the local submit stdout later hit a Kaggle 429 response. None improved the active 640 px public best of 0.82864.

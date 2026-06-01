@@ -774,7 +774,7 @@ Next candidate directions:
 ## 2026-06-01 submission loop x3
 
 Context:
-- Submission list was queried at loop start on 2026-06-01 UTC/Europe-London. The starting list had no 2026-06-01 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R78, R80, and R79 were accepted and completed.
+- Submission list was queried at loop start on 2026-06-01 UTC/Europe-London. The initial quota evidence in `logs/submissions_2026-06-01_refresh.txt` had no 2026-06-01 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R78, R80, and R79 were accepted and completed.
 - Rules and Evaluation pages were refreshed through `kaggle competitions pages --content`; both matched the 2026-05-31 copies by SHA256. Active constraints remain YOLOv8n only, 640 px input size, from-scratch/no pretrained for training runs, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
 - Public Code listing was refreshed; the latest visible notebook remained Omar's 2026-05-19 run. Discussion/topic refresh produced no readable output through the available interface (`No pages found`), so no discussion update was confirmed.
 - Strategy: after R49 confidence/NMS/class-tail filtering saturated, test small bbox geometry calibration from the same R49 single-checkpoint 640 px output. This keeps one YOLOv8n model output, no TTA, no ensemble, and no external data.
@@ -793,6 +793,7 @@ Error analysis:
 - R78 shows that a 0.5% expansion of all R49 boxes drops below the plateau.
 - R80 shows that even a smaller 0.25% expansion stays slightly below the unscaled R49 baseline.
 - R79 shows that a 0.25% shrink also fails to improve. Together these results indicate the R49 box scale is already near the public optimum, and output-only bbox scaling should not receive more primary quota without a stronger diagnostic.
+- R78's local submit stdout later hit a Kaggle 429 response, but the official submission list added the R78 record and poll logs show it completed with public score 0.82855. Quota accounting therefore follows the accepted submission-list record, not the transient stdout error.
 
 Repository/proof updates:
 - Added `scripts/scale_submission_boxes.py` plus R78/R79/R80 submission, summary, audit, submit/poll/final-list artifacts.
