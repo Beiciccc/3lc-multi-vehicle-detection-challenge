@@ -1,0 +1,16 @@
+URL https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/rules
+status ok bytes 5661
+Repository expectations -1
+YOLOv8n -1
+input size -1
+640 -1
+Rules 2952
+ <!DOCTYPE html> <html lang="en"> <head> <title>3LC Multi Vehicle detection Challenge | Kaggle</title> <meta charset="utf-8" /> <meta name="robots" content="index, follow" /> <meta name="description" content="Traffic-scene on road vehicle detection. Master data-centric AI on a fixed model budget." /> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"> <meta name="theme-color" content="#008ABC" /> <script nonce="Ps199Cw6hsK0v0Wy8VxfbQ==" type="text/javascript"> window["pageRequestStartTime"] = 1780277149213; window["pageRequestEndTime"] = 1780277149222; window["initialPageLoadStartTime"] = new Date().getTime(); </script> <script nonce="Ps199Cw6hsK0v0Wy8VxfbQ==" id="gsi-client" src="
+URL https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge
+status ok bytes 5661
+Repository expectations -1
+YOLOv8n -1
+input size -1
+640 -1
+Rules 2952
+ <!DOCTYPE html> <html lang="en"> <head> <title>3LC Multi Vehicle detection Challenge | Kaggle</title> <meta charset="utf-8" /> <meta name="robots" content="index, follow" /> <meta name="description" content="Traffic-scene on road vehicle detection. Master data-centric AI on a fixed model budget." /> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"> <meta name="theme-color" content="#008ABC" /> <script nonce="K23sYe18Snj8ybVkw6z3rQ==" type="text/javascript"> window["pageRequestStartTime"] = 1780277149446; window["pageRequestEndTime"] = 1780277149454; window["initialPageLoadStartTime"] = new Date().getTime(); </script> <script nonce="K23sYe18Snj8ybVkw6z3rQ==" id="gsi-client" src="

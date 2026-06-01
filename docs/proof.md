@@ -238,3 +238,13 @@ Final May 29 UTC submission list snapshot: `logs/final_submissions_2026-05-29_ut
 | R77 | `submissions/r77/r77_r49_filter_truckbusvan0005_keep_car00045_submission.csv` | `submissions/r77/r77_r49_filter_truckbusvan0005_keep_car00045_summary.json` | `logs/r77/audit_r77.txt` | `logs/r77/submit_r77.txt` | `logs/r77/submissions_poll_r77.txt` | 0.82864 |
 
 Final May 31 submission list snapshot: `logs/final_submissions_2026-05-31.txt`. R75, R76, and R77 were all accepted on 2026-05-31 UTC. R77 tied the active 640 px public best at 0.82864; R75 and R76 stayed at the R41 baseline of 0.82838.
+
+## June 1 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R78 | `submissions/r78/r78_r49_boxscale1005_submission.csv` | `submissions/r78/r78_r49_boxscale1005_summary.json` | `logs/r78/audit_r78.txt` | `logs/r78/submit_r78.txt` | `logs/r78/submissions_poll_r78.txt` | 0.82855 |
+| R80 | `submissions/r80/r80_r49_boxscale10025_submission.csv` | `submissions/r80/r80_r49_boxscale10025_summary.json` | `logs/r80/audit_r80.txt` | `logs/r80/submit_r80.txt` | `logs/r80/submissions_poll_r80.txt` | 0.82862 |
+| R79 | `submissions/r79/r79_r49_boxscale09975_submission.csv` | `submissions/r79/r79_r49_boxscale09975_summary.json` | `logs/r79/audit_r79.txt` | `logs/r79/submit_r79.txt` | `logs/r79/submissions_poll_r79.txt` | 0.82859 |
+
+Final June 1 submission list snapshot: `logs/final_submissions_2026-06-01.txt`. R78, R80, and R79 were all accepted on 2026-06-01 UTC. None improved the active 640 px public best of 0.82864.

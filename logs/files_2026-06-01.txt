@@ -1,0 +1,23 @@
+Next Page Token = CfDJ8G82xNY93phHtA6xMwIf8xNGaK0SfP4rCsYY_yDQaYvulsEqSjO64EA6AdyhVlqXYB9SCi3Ay9OdRGMlSEdVv6KLD25XLkiJ_5TDAM88CBozW2iciX_IU1qHef6kGloceGs13Gu00F5vKHMj384ebkB22PMOsX9nrF0p4s2pPfNWRgK1AzViCYTwscLFtSlYYP4j0AoX5-cboAbbqMWGR8KZJS4uDcVrA3AKQ8A7Au2weq7THfFXSmRZsm-3LUhp
+name                                                                                                       size  creationDate                
+---------------------------------------------------------------------------------------------------  ----------  --------------------------  
+competition_starter/README.md                                                                              5877  2026-04-10 16:38:11.717000  
+competition_starter/config.yaml                                                                            3026  2026-04-10 16:38:11.718000  
+competition_starter/data/test/images/MVI_20011_img00001_jpg.rf.21eb8e9f48c70c8b2186afa92378a398.jpg       61732  2026-04-10 16:38:11.723000  
+competition_starter/data/test/images/MVI_20011_img00019_jpg.rf.4105d8df0fc287df67ffd67042727f89.jpg       57941  2026-04-10 16:38:11.727000  
+competition_starter/data/test/images/MVI_20011_img00086_jpg.rf.cbbdb64f1942a10e428008494ba97d1e.jpg       62567  2026-04-10 16:38:11.725000  
+competition_starter/data/test/images/MVI_20011_img00206_jpg.rf.c97e5a0655ebeb4a217d542cced76129.jpg       61025  2026-04-10 16:38:11.723000  
+competition_starter/data/test/images/MVI_20011_img00226_jpg.rf.da8e14aeda4d153e2a7ccea3bbe2286a.jpg       60662  2026-04-10 16:38:11.752000  
+competition_starter/data/test/images/MVI_20011_img00339_jpg.rf.334fca1e6ced0862e76de76301e4716d.jpg       59606  2026-04-10 16:38:11.754000  
+competition_starter/data/test/images/MVI_20011_img00348_jpg.rf.51b7a70bcc924548508e1ee66bc0d765.jpg       60107  2026-04-10 16:38:11.719000  
+competition_starter/data/test/images/MVI_20011_img00449_jpg.rf.908bda312e93dda38d270263ce734e13.jpg       61109  2026-04-10 16:38:11.717000  
+competition_starter/data/test/images/MVI_20011_img00483_jpg.rf.69fe7a1d0a566584acf4de07d2bafbdf.jpg       61958  2026-04-10 16:38:11.716000  
+competition_starter/data/test/images/MVI_20011_img00591_jpg.rf.f3106ce093ed40da6b48bff97d7df6c9.jpg       59608  2026-04-10 16:38:11.736000  
+competition_starter/data/test/images/MVI_20012_img00034_jpg.rf.9224a5237cd778c241eb76e6e209cd42.jpg       58458  2026-04-10 16:38:11.730000  
+competition_starter/data/test/images/MVI_20012_img00349_jpg.rf.9ea7be9b374da41d0868dddc641b25d9.jpg       61706  2026-04-10 16:38:11.740000  
+competition_starter/data/test/images/MVI_20012_img00410_jpg.rf.db40e073eaafa8a1fde015ad252773d4.jpg       62627  2026-04-10 16:38:11.729000  
+competition_starter/data/test/images/MVI_20012_img00459_jpg.rf.da9953c85a8b15e4b0a571945a9a65ba.jpg       61234  2026-04-10 16:38:11.748000  
+competition_starter/data/test/images/MVI_20012_img00562_jpg.rf.f94e99849dcfeca5d63b97714f9c8b3d.jpg       59915  2026-04-10 16:38:11.724000  
+competition_starter/data/test/images/MVI_20012_img00741_jpg.rf.b84efc19aa8b8d09152183bc15925008.jpg       56815  2026-04-10 16:38:11.730000  
+competition_starter/data/test/images/MVI_20012_img00788_jpg.rf.8f5f1cef10b7b25f30695809b9c50963.jpg       56522  2026-04-10 16:38:11.726000  
+competition_starter/data/test/images/MVI_20012_img00895_jpg.rf.ab19a9a0031de97873a395d726e09929.jpg       57611  2026-04-10 16:38:11.757000  

@@ -770,3 +770,36 @@ Next candidate directions:
 - Stop spending quota on R49 class-tail filtering; it consistently preserves but does not exceed 0.82864.
 - Stop spending quota on R41 tail filtering at 0.0006; it preserves the R73 score but does not close the gap.
 - Prioritize compliant training/data diagnostics: label-quality review evidence, alternate 640 px scratch training schedules that keep R41-like generalization, or validation diagnostics that explain the R1/R41 public split.
+
+## 2026-06-01 submission loop x3
+
+Context:
+- Submission list was queried at loop start on 2026-06-01 UTC/Europe-London. The starting list had no 2026-06-01 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R78, R80, and R79 were accepted and completed.
+- Rules and Evaluation pages were refreshed through `kaggle competitions pages --content`; both matched the 2026-05-31 copies by SHA256. Active constraints remain YOLOv8n only, 640 px input size, from-scratch/no pretrained for training runs, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+- Public Code listing was refreshed; the latest visible notebook remained Omar's 2026-05-19 run. Discussion/topic refresh produced no readable output through the available interface (`No pages found`), so no discussion update was confirmed.
+- Strategy: after R49 confidence/NMS/class-tail filtering saturated, test small bbox geometry calibration from the same R49 single-checkpoint 640 px output. This keeps one YOLOv8n model output, no TTA, no ensemble, and no external data.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R78 | `submissions/r78/r78_r49_boxscale1005_submission.csv` | R49 output, bbox width/height scale 1.005 around centers | audit ok / 73131 boxes | 0.82855 |
+| R80 | `submissions/r80/r80_r49_boxscale10025_submission.csv` | R49 output, bbox width/height scale 1.0025 around centers | audit ok / 73131 boxes | 0.82862 |
+| R79 | `submissions/r79/r79_r49_boxscale09975_submission.csv` | R49 output, bbox width/height scale 0.9975 around centers | audit ok / 73131 boxes | 0.82859 |
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best remains `0.82864` from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77.
+
+Error analysis:
+- R78 shows that a 0.5% expansion of all R49 boxes drops below the plateau.
+- R80 shows that even a smaller 0.25% expansion stays slightly below the unscaled R49 baseline.
+- R79 shows that a 0.25% shrink also fails to improve. Together these results indicate the R49 box scale is already near the public optimum, and output-only bbox scaling should not receive more primary quota without a stronger diagnostic.
+
+Repository/proof updates:
+- Added `scripts/scale_submission_boxes.py` plus R78/R79/R80 submission, summary, audit, submit/poll/final-list artifacts.
+- Added June 1 rules/evaluation/code/discussion refresh logs and summary.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Stop spending primary quota on R49 confidence, NMS, class-tail filtering, or simple bbox scaling.
+- Prioritize a new compliant signal: 3LC label-review evidence, class/size-stratified validation diagnostics, or a materially different 640 px YOLOv8n scratch-training recipe.
+- If forced to use existing artifacts, prefer non-R49 checkpoint diagnostics only when they test a specific failure hypothesis; R41 tail filtering and R2 threshold rescue are already negative.

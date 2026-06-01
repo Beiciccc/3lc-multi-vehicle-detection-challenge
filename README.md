@@ -124,3 +124,5 @@ The May 29 loop added two more R49 class-tail controls and one R2 low-threshold 
 The May 29 UTC loop used the fresh UTC-day quota for non-R1/R49 checkpoint diagnostics. R34 seed123 at `conf=0.0005` improved to `0.82548`, R41 early-stop seed42 at `conf=0.0005` reached `0.82838`, and R2 at `conf=0.0005` tied its lower-threshold rescue at `0.82271`. None exceeded the active 640 px best of `0.82864`.
 
 The May 31 loop used the fresh UTC/local-day quota for R41 and R49 post-processing diagnostics. R75 and R76 filtered low-confidence R41 tails and both scored `0.82838`, tying R73 but not the active best. R77 submitted the previously uncounted R49 truck/bus/van tail-filter control and scored `0.82864`, confirming the R49 class-tail plateau remains public-neutral.
+
+The June 1 loop tested lightweight bbox geometry calibration from the R49 640 px single-checkpoint output. Box scaling by `1.005`, `1.0025`, and `0.9975` scored `0.82855`, `0.82862`, and `0.82859` respectively. None exceeded the active 640 px best of `0.82864`, so R49 geometry scaling joins confidence/NMS/class-tail filtering as a low-value inference-only direction.

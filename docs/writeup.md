@@ -73,6 +73,9 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R75 | 2026-05-31 | R73/R41 output, filter car below 0.0006, keep truck/van/bus at 0.0005 | 0.82838 |
 | R76 | 2026-05-31 | R73/R41 output, filter truck/car/van below 0.0006, keep bus at 0.0005 | 0.82838 |
 | R77 | 2026-05-31 | R49 output, filter truck/bus/van below 0.0005, keep car to 0.00045 | 0.82864 |
+| R78 | 2026-06-01 | R49 output, bbox scale 1.005 | 0.82855 |
+| R80 | 2026-06-01 | R49 output, bbox scale 1.0025 | 0.82862 |
+| R79 | 2026-06-01 | R49 output, bbox scale 0.9975 | 0.82859 |
 
 Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77.
 
@@ -107,11 +110,13 @@ The May 29 UTC loop used the next UTC-day quota to compare non-R1 checkpoints at
 
 The May 31 loop tested whether R41 could be lifted by class-tail filtering and completed the previously uncounted R49 control. R75 removed only the R41 car tail below 0.0006 and R76 removed truck/car/van tails below 0.0006 while retaining bus; both scored 0.82838, exactly tying R73. This indicates R41 is not losing public score from those low-confidence tails, but also does not gain enough to reach the R49/R1 plateau. R77 filtered the R49 truck/bus/van tails and kept car to 0.00045; it scored 0.82864, adding one more neutral R49 control and confirming that output-only R49 tail filtering remains saturated rather than improving.
 
+The June 1 loop tested bbox geometry calibration from the R49 640 px single-checkpoint output after confidence, NMS, and class-tail filtering had saturated. R78 expanded boxes by 1.005 and scored 0.82855; R80 used a smaller expansion of 1.0025 and scored 0.82862; R79 shrank boxes by 0.9975 and scored 0.82859. All three stayed below the unscaled R49 plateau of 0.82864, so current R49 geometry scaling should not receive further primary quota without a stronger validation or label-review signal.
+
 ## Next Steps
 
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Use R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77 as active 640 px tie baselines, but treat further inference-only tail filtering as saturated unless a new diagnostic identifies a specific error mode.
+- Use R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77 as active 640 px tie baselines, but treat further R49 confidence, NMS, class-tail, and bbox-scale inference-only variants as saturated unless a new diagnostic identifies a specific error mode.
 - Further R1 confidence/NMS micro-sweeps have low expected value; both NMS shoulders and the confidence right edge underperformed the 0.82864 plateau.
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15/R36-style output; R29 showed a large public drop from removing only 28 boxes.

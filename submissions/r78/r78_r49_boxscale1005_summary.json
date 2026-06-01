@@ -1,0 +1,19 @@
+{
+  "source": "submissions/r49/r49_r1_640_conf00045_iou046625_submission.csv",
+  "submission": "submissions/r78/r78_r49_boxscale1005_submission.csv",
+  "scale": 1.005,
+  "eps": 1e-06,
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 73131,
+  "removed": 0,
+  "adjusted": 73131,
+  "boxes_by_class": {
+    "0": 2014,
+    "1": 60907,
+    "2": 2721,
+    "3": 7489
+  },
+  "note": "R49 640 single-checkpoint output, bbox width/height scale 1.005 around centers",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}
