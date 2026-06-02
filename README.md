@@ -70,7 +70,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce active 640 px baseline submission
 
-Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77 at `0.82864`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R84 at `0.83129`.
 
 ```bash
 python scripts/make_inference_submission.py \
@@ -126,3 +126,5 @@ The May 29 UTC loop used the fresh UTC-day quota for non-R1/R49 checkpoint diagn
 The May 31 loop used the fresh UTC/local-day quota for R41 and R49 post-processing diagnostics. R75 and R76 filtered low-confidence R41 tails and both scored `0.82838`, tying R73 but not the active best. R77 submitted the previously uncounted R49 truck/bus/van tail-filter control and scored `0.82864`, confirming the R49 class-tail plateau remains public-neutral.
 
 The June 1 loop tested lightweight bbox geometry calibration from the R49 640 px single-checkpoint output. Box scaling by `1.005`, `1.0025`, and `0.9975` scored `0.82855`, `0.82862`, and `0.82859` respectively. None exceeded the active 640 px best of `0.82864`, so R49 geometry scaling joins confidence/NMS/class-tail filtering as a low-value inference-only direction.
+
+The June 2 loop found a new active 640 px best with the R62 no-mixup/close-mosaic=3 scratch checkpoint. R81 at `conf=0.0005` scored `0.82857`; lowering the same checkpoint to `conf=0.00025` (R82) improved to `0.83015`; lowering further to `conf=0.0002` (R84) reached `0.83129`. This confirms that a compliant training-recipe change plus aggressive low-confidence recall is the new primary direction, while R49 output-only tuning remains saturated.

@@ -804,3 +804,36 @@ Next candidate directions:
 - Stop spending primary quota on R49 confidence, NMS, class-tail filtering, or simple bbox scaling.
 - Prioritize a new compliant signal: 3LC label-review evidence, class/size-stratified validation diagnostics, or a materially different 640 px YOLOv8n scratch-training recipe.
 - If forced to use existing artifacts, prefer non-R49 checkpoint diagnostics only when they test a specific failure hypothesis; R41 tail filtering and R2 threshold rescue are already negative.
+
+## 2026-06-02 submission loop x3
+
+Context:
+- Submission list was queried at loop start on 2026-06-02 UTC/Europe-London. The starting list had no 2026-06-02 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R81, R82, and R84 were accepted and completed.
+- Rules and Evaluation pages were refreshed and matched the 2026-06-01 copies by SHA256. Active constraints remain YOLOv8n only, 640 px input size, from-scratch/no pretrained for training runs, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+- Public Code listing was refreshed; the latest visible notebook remained Omar's 2026-05-19 run. Discussion listing was readable through Kaggle CLI 2.2.0: new topic 703776 asked about vehicle categories but had no official reply; topic 702180 confirmed train+val merge and oversampling are allowed within provided-data constraints.
+- Strategy: stop R49 output-only tuning and test a new compliant training recipe: R62 no-mixup with close_mosaic=3, seed42, YOLOv8n from scratch at 640 px. After R81 under-recalled at `conf=0.0005`, spend the remaining quota on lower-confidence inference for the same checkpoint.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R81 | `submissions/r81/r81_r62_nomix_close3_conf0005_iou046625_submission.csv` | R62 no-mix close-mosaic=3 scratch checkpoint, 640, conf 0.0005, iou 0.46625 | val mAP50 0.83104 / audit ok / 53053 boxes | 0.82857 |
+| R82 | `submissions/r82/r82_r62_nomix_close3_conf00025_iou046625_submission.csv` | Same R62 checkpoint, 640, conf 0.00025, iou 0.46625 | audit ok / 71033 boxes | 0.83015 |
+| R84 | `submissions/r84/r84_r62_nomix_close3_conf0002_iou046625_submission.csv` | Same R62 checkpoint, 640, conf 0.0002, iou 0.46625 | audit ok / 78345 boxes | 0.83129 |
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best is now `0.83129` from R84.
+
+Error analysis:
+- R81 showed the R62 training recipe alone is not enough at the old low-confidence setting; 53053 boxes still under-recalled the public split.
+- R82 proved the checkpoint improves sharply when confidence is lowered to 0.00025, moving from 0.82857 to 0.83015.
+- R84 showed the lower-confidence side still had useful recall at 0.0002, reaching 0.83129 with 78345 boxes. This establishes R62 no-mix/close-mosaic as the new active direction and makes R49 output-only tuning secondary.
+
+Repository/proof updates:
+- Added R81/R82/R84 submission, summary, audit, submit/poll/final-list artifacts.
+- Added June 2 rules/evaluation/code/discussion refresh logs and summary, including the new readable discussion topic list.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Continue around R62 low-confidence inference: nearby `conf=0.00015-0.000225`, NMS shoulder checks, and class-tail diagnostics from the R84 output.
+- Use the rule clarification that train+val merge and oversampling are allowed, but only within the provided data and no-pretraining/no-external/no-pseudo/no-ensemble constraints.
+- Do not spend primary quota on R49 output-only geometry or tail filters unless used as controls.

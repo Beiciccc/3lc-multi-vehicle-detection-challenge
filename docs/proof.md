@@ -248,3 +248,13 @@ Final May 31 submission list snapshot: `logs/final_submissions_2026-05-31.txt`. 
 | R79 | `submissions/r79/r79_r49_boxscale09975_submission.csv` | `submissions/r79/r79_r49_boxscale09975_summary.json` | `logs/r79/audit_r79.txt` | `logs/r79/submit_r79.txt` | `logs/r79/submissions_poll_r79.txt` | 0.82859 |
 
 Final June 1 submission list snapshot: `logs/final_submissions_2026-06-01.txt`. R78, R80, and R79 were all accepted on 2026-06-01 UTC. R78's decisive accounting evidence is the new submission-list record plus completed poll result, because the local submit stdout later hit a Kaggle 429 response. None improved the active 640 px public best of 0.82864.
+
+## June 2 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R81 | `submissions/r81/r81_r62_nomix_close3_conf0005_iou046625_submission.csv` | `submissions/r81/r81_r62_nomix_close3_conf0005_iou046625_summary_source.json` | `logs/r81/audit_r81.txt` | `logs/r81/submit_r81.txt` | `logs/r81/submissions_poll_r81.txt` | 0.82857 |
+| R82 | `submissions/r82/r82_r62_nomix_close3_conf00025_iou046625_submission.csv` | `submissions/r82/r82_r62_nomix_close3_conf00025_iou046625_summary.json` | `logs/r82/audit_r82.txt` | `logs/r82/submit_r82.txt` | `logs/r82/submissions_poll_r82.txt` | 0.83015 |
+| R84 | `submissions/r84/r84_r62_nomix_close3_conf0002_iou046625_submission.csv` | `submissions/r84/r84_r62_nomix_close3_conf0002_iou046625_summary.json` | `logs/r84/audit_r84.txt` | `logs/r84/submit_r84.txt` | `logs/r84/submissions_poll_r84.txt` | 0.83129 |
+
+Final June 2 submission list snapshot: `logs/final_submissions_2026-06-02.txt`. R84 is the new active 640 px public best at 0.83129. R36 remains the highest observed public score at 0.83245, but R84 is the best result under the active 640 px constraint used for new submissions.

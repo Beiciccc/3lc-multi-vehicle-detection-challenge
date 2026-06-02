@@ -1,0 +1,12 @@
+usage: kaggle competitions topics [-h] [-p PAGE] [-v] [-q] {list,show} ...
+
+options:
+  -h, --help       show this help message and exit
+  -p, --page PAGE  Page number for results paging. Page size is 20 by default
+  -v, --csv        Print results in CSV format (if not set print in table format)
+  -q, --quiet      Suppress printing information about the upload/download progress
+
+commands:
+  {list,show}
+    list           List discussion topics for a competition
+    show           Display a topic with all its comments in tree form

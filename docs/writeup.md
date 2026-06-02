@@ -77,7 +77,7 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R80 | 2026-06-01 | R49 output, bbox scale 1.0025 | 0.82862 |
 | R79 | 2026-06-01 | R49 output, bbox scale 0.9975 | 0.82859 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.82864** from R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83129** from R84.
 
 ## Analysis
 
@@ -112,12 +112,15 @@ The May 31 loop tested whether R41 could be lifted by class-tail filtering and c
 
 The June 1 loop tested bbox geometry calibration from the R49 640 px single-checkpoint output after confidence, NMS, and class-tail filtering had saturated. R78 expanded boxes by 1.005 and scored 0.82855; R80 used a smaller expansion of 1.0025 and scored 0.82862; R79 shrank boxes by 0.9975 and scored 0.82859. All three stayed below the unscaled R49 plateau of 0.82864, so current R49 geometry scaling should not receive further primary quota without a stronger validation or label-review signal.
 
+
+The June 2 loop shifted the active direction from output-only R49 tuning to a new compliant training recipe. R81 used the R62 no-mixup, close-mosaic=3 scratch checkpoint at `conf=0.0005` and scored 0.82857, near but below the old plateau. Lowering the same checkpoint to `conf=0.00025` increased output from 53053 to 71033 boxes and scored 0.83015. A further reduction to `conf=0.0002` produced 78345 boxes and scored 0.83129, establishing the new active 640 px best. The result shows that this checkpoint has better public ranking/localization than R49 when enough low-confidence recall is retained; future work should tune the R62 confidence/NMS/class behavior rather than R49 output geometry.
+
 ## Next Steps
 
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Use R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77 as active 640 px tie baselines, but treat further R49 confidence, NMS, class-tail, and bbox-scale inference-only variants as saturated unless a new diagnostic identifies a specific error mode.
+- Use R84 as the active 640 px best baseline. Treat further R49 confidence, NMS, class-tail, and bbox-scale inference-only variants as saturated unless a new diagnostic identifies a specific error mode.
 - Further R1 confidence/NMS micro-sweeps have low expected value; both NMS shoulders and the confidence right edge underperformed the 0.82864 plateau.
 - Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
 - Do not filter van low-confidence detections from the R15/R36-style output; R29 showed a large public drop from removing only 28 boxes.
-- Next higher-upside work should use the 3LC label-review workflow if credentials are available, or run rule-constrained 640 px training/label diagnostics rather than more R1 confidence/NMS/class-tail micro-sweeps.
+- Next higher-upside work should tune the R62 no-mixup/close-mosaic checkpoint around `conf=0.0002`, including nearby confidence/NMS/class-tail diagnostics, and use train+val merge or oversampling only within the clarified provided-data rules.

@@ -1,0 +1,6 @@
+2026-06-02 refresh summary
+- Submission quota check: start list had no 2026-06-02 records; final list has R81, R82, and R84 accepted.
+- Rules page refreshed: logs/rules_2026-06-02.txt; SHA256 matches logs/rules_2026-06-01.txt.
+- Evaluation page refreshed: logs/evaluation_2026-06-02.txt; SHA256 matches logs/evaluation_2026-06-01.txt.
+- Public Code listing refreshed: logs/kaggle_2026-06-02/kernels.txt and kernels_vote.txt; latest visible run remains Omar notebook dated 2026-05-19.
+- Discussion listing became readable with Kaggle CLI 2.2.0. New topic 703776 Vehicle Categories was posted 2026-06-01 22:12:41 UTC but had no official reply at refresh time. Topic 702180 confirms train+val merge and oversampling are allowed when staying within provided data and other stated restrictions.

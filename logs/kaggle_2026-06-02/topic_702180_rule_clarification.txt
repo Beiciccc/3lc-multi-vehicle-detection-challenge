@@ -1,0 +1,21 @@
+Topic #702180: Rule Clarification: Train+Val Merge and Oversampling Allowed?
+  Author: Harsh Rajbhar
+  Posted: 2026-05-21 18:06:30.099000
+  Votes: 0  Comments: 1
+
+Hi organizers,
+
+I wanted to clarify two points regarding the competition rules to ensure my pipeline is fully compliant.
+
+Is it allowed to merge the provided train and val splits together and create a custom holdout split for local validation/training purposes?
+Is class-balancing through oversampling / duplicating training images allowed, provided no external data, pseudo-labeling, ensembling, or pretrained weights are used?
+
+The model architecture remains strictly YOLOv8n trained from scratch as required by the competition rules.
+
+Comments:
+├─ RishikeshJadhav3LC (2026-05-21 18:28:39.153000) [+0]
+│  Hi, great that you're checking up front and both are fine.
+│  
+│  
+│  
+│  Merging train+val and making your own holdout is Allowed. The "use only the provided data" rule is about not pulling in external images...
