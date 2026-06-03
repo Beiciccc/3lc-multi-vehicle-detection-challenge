@@ -76,8 +76,14 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R78 | 2026-06-01 | R49 output, bbox scale 1.005 | 0.82855 |
 | R80 | 2026-06-01 | R49 output, bbox scale 1.0025 | 0.82862 |
 | R79 | 2026-06-01 | R49 output, bbox scale 0.9975 | 0.82859 |
+| R81 | 2026-06-02 | R62 no-mix close-mosaic=3 weights, 640, conf 0.0005, iou 0.46625 | 0.82857 |
+| R82 | 2026-06-02 | R62 no-mix close-mosaic=3 weights, 640, conf 0.00025, iou 0.46625 | 0.83015 |
+| R84 | 2026-06-02 | R62 no-mix close-mosaic=3 weights, 640, conf 0.0002, iou 0.46625 | 0.83129 |
+| R85 | 2026-06-03 | R62 no-mix close-mosaic=3 weights, 640, conf 0.000175, iou 0.46625 | 0.83129 |
+| R86 | 2026-06-03 | R62 no-mix close-mosaic=3 weights, 640, conf 0.00015, iou 0.46625 | 0.83154 |
+| R89 | 2026-06-03 | R62 no-mix close-mosaic=3 weights, 640, conf 0.000125, iou 0.46625 | 0.83154 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83129** from R84.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83154** from R86/R89.
 
 ## Analysis
 
@@ -115,12 +121,12 @@ The June 1 loop tested bbox geometry calibration from the R49 640 px single-chec
 
 The June 2 loop shifted the active direction from output-only R49 tuning to a new compliant training recipe. R81 used the R62 no-mixup, close-mosaic=3 scratch checkpoint at `conf=0.0005` and scored 0.82857, near but below the old plateau. Lowering the same checkpoint to `conf=0.00025` increased output from 53053 to 71033 boxes and scored 0.83015. A further reduction to `conf=0.0002` produced 78345 boxes and scored 0.83129, establishing the new active 640 px best. The result shows that this checkpoint has better public ranking/localization than R49 when enough low-confidence recall is retained; future work should tune the R62 confidence/NMS/class behavior rather than R49 output geometry.
 
+The June 3 loop continued the same R62 low-confidence curve. R85 at `conf=0.000175` produced 83151 boxes and tied R84 at 0.83129, suggesting the improvement region had not vanished but was not monotonic at every step. R86 at `conf=0.00015` produced 89112 boxes and improved to 0.83154. After that result, the third accepted submission adapted away from a pre-generated NMS shoulder diagnostic: R89 lowered confidence to `0.000125`, produced 96946 boxes, and tied 0.83154. R87 (`conf=0.000225`) and R88 (`conf=0.0002, iou=0.466125`) were generated/audited controls but not submitted. The active search should stay on R62 recall calibration below `conf=0.00015`, with NMS/class-tail checks as secondary controls.
+
 ## Next Steps
 
-- Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
-- Do not filter van low-confidence detections from the R15 output; R29 showed a large public drop from removing only 28 boxes.
-- Use R84 as the active 640 px best baseline. Treat further R49 confidence, NMS, class-tail, and bbox-scale inference-only variants as saturated unless a new diagnostic identifies a specific error mode.
-- Further R1 confidence/NMS micro-sweeps have low expected value; both NMS shoulders and the confidence right edge underperformed the 0.82864 plateau.
-- Avoid confidence increases above `0.001`; R13 dropped to 0.82691.
-- Do not filter van low-confidence detections from the R15/R36-style output; R29 showed a large public drop from removing only 28 boxes.
-- Next higher-upside work should tune the R62 no-mixup/close-mosaic checkpoint around `conf=0.0002`, including nearby confidence/NMS/class-tail diagnostics, and use train+val merge or oversampling only within the clarified provided-data rules.
+- Use R86/R89 as the active 640 px best baseline at `0.83154`; R84 is now a previous baseline.
+- Continue R62 low-confidence calibration below `conf=0.00015`, but watch for max-det saturation and FP-heavy tails as output approaches 100k boxes.
+- Keep R88 (`conf=0.0002, iou=0.466125`) and R87 (`conf=0.000225`) as generated/audited but unsubmitted controls; submit only if future evidence points back toward NMS or right-threshold checks.
+- Use the official June 3 discussion clarification: validation labels are the best reference for vehicle categories because training labels are messy.
+- Keep all future work within YOLOv8n scratch, single model, 640 px, provided-data-only, no TTA, no ensemble, no pseudo-labeling, no distillation.

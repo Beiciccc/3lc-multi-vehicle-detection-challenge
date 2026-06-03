@@ -1,0 +1,13 @@
+usage: kaggle competitions pages [-h] [-v] [-q] [--content]
+                                 [--page-name PAGE_NAME]
+                                 [competition]
+
+options:
+  -h, --help            show this help message and exit
+  competition           Competition URL suffix (use "kaggle competitions list" to show options)
+                        If empty, the default competition will be used (use "kaggle config set competition")"
+  -v, --csv             Print results in CSV format (if not set print in table format)
+  -q, --quiet           Suppress printing information about the upload/download progress
+  --content             Show full page content
+  --page-name PAGE_NAME
+                        Filter to a specific page (e.g. "description", "rules", "evaluation")

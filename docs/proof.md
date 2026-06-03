@@ -257,4 +257,15 @@ Final June 1 submission list snapshot: `logs/final_submissions_2026-06-01.txt`. 
 | R82 | `submissions/r82/r82_r62_nomix_close3_conf00025_iou046625_submission.csv` | `submissions/r82/r82_r62_nomix_close3_conf00025_iou046625_summary.json` | `logs/r82/audit_r82.txt` | `logs/r82/submit_r82.txt` | `logs/r82/submissions_poll_r82.txt` | 0.83015 |
 | R84 | `submissions/r84/r84_r62_nomix_close3_conf0002_iou046625_submission.csv` | `submissions/r84/r84_r62_nomix_close3_conf0002_iou046625_summary.json` | `logs/r84/audit_r84.txt` | `logs/r84/submit_r84.txt` | `logs/r84/submissions_poll_r84.txt` | 0.83129 |
 
-Final June 2 submission list snapshot: `logs/final_submissions_2026-06-02.txt`. R84 is the new active 640 px public best at 0.83129. R36 remains the highest observed public score at 0.83245, but R84 is the best result under the active 640 px constraint used for new submissions.
+Final June 2 submission list snapshot: `logs/final_submissions_2026-06-02.txt`. R84 is the new active 640 px public best at 0.83129. R36 remains the highest observed public score at 0.83245, but R84 is the best result under the active 640 px constraint used for new submissions. R83 (`submissions/r83/r83_r63_lightaug_nomix_conf0005_iou046625_submission.csv`) was generated and audited, but it was not submitted and has no public score.
+
+
+## June 3 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R85 | `submissions/r85/r85_r62_nomix_close3_conf000175_iou046625_submission.csv` | `submissions/r85/r85_r62_nomix_close3_conf000175_iou046625_summary.json` | `logs/r85/audit_r85.txt` | `logs/r85/submit_r85.txt` | `logs/r85/submissions_poll_r85.txt` | 0.83129 |
+| R86 | `submissions/r86/r86_r62_nomix_close3_conf00015_iou046625_submission.csv` | `submissions/r86/r86_r62_nomix_close3_conf00015_iou046625_summary.json` | `logs/r86/audit_r86.txt` | `logs/r86/submit_r86.txt` | `logs/r86/submissions_poll_r86.txt` | 0.83154 |
+| R89 | `submissions/r89/r89_r62_nomix_close3_conf000125_iou046625_submission.csv` | `submissions/r89/r89_r62_nomix_close3_conf000125_iou046625_summary.json` | `logs/r89/audit_r89.txt` | `logs/r89/submit_r89.txt` | `logs/r89/submissions_poll_r89.txt` | 0.83154 |
+
+Final June 3 submission list snapshot: `logs/final_submissions_2026-06-03.txt`. R86 and R89 are the new active 640 px public best at 0.83154. R36 remains the highest observed public score at 0.83245, but R86/R89 are the best results under the active 640 px constraint used for new submissions. R87 (`conf=0.000225`) and R88 (`conf=0.0002, iou=0.466125`) were generated and audited but not submitted; they have no public score.

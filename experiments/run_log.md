@@ -837,3 +837,43 @@ Next candidate directions:
 - Continue around R62 low-confidence inference: nearby `conf=0.00015-0.000225`, NMS shoulder checks, and class-tail diagnostics from the R84 output.
 - Use the rule clarification that train+val merge and oversampling are allowed, but only within the provided data and no-pretraining/no-external/no-pseudo/no-ensemble constraints.
 - Do not spend primary quota on R49 output-only geometry or tail filters unless used as controls.
+
+
+## 2026-06-03 submission loop x3
+
+Context:
+- Submission list was queried at loop start on 2026-06-03 UTC/Europe-London. The starting list had no 2026-06-03 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R85, R86, and R89 were accepted and completed.
+- Rules and Evaluation pages were refreshed and matched the 2026-06-02 copies by SHA256. Active constraints remain YOLOv8n only, 640 px input size, from-scratch/no pretrained for training runs, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+- Public Code listing was refreshed; the latest visible notebook remained Omar's 2026-05-19 run. Discussion topic 703776 received an official reply on 2026-06-03: training labels are messy, validation/test labels have been cleaned, and the validation set is the best category-labeling reference.
+- Strategy: continue the R62 no-mixup/close-mosaic=3 scratch checkpoint low-confidence sweep after R84 established the new active best. R85 and R86 tested lower confidence values; after R86 improved, the third submission adapted away from the generated R88 NMS-shoulder diagnostic and instead tested an even lower confidence R89.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R85 | `submissions/r85/r85_r62_nomix_close3_conf000175_iou046625_submission.csv` | R62 no-mix close-mosaic=3 checkpoint, 640, conf 0.000175, iou 0.46625 | audit ok / 83151 boxes | 0.83129 |
+| R86 | `submissions/r86/r86_r62_nomix_close3_conf00015_iou046625_submission.csv` | Same R62 checkpoint, 640, conf 0.00015, iou 0.46625 | audit ok / 89112 boxes | 0.83154 |
+| R89 | `submissions/r89/r89_r62_nomix_close3_conf000125_iou046625_submission.csv` | Same R62 checkpoint, 640, conf 0.000125, iou 0.46625 | audit ok / 96946 boxes | 0.83154 |
+
+Generated but not submitted:
+- R87: `submissions/r87/r87_r62_nomix_close3_conf000225_iou046625_submission.csv`, audit ok / 74385 boxes, no public score.
+- R88: `submissions/r88/r88_r62_nomix_close3_conf0002_iou046125_submission.csv`, audit ok / 78328 boxes, no public score.
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best is now `0.83154` from R86/R89.
+
+Error analysis:
+- R85 tied R84 despite adding roughly 4800 boxes, so the curve did not improve at every lower threshold.
+- R86 improved by 0.00025 over R84/R85, showing that the R62 checkpoint still benefits from more low-confidence recall around 89k boxes.
+- R89 tied R86 after adding another 7800+ boxes, suggesting the useful recall gain may be flattening near `conf=0.000125`; further drops should be tested carefully because FP load and max-det saturation risk are increasing.
+- R88 was kept unsubmitted because R86's improvement made the confidence-left direction higher priority than NMS-left suppression for the last quota slot.
+
+Repository/proof updates:
+- Added R85/R86/R89 submission, summary, audit, submit/poll/final-list artifacts.
+- Added generated-but-unsubmitted R87/R88 summary/audit artifacts for traceability.
+- Added June 3 rules/evaluation/code/discussion refresh logs and summary.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Continue around R62 `conf=0.00010-0.00015`, with one careful lower point and one max-det/FP diagnostic if quota allows.
+- Revisit R88-style NMS only after the confidence curve stops improving or starts dropping.
+- Use validation-set category examples for any future class-tail diagnostics because the official discussion says validation labels are the best category reference.

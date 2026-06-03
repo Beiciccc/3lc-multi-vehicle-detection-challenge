@@ -1,0 +1,18 @@
+2026-06-03 refresh summary
+
+Submission quota check:
+- logs/submissions_2026-06-03_start.txt shows no 2026-06-03 UTC submissions at start; quota treated as 3/3.
+
+Rules/evaluation:
+- rules SHA256 matches 2026-06-02: a1b34f9fde54fdbabc5e85f4ff732db6e22691b42930676230d4e67d658a9437.
+- evaluation SHA256 matches 2026-06-02: 702fe4526429e5dddebbe2f073d82103648ede2ff37a05f5f8e3a0045f358678.
+- Active constraints remain YOLOv8n only, scratch/no pretrained/no external/no TTA/no ensemble/no pseudo, input 640 px.
+
+Code:
+- logs/kaggle_2026-06-03/kernels_date.txt and kernels_vote.txt show no new Code notebooks since 2026-05-19.
+
+Discussion:
+- Topic 703776 Vehicle Categories has one official reply on 2026-06-03 00:16:41 UTC.
+- Organizer notes training labels are messy; validation and test sets have been cleaned; validation set is the best reference for intended vehicle category labeling.
+- Topic 702180 still confirms train+val merge/custom holdout and oversampling/duplication are allowed within provided-data constraints.
+- Topic 697032 still confirms external scripts for finding training label issues are allowed if changes are committed back into 3LC and no external data/labels are used.

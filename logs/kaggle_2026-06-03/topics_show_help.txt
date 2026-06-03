@@ -1,0 +1,15 @@
+usage: kaggle competitions topics show [-h] [--page-size PAGE_SIZE]
+                                       [--page-token PAGE_TOKEN] [-v] [-q]
+                                       topic_ref [topic_id_arg]
+
+options:
+  -h, --help            show this help message and exit
+  --page-size PAGE_SIZE
+                        Number of items to show on a page. Default size is 20, max is 200
+  --page-token PAGE_TOKEN
+                        Page token for results paging.
+  -v, --csv             Print results in CSV format (if not set print in table format)
+  -q, --quiet           Suppress printing information about the upload/download progress
+  topic_ref             Topic reference in format <forum-name>/<topic-id> or just <topic-id>.
+                        You can also pass <forum-name> and <topic-id> as two separate arguments.
+  topic_id_arg          Topic ID (when using two-arg form: <competition> <topic-id>)
