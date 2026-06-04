@@ -877,3 +877,42 @@ Next candidate directions:
 - Continue around R62 `conf=0.00010-0.00015`, with one careful lower point and one max-det/FP diagnostic if quota allows.
 - Revisit R88-style NMS only after the confidence curve stops improving or starts dropping.
 - Use validation-set category examples for any future class-tail diagnostics because the official discussion says validation labels are the best category reference.
+
+
+## 2026-06-04 submission loop x3
+
+Context:
+- Submission list was queried at loop start on 2026-06-04 UTC/Europe-London. The starting list had no 2026-06-04 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R91, R90, and R93 were accepted and completed.
+- Rules and Evaluation pages were refreshed and matched the 2026-06-03 copies by SHA256. Active constraints remain YOLOv8n only, 640 px input size, from-scratch/no pretrained for training runs, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+- Public Code listing was refreshed; no new notebook appeared since 2026-05-19. Discussion topic 704140 added 3LC package-index installation instructions, which affects environment setup only. Topic 703776 added follow-up replies but the modeling guidance remains: training labels are messy, validation/test labels are cleaned, and validation is the best category-labeling reference.
+- Strategy: continue R62 no-mixup/close-mosaic=3 low-confidence calibration after R86/R89 established a `0.83154` active baseline. Submit the closest lower point first, then adapt based on public feedback.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R91 | `submissions/r91/r91_r62_nomix_close3_conf0001125_iou046625_submission.csv` | R62 no-mix close-mosaic=3 checkpoint, 640, conf 0.0001125, iou 0.46625 | audit ok / 101731 boxes | 0.83175 |
+| R90 | `submissions/r90/r90_r62_nomix_close3_conf0001_iou046625_submission.csv` | Same R62 checkpoint, 640, conf 0.0001, iou 0.46625 | audit ok / 107625 boxes | 0.83175 |
+| R93 | `submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv` | Same R62 checkpoint, 640, conf 0.000075, iou 0.46625 | audit ok / 123341 boxes | 0.83235 |
+
+Generated but not submitted:
+- R92: `submissions/r92/r92_r62_nomix_close3_conf000125_iou046125_submission.csv`, audit ok / 96931 boxes, no public score.
+
+Highest observed public score remains R36 `0.83245`, but the active 640 px rule-constrained best is now `0.83235` from R93.
+
+Error analysis:
+- R91 improved over R86/R89 by 0.00021, confirming that the useful low-confidence recall curve had not stopped at 0.000125.
+- R90 tied R91 despite adding about 5900 boxes, suggesting a short plateau around `0.00010-0.0001125`.
+- R93 broke that plateau and improved by another 0.00060, showing that additional extremely low-confidence detections still contain public true positives for this checkpoint.
+- The output size is now high enough that future lower thresholds should be treated as high variance: FP load and per-image `max_det=300` saturation may become the next limiting factors.
+
+Repository/proof updates:
+- Added R91/R90/R93 submission, summary, audit, submit/poll/final-list artifacts.
+- Added generated-but-unsubmitted R92 summary/audit artifacts for traceability.
+- Added June 4 rules/evaluation/code/discussion refresh logs and summary.
+- Updated README, write-up, proof index, and chronological experiment log.
+
+Next candidate directions:
+- Test one smaller lower-confidence point around `conf=0.00006-0.00007` if quota is available.
+- Pair that with a diagnostic for max-det saturation or class-tail FP pruning if output continues to grow.
+- Do not spend primary quota on R49/R1 output-only tuning; R62 low-threshold recall is the only active high-yield direction.

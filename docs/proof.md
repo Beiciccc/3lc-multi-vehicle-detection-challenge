@@ -269,3 +269,14 @@ Final June 2 submission list snapshot: `logs/final_submissions_2026-06-02.txt`. 
 | R89 | `submissions/r89/r89_r62_nomix_close3_conf000125_iou046625_submission.csv` | `submissions/r89/r89_r62_nomix_close3_conf000125_iou046625_summary.json` | `logs/r89/audit_r89.txt` | `logs/r89/submit_r89.txt` | `logs/r89/submissions_poll_r89.txt` | 0.83154 |
 
 Final June 3 submission list snapshot: `logs/final_submissions_2026-06-03.txt`. R86 and R89 are the new active 640 px public best at 0.83154. R36 remains the highest observed public score at 0.83245, but R86/R89 are the best results under the active 640 px constraint used for new submissions. R87 (`conf=0.000225`) and R88 (`conf=0.0002, iou=0.466125`) were generated and audited but not submitted; they have no public score.
+
+
+## June 4 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R91 | `submissions/r91/r91_r62_nomix_close3_conf0001125_iou046625_submission.csv` | `submissions/r91/r91_r62_nomix_close3_conf0001125_iou046625_summary.json` | `logs/r91/audit_r91.txt` | `logs/r91/submit_r91.txt` | `logs/r91/submissions_poll_r91.txt` | 0.83175 |
+| R90 | `submissions/r90/r90_r62_nomix_close3_conf0001_iou046625_submission.csv` | `submissions/r90/r90_r62_nomix_close3_conf0001_iou046625_summary.json` | `logs/r90/audit_r90.txt` | `logs/r90/submit_r90.txt` | `logs/r90/submissions_poll_r90.txt` | 0.83175 |
+| R93 | `submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv` | `submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_summary.json` | `logs/r93/audit_r93.txt` | `logs/r93/submit_r93.txt` | `logs/r93/submissions_poll_r93.txt` | 0.83235 |
+
+Final June 4 submission list snapshot: `logs/final_submissions_2026-06-04.txt`; final verification snapshot: `logs/final_submissions_2026-06-04_verify.txt`. R93 is the new active 640 px public best at 0.83235. R36 remains the highest observed public score at 0.83245, but R93 is the best result under the active 640 px constraint used for new submissions. R92 (`conf=0.000125, iou=0.466125`) was generated and audited but not submitted; it has no public score.

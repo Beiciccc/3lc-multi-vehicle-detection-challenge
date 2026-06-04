@@ -1,0 +1,12 @@
+id,title,authorName,commentCount,votes,postDate
+702180,Rule Clarification: Train+Val Merge and Oversampling Allowed?,Harsh Rajbhar,1,0,2026-05-21 18:06:30.099000
+id,authorName,postDate,votes,content
+3461906,RishikeshJadhav3LC,2026-05-21 18:28:39.153000,0,"<p>Hi, great that you're checking up front and both are fine.</p>
+<ol>
+<li>Merging train+val and making your own holdout is Allowed. The ""use only the provided data"" rule is about not pulling in external images and it doesn't require you to preserve the official train/val partition. Feel free to repartition within the provided labeled data however helps your pipeline.</li>
+<li>Class balancing via oversampling/duplication is also allowed under the conditions you listed. Duplicating training images to rebalance classes doesn't fall under any of the prohibited techniques. Tip: you don't actually need to physically duplicate files as 3LC has built in sample weighting that achieves the same effect more cleanly. Set sampling_weights=True in the 3LC Settings passed to training and bump up the weight column on underrepresented class rows in the Dashboard. The data loader will then draw those samples more often during training. 
+Relevant 3LC docs FYI:
+– Sample Weights: <a href=""https://docs.3lc.ai/3lc/latest/user-guide/column-types/weight.html"" target=""_blank"">https://docs.3lc.ai/3lc/latest/user-guide/column-types/weight.html</a>
+– YOLO+sampling_weights examples: <a href=""https://docs.3lc.ai/3lc/latest/examples/tutorials/3-training-and-metrics/"" target=""_blank"">https://docs.3lc.ai/3lc/latest/examples/tutorials/3-training-and-metrics/</a></li>
+</ol>
+<p>Good luck!</p>"

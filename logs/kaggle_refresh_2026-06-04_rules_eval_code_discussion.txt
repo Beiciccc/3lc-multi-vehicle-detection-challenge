@@ -1,0 +1,18 @@
+2026-06-04 refresh summary
+
+Submission quota check:
+- logs/submissions_2026-06-04_start.txt shows no 2026-06-04 UTC submissions at start; quota treated as 3/3.
+
+Rules/evaluation:
+- rules SHA256 matches 2026-06-03: a1b34f9fde54fdbabc5e85f4ff732db6e22691b42930676230d4e67d658a9437.
+- evaluation SHA256 matches 2026-06-03: 702fe4526429e5dddebbe2f073d82103648ede2ff37a05f5f8e3a0045f358678.
+- Active constraints remain YOLOv8n only, scratch/no pretrained/no external/no TTA/no ensemble/no pseudo, input 640 px.
+
+Code:
+- logs/kaggle_2026-06-04/kernels_date.txt and kernels_vote.txt show no new Code notebooks since 2026-05-19. Vote counts changed only.
+
+Discussion:
+- Topic 704140 was added on 2026-06-03: 3LC package installation commands changed because latest releases are hosted on the 3LC package index. This affects environment setup only, not modeling rules.
+- Topic 703776 has additional replies pointing users to topic 704140 for installation. The earlier organizer guidance remains: training labels are messy; validation/test labels are cleaned; validation set is the best category-labeling reference.
+- Topic 702180 still confirms train+val merge/custom holdout and oversampling/duplication are allowed within provided-data constraints.
+- Topic 697032 still confirms external scripts for finding training label issues are allowed if changes are committed back into 3LC and no external data/labels are used.

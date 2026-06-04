@@ -1,0 +1,19 @@
+Topic #703776: Vehicle Categories
+  Author: Benson Wainaina
+  Posted: 2026-06-01 22:12:41.334000
+  Votes: 0  Comments: 3
+
+I'm curious whether the pre-labeled images are accurate with respect to vehicle type classification. If not, is there a reference source where I can view examples of each vehicle category?
+
+I'm asking because I'm finding it difficult to distinguish some vans from cars in certain images (yeah, me the human).
+
+Comments:
+├─ RishikeshJadhav3LC (2026-06-03 00:16:41.153000) [+0]
+│  Hi Benson,
+│  
+│  The training set labels are the original labels provided with the source dataset and are messy. To help guide your annotations we've cleaned the validation and test sets so the validati...
+  ├─ Benson Wainaina (2026-06-03 12:47:25.673000) [+0]
+  │  Thanks, this helps. Also, realised I can't install  3lc [This project has been quarantined]. When will this be fixed since my project broke due to this😅
+    ├─ Kelly Walker (2026-06-03 15:34:41.507000) [+0]
+    │  Please see this post for instructions on installing the latest versions of 3lc:
+    │  https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/discussion/704140

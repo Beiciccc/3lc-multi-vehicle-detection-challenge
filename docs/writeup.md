@@ -82,8 +82,11 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R85 | 2026-06-03 | R62 no-mix close-mosaic=3 weights, 640, conf 0.000175, iou 0.46625 | 0.83129 |
 | R86 | 2026-06-03 | R62 no-mix close-mosaic=3 weights, 640, conf 0.00015, iou 0.46625 | 0.83154 |
 | R89 | 2026-06-03 | R62 no-mix close-mosaic=3 weights, 640, conf 0.000125, iou 0.46625 | 0.83154 |
+| R91 | 2026-06-04 | R62 no-mix close-mosaic=3 weights, 640, conf 0.0001125, iou 0.46625 | 0.83175 |
+| R90 | 2026-06-04 | R62 no-mix close-mosaic=3 weights, 640, conf 0.0001, iou 0.46625 | 0.83175 |
+| R93 | 2026-06-04 | R62 no-mix close-mosaic=3 weights, 640, conf 0.000075, iou 0.46625 | 0.83235 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83154** from R86/R89.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83235** from R93.
 
 ## Analysis
 
@@ -123,10 +126,12 @@ The June 2 loop shifted the active direction from output-only R49 tuning to a ne
 
 The June 3 loop continued the same R62 low-confidence curve. R85 at `conf=0.000175` produced 83151 boxes and tied R84 at 0.83129, suggesting the improvement region had not vanished but was not monotonic at every step. R86 at `conf=0.00015` produced 89112 boxes and improved to 0.83154. After that result, the third accepted submission adapted away from a pre-generated NMS shoulder diagnostic: R89 lowered confidence to `0.000125`, produced 96946 boxes, and tied 0.83154. R87 (`conf=0.000225`) and R88 (`conf=0.0002, iou=0.466125`) were generated/audited controls but not submitted. The active search should stay on R62 recall calibration below `conf=0.00015`, with NMS/class-tail checks as secondary controls.
 
+The June 4 loop confirmed that the R62 recall curve was still below its public optimum. R91 at `conf=0.0001125` produced 101731 boxes and improved to 0.83175. R90 at `conf=0.0001` produced 107625 boxes and tied 0.83175. The final adaptive submission, R93 at `conf=0.000075`, produced 123341 boxes and reached 0.83235, the strongest active 640 px result so far and only 0.00010 below the historical 768 px R36 score. R92 (`conf=0.000125, iou=0.466125`) was generated/audited but not submitted because the confidence-left direction continued to outperform NMS controls.
+
 ## Next Steps
 
-- Use R86/R89 as the active 640 px best baseline at `0.83154`; R84 is now a previous baseline.
-- Continue R62 low-confidence calibration below `conf=0.00015`, but watch for max-det saturation and FP-heavy tails as output approaches 100k boxes.
-- Keep R88 (`conf=0.0002, iou=0.466125`) and R87 (`conf=0.000225`) as generated/audited but unsubmitted controls; submit only if future evidence points back toward NMS or right-threshold checks.
-- Use the official June 3 discussion clarification: validation labels are the best reference for vehicle categories because training labels are messy.
+- Use R93 as the active 640 px best baseline at `0.83235`; R36 remains the historical 768 px reference at `0.83245`.
+- Continue R62 confidence calibration cautiously below `conf=0.000075`; output already exceeds 123k boxes, so FP and max-det saturation risk are high.
+- Consider a very small left step (`0.00006-0.00007`) and one NMS/class-tail diagnostic only if the lower-threshold curve stops improving.
+- Keep R92 (`conf=0.000125, iou=0.466125`) as a generated/audited but unsubmitted NMS control.
 - Keep all future work within YOLOv8n scratch, single model, 640 px, provided-data-only, no TTA, no ensemble, no pseudo-labeling, no distillation.

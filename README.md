@@ -70,7 +70,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce active 640 px baseline submission
 
-Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R86/R89 at `0.83154`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R93 at `0.83235`.
 
 ```bash
 python scripts/make_inference_submission.py \
@@ -130,3 +130,5 @@ The June 1 loop tested lightweight bbox geometry calibration from the R49 640 px
 The June 2 loop found a new active 640 px best with the R62 no-mixup/close-mosaic=3 scratch checkpoint. R81 at `conf=0.0005` scored `0.82857`; lowering the same checkpoint to `conf=0.00025` (R82) improved to `0.83015`; lowering further to `conf=0.0002` (R84) reached `0.83129`. This confirms that a compliant training-recipe change plus aggressive low-confidence recall is the new primary direction, while R49 output-only tuning remains saturated.
 
 The June 3 loop continued the R62 low-confidence sweep. R85 at `conf=0.000175` tied R84 at `0.83129`; R86 at `conf=0.00015` improved to `0.83154`; after adapting away from an NMS-side candidate, R89 at `conf=0.000125` also scored `0.83154`. R86/R89 are the new active 640 px best results, and R88 (`conf=0.0002, iou=0.466125`) remains a generated/audited but unsubmitted diagnostic.
+
+The June 4 loop pushed the same R62 checkpoint further down the confidence curve. R91 at `conf=0.0001125` and R90 at `conf=0.0001` both scored `0.83175`, then the more aggressive R93 at `conf=0.000075` reached `0.83235`. R93 is the new active 640 px best and is only 0.00010 below the historical 768 px R36 score. R92 (`conf=0.000125, iou=0.466125`) was generated/audited but not submitted after the confidence-left direction kept improving.
