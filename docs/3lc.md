@@ -1,6 +1,6 @@
 # 3LC Workflow Status
 
-The official starter workflow expects a personal 3LC account and API key, plus 3LC table registration and dashboard inspection.
+The official starter process expects a personal 3LC account and API key, plus 3LC table registration and dashboard inspection.
 
 ## Current Status
 
@@ -29,3 +29,7 @@ python predict.py
 ```
 
 Then add any 3LC dashboard screenshots or project export paths to this document.
+
+## 2026-06-05 Update
+
+The 3LC credential/dashboard path is still unavailable in this runtime. The June 5 refresh noted updated 3LC package-index installation instructions in the competition discussion, but no dashboard export or screenshot was produced. The documented fallback evidence remains reproducible code, training/inference summaries, audits, Kaggle kernel logs, submission logs, and submission-list snapshots.

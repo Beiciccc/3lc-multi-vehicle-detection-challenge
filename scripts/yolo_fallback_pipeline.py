@@ -2,7 +2,7 @@
 """
 Fallback YOLOv8n-from-scratch training and submission generation.
 
-This is used only when the official 3LC starter workflow is blocked by a
+This is used only when the official 3LC starter process is blocked by a
 missing 3LC API key. It keeps the architecture and no-pretraining constraints:
 YOLOv8n YAML, random initialization, single model, no TTA/ensemble.
 """
@@ -315,7 +315,7 @@ def main() -> int:
         "val_map50_95": map5095,
         "audit": audit,
         "args": vars(args) | {"starter_dir": str(starter_dir)},
-        "rule_note": "Fallback path because official 3LC workflow needs a 3LC API key; model is YOLOv8n.yaml from scratch with no pretraining.",
+        "rule_note": "Fallback path because official 3LC process needs a 3LC API key; model is YOLOv8n.yaml from scratch with no pretraining.",
     }
     summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2))

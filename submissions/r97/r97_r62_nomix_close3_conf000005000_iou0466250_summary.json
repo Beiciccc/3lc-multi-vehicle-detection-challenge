@@ -1,0 +1,39 @@
+{
+  "round": "r97",
+  "weights": "/kaggle/working/runs/detect/r62_yolov8n_scratch_e10_seed42_nomix_close3_640_repro_20260605/weights/best.pt",
+  "submission": "/kaggle/working/submissions_20260605/r97_r62_nomix_close3_conf000005000_iou0466250_submission.csv",
+  "imgsz": 640,
+  "conf": 5e-05,
+  "iou": 0.46625,
+  "max_det": 300,
+  "batch": 32,
+  "device": "0",
+  "agnostic_nms": false,
+  "val_metrics": {
+    "map50": 0.8107671618745025,
+    "map50_95": 0.6346771887168178
+  },
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 145692,
+    "boxes_by_class": {
+      "0": 4278,
+      "1": 123120,
+      "2": 4286,
+      "3": 14008
+    },
+    "per_image": {
+      "mean": 148.36252545824848,
+      "median": 139.0,
+      "p95": 254,
+      "p99": 300,
+      "max": 300,
+      "near_max_det_290": 24
+    }
+  },
+  "note": "r97 2026-06-05: R62 nomix close_mosaic=3 reproduction, low confidence sweep",
+  "rule_note": "single YOLOv8n checkpoint, yolov8n.yaml random initialization, provided competition data only, 640 px, no TTA, no ensemble, no pseudo-labeling, no distillation"
+}

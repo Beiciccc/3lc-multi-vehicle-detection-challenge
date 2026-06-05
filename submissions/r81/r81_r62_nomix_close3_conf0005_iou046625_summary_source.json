@@ -41,5 +41,5 @@
     "pred_batch": 32,
     "max_det": 300
   },
-  "rule_note": "Fallback path because official 3LC workflow needs a 3LC API key; model is YOLOv8n.yaml from scratch with no pretraining."
+  "rule_note": "Fallback path because official 3LC process needs a 3LC API key; model is YOLOv8n.yaml from scratch with no pretraining."
 }

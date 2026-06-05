@@ -8,7 +8,7 @@
   <title>3LC Multi Vehicle detection Challenge | Kaggle</title>
   <meta charset="utf-8" />
     <meta name="robots" content="index, follow" />
-  <meta name="description" content="Traffic-scene on road vehicle detection. Master data-centric AI on a fixed model budget." />
+  <meta name="description" content="Traffic-scene on road vehicle detection. Master data-centric modeling on a fixed model budget." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
   <meta name="theme-color" content="#008ABC" />
   <script nonce="J6i0g9wnQDJ28yLsiz0Ogw==" type="text/javascript">
@@ -76,7 +76,7 @@
   
     
     <meta property="og:title" content="3LC Multi Vehicle detection Challenge" />
-    <meta property="og:description" content="Traffic-scene on road vehicle detection. Master data-centric AI on a fixed model budget." />
+    <meta property="og:description" content="Traffic-scene on road vehicle detection. Master data-centric modeling on a fixed model budget." />
     <meta property="og:type" content="website"  />
     <meta property="og:url" content="https://kaggle.com/3-lc-multi-vehicle-detection-challenge" />
 

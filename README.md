@@ -12,7 +12,7 @@ The active experiments follow the competition constraints:
 - Inference: single checkpoint, no ensemble, no TTA, no pseudo-labeling.
 - Submission format: `id,image_id,prediction_string`, matching `competition_starter/sample_submission.csv`.
 
-The official 3LC workflow requires a personal 3LC API key. That workflow was blocked in this environment, so the score-chasing runs use a compliant Ultralytics fallback with YOLOv8n from scratch and documented inference-only sweeps from the R1 checkpoint.
+The official 3LC process requires a personal 3LC API key. That process was blocked in this environment, so the score-chasing runs use a compliant Ultralytics fallback with YOLOv8n from scratch and documented inference-only sweeps from the R1 checkpoint.
 
 ## Repository Layout
 
@@ -26,17 +26,17 @@ The official 3LC workflow requires a personal 3LC API key. That workflow was blo
 - `experiments/run_log.md`: chronological experiment log.
 - `docs/writeup.md`: brief methodology and results write-up.
 - `docs/proof.md`: proof index for submissions, scores, and audits.
-- `docs/3lc.md`: 3LC workflow status and fallback justification.
+- `docs/3lc.md`: 3LC process status and fallback justification.
 
 ## Environment
 
-Python 3.11 was used on the remote GPU server with an NVIDIA RTX 4080. Install dependencies with:
+Python 3.11/3.12 with CUDA was used for training and inference runs. The June 5 reproduction diagnostic was run on Kaggle GPU. Install dependencies with:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-Kaggle credentials must be configured separately in `~/.kaggle/kaggle.json` for API submission.
+Kaggle API credentials must be configured locally before submission.
 
 ## Data
 
@@ -51,7 +51,7 @@ competition_starter/data/test/images
 competition_starter/sample_submission.csv
 ```
 
-On macOS volumes, exclude AppleDouble metadata files (`._*`) and `.DS_Store` from syncs and audits.
+On macOS volumes, exclude AppleDouble metadata files (`._*`) and `.DS_Store` from local file checks and audits.
 
 ## Reproduction
 
@@ -75,10 +75,10 @@ Highest observed public score is R36 at `0.83245`. After re-reading the rules on
 ```bash
 python scripts/make_inference_submission.py \
   --starter-dir competition_starter \
-  --weights competition_starter/runs/detect/r1_yolov8n_scratch_e10_640/weights/best.pt \
-  --out submissions/r50/r50_r1_640_conf000475_iou046625_submission.csv \
-  --summary submissions/r50/r50_r1_640_conf000475_iou046625_summary.json \
-  --imgsz 640 --conf 0.000475 --iou 0.46625 \
+  --weights competition_starter/runs/detect/r62_yolov8n_scratch_e10_seed42_nomix_close3_640/weights/best.pt \
+  --out submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv \
+  --summary submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_summary.json \
+  --imgsz 640 --conf 0.000075 --iou 0.46625 \
   --max-det 300 --batch 32 --device 0 --val
 ```
 
@@ -86,7 +86,7 @@ python scripts/make_inference_submission.py \
 
 ```bash
 python scripts/audit_submission.py \
-  submissions/r50/r50_r1_640_conf000475_iou046625_submission.csv \
+  submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv \
   --sample competition_starter/sample_submission.csv \
   --test-images-dir competition_starter/data/test/images \
   --strict-bbox-inside
@@ -97,8 +97,8 @@ python scripts/audit_submission.py \
 ```bash
 kaggle competitions submit \
   -c 3-lc-multi-vehicle-detection-challenge \
-  -f submissions/r50/r50_r1_640_conf000475_iou046625_submission.csv \
-  -m "r50_r1_640_conf0.000475_iou0.46625"
+  -f submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv \
+  -m "r93_r62_nomix_close3_conf0.000075_iou0.46625"
 ```
 
 Always query `kaggle competitions submissions -c 3-lc-multi-vehicle-detection-challenge` immediately before and after each submit. Count quota only by API accept/reject plus submission-list records.
@@ -132,3 +132,5 @@ The June 2 loop found a new active 640 px best with the R62 no-mixup/close-mosai
 The June 3 loop continued the R62 low-confidence sweep. R85 at `conf=0.000175` tied R84 at `0.83129`; R86 at `conf=0.00015` improved to `0.83154`; after adapting away from an NMS-side candidate, R89 at `conf=0.000125` also scored `0.83154`. R86/R89 are the new active 640 px best results, and R88 (`conf=0.0002, iou=0.466125`) remains a generated/audited but unsubmitted diagnostic.
 
 The June 4 loop pushed the same R62 checkpoint further down the confidence curve. R91 at `conf=0.0001125` and R90 at `conf=0.0001` both scored `0.83175`, then the more aggressive R93 at `conf=0.000075` reached `0.83235`. R93 is the new active 640 px best and is only 0.00010 below the historical 768 px R36 score. R92 (`conf=0.000125, iou=0.466125`) was generated/audited but not submitted after the confidence-left direction kept improving.
+
+The June 5 loop first ran a Kaggle GPU reproduction diagnostic for the R62 no-mix/close-mosaic=3 recipe. That reproduced checkpoint validated lower than the historical R62 checkpoint, so its R94-R98 low-confidence outputs were not submitted. The accepted submissions instead tested R93 class-tail filtering: R99 and R100 both scored `0.83216`, while R101 tied R93 at `0.83235`. The result isolates bus low-confidence detections below `0.0001` as useful and truck detections below `0.0001` as public-neutral.

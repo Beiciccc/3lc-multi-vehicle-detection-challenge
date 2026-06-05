@@ -2,43 +2,37 @@
 
 ## Method
 
-The score-chasing workflow uses the competition-provided data only and keeps the model budget fixed to YOLOv8n. The most stable public checkpoint remains R1, a YOLOv8n model trained from scratch for 10 epochs at 640 px with AdamW and no pretrained weights.
+All scored experiments use only the competition-provided data and keep the model budget fixed to YOLOv8n. Training runs start from `yolov8n.yaml` random initialization with 640 px input size unless explicitly recorded as a historical diagnostic. Inference submissions use one checkpoint at a time with no ensemble, no TTA, no pseudo-labeling, no distillation, and no external data.
 
-The official 3LC starter code is retained, but current runs used a fallback Ultralytics entrypoint because this environment does not have a usable 3LC API key. No external data, pseudo-labels, ensembles, TTA, distillation, or pretrained weights were used.
+The official 3LC starter code is retained. The dashboard-based 3LC process is not available in this runtime because a usable 3LC API key is not configured, so the reproducible fallback path uses Ultralytics YOLOv8n from scratch and records audit/submit/poll evidence for every submitted CSV.
 
-## Findings
+## Current Bests
 
-Longer training improved local validation but hurt public leaderboard score. R2 and R3 showed that local validation can overestimate public performance, especially when confidence filtering is hardened.
+| Scope | Run | Public LB | Notes |
+|---|---|---:|---|
+| Highest observed | R36 | 0.83245 | Historical 768 px R1 inference diagnostic. |
+| Active 640 px | R93/R101 | 0.83235 | R62 no-mix close-mosaic=3 line, 640 px active constraint. |
+| Earlier 640 px plateau | R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77 | 0.82864 | R1/R49 low-confidence plateau. |
 
-The public leaderboard favored high-recall inference from the shorter R1 checkpoint. Reducing NMS IoU from the original `0.65` improved public score by removing duplicate or low-quality overlaps while retaining low-confidence detections.
+## Key Findings
 
-The best observed point is R15: `conf=0.001`, `iou=0.46625`, public LB `0.82769`. The May 7 R16-R18 sweep around that point did not improve it.
+Longer training often improved local validation but hurt public leaderboard score. R2, R34, R42, and the June 5 R62 reproduction all show that local validation is useful for rejecting weak runs but not sufficient for selecting a public-best checkpoint.
+
+The public leaderboard rewards high recall from the right checkpoint. The R1/R49 line saturated around 0.82864 after confidence, NMS, class-tail, and bbox-scaling checks. The R62 no-mixup/close-mosaic=3 checkpoint became the active direction only after aggressive low-confidence inference: R81 0.82857, R82 0.83015, R84 0.83129, R86/R89 0.83154, R90/R91 0.83175, and R93 0.83235.
+
+The June 5 class-tail diagnostics showed that R93's bus tail below 0.0001 should be preserved. R99 and R100 both scored 0.83216 after removing bus detections below 0.0001, while R101 removed only truck detections below 0.0001 and tied R93 at 0.83235.
 
 ## Latest Results
 
-| Round | Checkpoint | Inference | Boxes | Public LB |
+| Round | Source | Inference / post-processing | Boxes | Public LB |
 |---|---|---|---:|---:|
-| R13 | R1 | conf=0.0011, iou=0.46875 | 48422 | 0.82691 |
-| R14 | R1 | conf=0.0009, iou=0.46875 | 53101 | 0.82765 |
-| R15 | R1 | conf=0.001, iou=0.46625 | 50368 | 0.82769 |
-| R16 | R1 | conf=0.001, iou=0.46675 | 50406 | 0.82768 |
-| R17 | R1 | conf=0.001, iou=0.46575 | 50283 | 0.82765 |
-| R18 | R1 | conf=0.001, iou=0.466375 | 50343 | 0.82765 |
-
-Current best: R15, public LB `0.82769`.
+| R91 | R62 no-mix close3 | conf=0.0001125, iou=0.46625 | 101731 | 0.83175 |
+| R90 | R62 no-mix close3 | conf=0.0001, iou=0.46625 | 107625 | 0.83175 |
+| R93 | R62 no-mix close3 | conf=0.000075, iou=0.46625 | 123341 | 0.83235 |
+| R99 | R93 output | filter truck+bus below 0.0001 | 120758 | 0.83216 |
+| R100 | R93 output | filter bus below 0.0001 | 121547 | 0.83216 |
+| R101 | R93 output | filter truck below 0.0001 | 122552 | 0.83235 |
 
 ## Next Direction
 
-Pure NMS interpolation around R15 is saturated. Next useful work should focus on compliant data-centric improvements through the official 3LC workflow if credentials are available, or on short YOLOv8n-from-scratch seed/augmentation variants calibrated with R15-style inference.
-
-## May 12 Update
-
-The May 12 loop tested output-only post-processing around R15 after NMS micro-sweeps had saturated. Bbox shrinkage, bbox expansion, and ultra-low-confidence filtering all underperformed R15:
-
-| Round | Source | Post-processing | Boxes | Public LB |
-|---|---|---|---:|---:|
-| R19 | R15 output | bbox scale 0.985 | 50368 | 0.82644 |
-| R20 | R15 output | bbox scale 1.010 | 50368 | 0.82760 |
-| R21 | R15 output | confidence floor 0.00105 | 49215 | 0.82695 |
-
-Conclusion: preserve R15 geometry and low-confidence tail. The next useful step is a new compliant YOLOv8n-from-scratch checkpoint, then apply R15-style inference calibration.
+Preserve R93's bus low-confidence tail; filtering bus below 0.0001 is harmful. Truck below 0.0001 is public-neutral but not beneficial to remove. The next high-upside path is true lower-confidence inference from the original R62/R93 checkpoint or a better-reproduced 640 px YOLOv8n scratch checkpoint whose validation quality matches the historical R62 run.

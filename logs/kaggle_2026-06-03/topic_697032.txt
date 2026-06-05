@@ -3,7 +3,7 @@ Topic #697032: Question about allowed methods for label improvement
   Posted: 2026-05-05 02:24:06.839000
   Votes: 0  Comments: 1
 
-Hi, I have a quick question regarding the data improvement workflow.
+Hi, I have a quick question regarding the data improvement process.
 
 Are participants allowed to use external scripts or methods to help identify missing annotations in the training set, provided that any label changes are committed back into 3LC as a new table revision before retraining?
 

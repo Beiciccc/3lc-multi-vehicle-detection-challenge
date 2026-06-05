@@ -1,0 +1,24 @@
+{
+  "source": "submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv",
+  "submission": "submissions/r100/r100_r93_filter_bus0001_keep_others000075_submission.csv",
+  "thresholds": {
+    "3": 0.0001
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 121547,
+  "kept_by_class": {
+    "0": 4554,
+    "1": 101689,
+    "2": 4131,
+    "3": 11173
+  },
+  "dropped_by_class": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 1794
+  },
+  "note": "R100 Jun05: R93 output, filter bus below 0.0001, keep truck/car/van at 0.000075",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

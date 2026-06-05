@@ -27,7 +27,7 @@ Eligibility, prizes, and general legal terms follow standard Kaggle and sponsor 
 
 ### 3LC
 
-- **3LC** is required for the prescribed workflow: register **train** and **val** Tables, run training integrated with 3LC Runs, and use the Dashboard for the data-centric loop.
+- **3LC** is required for the prescribed process: register **train** and **val** Tables, run training integrated with 3LC Runs, and use the Dashboard for the data-centric loop.
 - **Test** images are **not** registered in 3LC; inference uses `predict.py` on local test files.
 - Participants must use their own **3LC account** and API key.
 

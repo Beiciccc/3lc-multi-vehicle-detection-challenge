@@ -280,3 +280,15 @@ Final June 3 submission list snapshot: `logs/final_submissions_2026-06-03.txt`. 
 | R93 | `submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv` | `submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_summary.json` | `logs/r93/audit_r93.txt` | `logs/r93/submit_r93.txt` | `logs/r93/submissions_poll_r93.txt` | 0.83235 |
 
 Final June 4 submission list snapshot: `logs/final_submissions_2026-06-04.txt`; final verification snapshot: `logs/final_submissions_2026-06-04_verify.txt`. R93 is the new active 640 px public best at 0.83235. R36 remains the highest observed public score at 0.83245, but R93 is the best result under the active 640 px constraint used for new submissions. R92 (`conf=0.000125, iou=0.466125`) was generated and audited but not submitted; it has no public score.
+
+## June 5 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R99 | `submissions/r99/r99_r93_filter_truckbus0001_keep_carvan000075_submission.csv` | `submissions/r99/r99_r93_filter_truckbus0001_keep_carvan000075_summary.json` | `logs/r99/audit_r99.txt` | `logs/r99/submit_r99.txt` | `logs/r99/submissions_poll_r99_*.txt` | 0.83216 |
+| R100 | `submissions/r100/r100_r93_filter_bus0001_keep_others000075_submission.csv` | `submissions/r100/r100_r93_filter_bus0001_keep_others000075_summary.json` | `logs/r100/audit_r100.txt` | `logs/r100/submit_r100.txt` | `logs/r100/submissions_poll_r100_*.txt` | 0.83216 |
+| R101 | `submissions/r101/r101_r93_filter_truck0001_keep_others000075_submission.csv` | `submissions/r101/r101_r93_filter_truck0001_keep_others000075_summary.json` | `logs/r101/audit_r101.txt` | `logs/r101/submit_r101.txt` | `logs/r101/submissions_poll_r101_*.txt` | 0.83235 |
+
+Final June 5 submission list snapshot: `logs/final_submissions_2026-06-05.txt`. R101 tied the active 640 px public best at 0.83235; R99 and R100 scored 0.83216. R36 remains the highest observed public score at 0.83245, but R93/R101 remain the best results under the active 640 px constraint used for new submissions.
+
+Generated but not submitted on June 5: R94-R98 from the Kaggle GPU R62 reproduction were audited but not submitted because the reproduced checkpoint validated at mAP50 0.81077, below the historical R62 run. R102 was audited but not submitted after R99/R100 showed bus-tail filtering was harmful.

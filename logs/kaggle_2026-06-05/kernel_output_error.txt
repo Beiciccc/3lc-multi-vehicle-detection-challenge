@@ -1,0 +1,3 @@
+Output file downloaded to kaggle_gpu_outputs/r62_lowconf_20260605_error/dataset_r62_nomix_close3.yaml
+Output file downloaded to kaggle_gpu_outputs/r62_lowconf_20260605_error/runs/detect/r62_yolov8n_scratch_e10_seed42_nomix_close3_640_repro_20260605/args.yaml
+Kernel log downloaded to kaggle_gpu_outputs/r62_lowconf_20260605_error/3lc-r62-low-confidence-sweep-2026-06-05.log 

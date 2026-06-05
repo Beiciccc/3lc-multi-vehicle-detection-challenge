@@ -1,0 +1,25 @@
+{
+  "source": "submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv",
+  "submission": "submissions/r99/r99_r93_filter_truckbus0001_keep_carvan000075_submission.csv",
+  "thresholds": {
+    "0": 0.0001,
+    "3": 0.0001
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 120758,
+  "kept_by_class": {
+    "0": 3765,
+    "1": 101689,
+    "2": 4131,
+    "3": 11173
+  },
+  "dropped_by_class": {
+    "0": 789,
+    "1": 0,
+    "2": 0,
+    "3": 1794
+  },
+  "note": "R99 Jun05: R93 output, filter truck and bus below 0.0001, keep car/van low-confidence tail at 0.000075",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

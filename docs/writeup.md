@@ -2,9 +2,9 @@
 
 ## Methodology
 
-All scored experiments use the competition-provided data and YOLOv8n only. The official 3LC workflow was unavailable because no usable 3LC API key was present in the runtime, so the active work used a fallback Ultralytics pipeline that preserves the key competition constraints: YOLOv8n architecture, random initialization for training runs, single model inference, no external data, no pretrained checkpoints, no TTA, no ensemble, and no pseudo-labeling.
+All scored experiments use the competition-provided data and YOLOv8n only. The official 3LC process was unavailable because no usable 3LC API key was present in the runtime, so the active work used a fallback Ultralytics pipeline that preserves the key competition constraints: YOLOv8n architecture, random initialization for training runs, single model inference, no external data, no pretrained checkpoints, no TTA, no ensemble, and no pseudo-labeling.
 
-The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640 px. Later longer training improved local validation but reduced public leaderboard score, so the subsequent iterations focused on public-calibrated inference sweeps from the R1 checkpoint.
+The strongest active 640 px checkpoint is the R62 no-mixup/close-mosaic=3 YOLOv8n-from-scratch run. It became competitive only with very low confidence thresholds; R93 at `conf=0.000075` reached public `0.83235`. Earlier R1/R49 inference sweeps established a lower 640 px plateau at `0.82864`.
 
 ## Key Results
 
@@ -85,8 +85,11 @@ The strongest checkpoint came from R1: YOLOv8n from scratch for 10 epochs at 640
 | R91 | 2026-06-04 | R62 no-mix close-mosaic=3 weights, 640, conf 0.0001125, iou 0.46625 | 0.83175 |
 | R90 | 2026-06-04 | R62 no-mix close-mosaic=3 weights, 640, conf 0.0001, iou 0.46625 | 0.83175 |
 | R93 | 2026-06-04 | R62 no-mix close-mosaic=3 weights, 640, conf 0.000075, iou 0.46625 | 0.83235 |
+| R99 | 2026-06-05 | R93 output, filter truck+bus below 0.0001, keep car/van at 0.000075 | 0.83216 |
+| R100 | 2026-06-05 | R93 output, filter bus below 0.0001, keep truck/car/van at 0.000075 | 0.83216 |
+| R101 | 2026-06-05 | R93 output, filter truck below 0.0001, keep car/van/bus at 0.000075 | 0.83235 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83235** from R93.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83235** from R93/R101.
 
 ## Analysis
 
@@ -135,3 +138,5 @@ The June 4 loop confirmed that the R62 recall curve was still below its public o
 - Consider a very small left step (`0.00006-0.00007`) and one NMS/class-tail diagnostic only if the lower-threshold curve stops improving.
 - Keep R92 (`conf=0.000125, iou=0.466125`) as a generated/audited but unsubmitted NMS control.
 - Keep all future work within YOLOv8n scratch, single model, 640 px, provided-data-only, no TTA, no ensemble, no pseudo-labeling, no distillation.
+
+The June 5 loop used Kaggle GPU for a reproducibility diagnostic of the R62 no-mix/close-mosaic=3 training recipe. The corrected run completed with YOLOv8n from scratch at 640 px, but validation mAP50 was 0.81077, materially below the historical R62 mAP50 of 0.83104. Its R94-R98 low-confidence outputs were therefore kept as audited diagnostics rather than submitted. The accepted submissions used R93 output-only class-tail filtering: R99 and R100 both fell to 0.83216, while R101 tied R93 at 0.83235. This isolates the bus tail below 0.0001 as useful recall and shows that truck tail removal below 0.0001 is public-neutral but not beneficial.
