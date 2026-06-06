@@ -51,7 +51,7 @@ competition_starter/data/test/images
 competition_starter/sample_submission.csv
 ```
 
-On macOS volumes, exclude AppleDouble metadata files (`._*`) and `.DS_Store` from local file checks and audits.
+On macOS volumes, exclude AppleDouble metadata files (`._*`) and `.DS_Store` from syncs and audits.
 
 ## Reproduction
 
@@ -70,7 +70,7 @@ python scripts/yolo_fallback_pipeline.py \
 
 ### Reproduce active 640 px baseline submission
 
-Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R93 at `0.83235`.
+Highest observed public score is R36 at `0.83245`. After re-reading the rules on May 20, new submissions use the explicit 640 px input-size constraint; the active 640 px baseline is R93/R101/R110 at `0.83235`.
 
 ```bash
 python scripts/make_inference_submission.py \
@@ -134,3 +134,5 @@ The June 3 loop continued the R62 low-confidence sweep. R85 at `conf=0.000175` t
 The June 4 loop pushed the same R62 checkpoint further down the confidence curve. R91 at `conf=0.0001125` and R90 at `conf=0.0001` both scored `0.83175`, then the more aggressive R93 at `conf=0.000075` reached `0.83235`. R93 is the new active 640 px best and is only 0.00010 below the historical 768 px R36 score. R92 (`conf=0.000125, iou=0.466125`) was generated/audited but not submitted after the confidence-left direction kept improving.
 
 The June 5 loop first ran a Kaggle GPU reproduction diagnostic for the R62 no-mix/close-mosaic=3 recipe. That reproduced checkpoint validated lower than the historical R62 checkpoint, so its R94-R98 low-confidence outputs were not submitted. The accepted submissions instead tested R93 class-tail filtering: R99 and R100 both scored `0.83216`, while R101 tied R93 at `0.83235`. The result isolates bus low-confidence detections below `0.0001` as useful and truck detections below `0.0001` as public-neutral.
+
+The June 6 loop attempted a fresh Kaggle GPU train+val low-confidence run, but Kaggle repeatedly rejected new GPU execution with the account's batch GPU session limit. The accepted submissions were R94, R108, and R110. R94, a Kaggle GPU R62 reproduction output, scored `0.81600` and confirmed that reproduced checkpoint is weaker. R108 filtered only van detections below `0.0001` and scored `0.83194`, so the R93 van tail should be retained. R110 kept the top 100 predictions per image per class from R93 and tied the active 640 px best at `0.83235`, indicating that the removed low-confidence car overflow is public-neutral.

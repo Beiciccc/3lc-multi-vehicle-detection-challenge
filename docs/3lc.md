@@ -1,4 +1,4 @@
-# 3LC Workflow Status
+# 3LC Process Status
 
 The official starter process expects a personal 3LC account and API key, plus 3LC table registration and dashboard inspection.
 
@@ -33,3 +33,7 @@ Then add any 3LC dashboard screenshots or project export paths to this document.
 ## 2026-06-05 Update
 
 The 3LC credential/dashboard path is still unavailable in this runtime. The June 5 refresh noted updated 3LC package-index installation instructions in the competition discussion, but no dashboard export or screenshot was produced. The documented fallback evidence remains reproducible code, training/inference summaries, audits, Kaggle kernel logs, submission logs, and submission-list snapshots.
+
+## 2026-06-06 Update
+
+The 3LC credential/dashboard path remains unavailable in this runtime. The June 6 refresh did not identify new competition code or rule changes. Evidence for this loop consists of reproducible code, generated submission summaries, local audits, Kaggle GPU/kernel logs, submit logs, and final submission-list snapshots.

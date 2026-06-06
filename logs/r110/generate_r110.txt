@@ -1,0 +1,19 @@
+{
+  "source": "submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv",
+  "submission": "submissions/r110/r110_r93_boxscale099875_submission.csv",
+  "scale": 0.99875,
+  "eps": 1e-06,
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 123341,
+  "removed": 0,
+  "adjusted": 123341,
+  "boxes_by_class": {
+    "0": 4554,
+    "1": 101689,
+    "2": 4131,
+    "3": 12967
+  },
+  "note": "R110 Jun06: R93 output, scale boxes by 0.99875 around centers",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

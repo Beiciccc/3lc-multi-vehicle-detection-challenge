@@ -1,0 +1,1 @@
+2026-06-06 Kaggle GPU session block: new r103 trainval_lowconf kernel push repeatedly rejected by Kaggle API with Maximum batch GPU session count of 2 reached; using previously completed Kaggle GPU outputs R94/R95/R98 as fallback candidates.

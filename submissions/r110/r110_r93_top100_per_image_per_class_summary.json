@@ -1,0 +1,23 @@
+{
+  "source": "submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv",
+  "submission": "submissions/r110/r110_r93_top100_per_image_per_class_submission.csv",
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 106323,
+  "dropped_total": 17018,
+  "cap_per_image_per_class": 100,
+  "kept_by_class": {
+    "0": 4554,
+    "1": 84671,
+    "2": 4131,
+    "3": 12967
+  },
+  "dropped_by_class": {
+    "0": 0,
+    "1": 17018,
+    "2": 0,
+    "3": 0
+  },
+  "note": "R110 Jun06: R93 output, keep top 100 predictions per image per class by confidence",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

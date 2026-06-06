@@ -3,7 +3,7 @@
 Protocol for this session:
 - For each requested submission loop, first query current submissions/quota state.
 - Review Kaggle Code/Discussion updates before choosing the experiment.
-- Train/validate in a GPU runtime and record project artifacts locally.
+- Train/validate on GPU server, sync project artifacts back to this local directory.
 - Submit only after validation and submission-file audit pass.
 - Count a submission only when Kaggle accepts/rejects via API and the submission list shows a new record.
 
@@ -31,16 +31,16 @@ Error analysis:
 - High-confidence filtering improved local validation but severely hurt public, indicating the public split likely rewards retaining low-confidence candidates for recall.
 - Best next direction should not be further threshold hardening. Prefer R1-like training with low conf, plus data-centric label review or group-aware validation if 3LC API access is provided.
 
-Artifacts recorded:
-- Run logs: `logs/`
+Artifacts synced:
+- Remote logs: `logs/remote/`
 - Submissions: `submissions/r1`, `submissions/r2`, `submissions/r3`
 - Model/runs: `competition_starter/runs/`
 
 ## 2026-05-01 submission loop x3
 
 Context:
-- GPU runtime: NVIDIA RTX 4080 16GB.
-- Project/data prepared; macOS `._*` metadata excluded from validation logic.
+- New GPU server: Windows host with NVIDIA RTX 4080 16GB.
+- Project/data synchronized; macOS `._*` metadata excluded from remote and local validation logic.
 - Kaggle Code review: latest public notebook emphasizes YOLOv8n scratch, conservative data QA, low-conf inference; no readable Discussion updates.
 - Continued fallback Ultralytics process because official 3LC API-key process is unavailable.
 
@@ -259,7 +259,7 @@ Next candidate directions:
 Context:
 - Submission list was queried at loop start and before each submit. The start list showed no 2026-05-16 submissions; R25, R26, and R27 were the three accepted records for the day.
 - Kaggle Code refresh still showed the latest public notebook as Avik Das `3LC YOLOv8n Vehicle Detection and Label QA Process`, last run 2026-04-30. No new public discussion changed the modeling constraints.
-- The GPU runtime was unavailable during this loop, so no new training was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
+- The remote GPU host was unreachable during this loop, so no new training was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
 - Strategy: test class-specific low-confidence tail filtering because R21 showed global filtering hurts, while R15/R1 NMS and bbox-scale sweeps were already saturated.
 
 Submission results:
@@ -284,14 +284,14 @@ Repository/proof updates:
 
 Next candidate directions:
 - Stop spending submissions on R15 output-only filtering unless a new diagnosis identifies a specific systematic error.
-- If a GPU runtime becomes available, prioritize a stronger validation protocol or a 3LC-sanctioned label-review loop before training more scratch variants.
+- If the remote GPU becomes available, prioritize a stronger validation protocol or a 3LC-sanctioned label-review loop before training more scratch variants.
 
 ## 2026-05-17 submission loop x3
 
 Context:
 - Submission list was queried at loop start and before each submit. The start list showed no 2026-05-17 submissions; R28, R29, and R30 were the three accepted records for the day.
 - Kaggle Code refresh still showed Avik Das `3LC YOLOv8n Vehicle Detection and Label QA Process` as the newest public notebook, last run 2026-04-30. No new public rule or discussion changed the modeling constraints.
-- The GPU runtime was unavailable during this loop, so no new training was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
+- The remote GPU host was unreachable during this loop, so no new training was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
 - Strategy: isolate the R26 failure by testing truck-only and van-only low-confidence tail filtering, then combine only filters that had already proven public-neutral.
 
 Submission results:
@@ -324,7 +324,7 @@ Next candidate directions:
 Context:
 - Submission list was queried at loop start and before each submit. The start list showed no 2026-05-18 submissions; R31, R32, and R33 were the three accepted records for the day.
 - Kaggle Code refresh still showed only the same three public notebooks. Rules, evaluation, and the single public Discussion topic did not change in a way that affected modeling or submission constraints.
-- The GPU runtime remained unavailable, so no new training was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
+- The remote GPU host remained unreachable, so no new training or remote sync was attempted. All candidates were local, single-checkpoint post-processing of the R15 output.
 - Strategy: avoid van/car filtering after R29 and R21/R26, then probe only the previously neutral bus and truck low-confidence axes.
 
 Submission results:
@@ -350,14 +350,14 @@ Repository/proof updates:
 Next candidate directions:
 - Do not spend further quota on bus/truck low-confidence filtering unless needed as a control.
 - Continue to avoid van low-confidence filtering, global confidence increases, bbox scaling, and R1 NMS micro-sweeps.
-- Prioritize restoring GPU runtime access or setting up a documented 3LC table-revision process before the next high-value submissions.
+- Prioritize restoring GPU/server access or setting up a documented 3LC table-revision process before the next high-value submissions.
 
 ## 2026-05-19 submission loop x3
 
 Context:
 - Submission list was queried at loop start and before each submit. The start list showed no 2026-05-19 submissions; R34, R35, and R36 were the three accepted records for the day.
 - Rules, evaluation, Code, and Discussion were refreshed before experiments. No new public rule, notebook, or discussion update changed the modeling constraints.
-- GPU runtime access was available. R34 trained a fresh YOLOv8n scratch seed; R35 and R36 ran single-checkpoint inference experiments. All submitted files were clipped and passed strict local audits before upload.
+- Remote GPU access was restored. R34 trained a fresh YOLOv8n scratch seed; R35 and R36 ran single-checkpoint inference experiments. All submitted files were clipped and passed strict local audits before upload.
 - Strategy: after output-only post-processing saturated through R33, test a new scratch checkpoint, then test whether R2 was hurt by inference settings, then test a higher single-scale inference resolution from the proven R1 checkpoint.
 
 Submission results:
@@ -627,7 +627,7 @@ Error analysis:
 
 Repository/proof updates:
 - Added R60/R61/R62 submission, summary, audit, submit/poll/final-list artifacts.
-- Added May 26 rules/code/discussion refresh logs and runtime read-only check.
+- Added May 26 rules/code/discussion refresh logs and remote read-only check.
 - Updated README, write-up, proof index, and chronological experiment log.
 
 Next candidate directions:
@@ -961,3 +961,42 @@ Next candidate directions:
 - Preserve the R93 bus low-confidence tail; bus filtering below 0.0001 is harmful.
 - Truck filtering below 0.0001 is neutral, but it does not improve score and should not receive more primary quota.
 - The only high-yield path remains true lower-confidence inference from the original R62/R93 checkpoint or a better-reproduced 640 px YOLOv8n scratch checkpoint.
+
+## 2026-06-06 submission loop x3
+
+Context:
+- Submission list was queried at loop start on 2026-06-06 UTC/Europe-London. The starting list had no 2026-06-06 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R94, R108, and R110 were accepted and completed.
+- Rules and Evaluation pages were refreshed; active constraints remain YOLOv8n only, 640 px input size, from-scratch/no pretrained for training runs, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+- Public Code listing was refreshed; no new notebook appeared since 2026-05-19. Discussion topics remained the same as the June 5 refresh, with the latest 3LC installation post on 2026-06-03 and vehicle category guidance from the validation set.
+- A fresh Kaggle GPU train+val low-confidence kernel was prepared, but Kaggle repeatedly rejected new execution with `Maximum batch GPU session count of 2 reached`. The fallback for the first accepted submission used the previously completed Kaggle GPU R62 reproduction outputs, then the loop moved back to R93 output diagnostics after R94's public result confirmed the reproduced checkpoint was weak.
+
+Submission results:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R94 | `submissions/r94/r94_r62_nomix_close3_conf000007000_iou0466250_submission.csv` | Kaggle GPU R62 reproduction, 640, conf 0.00007, iou 0.46625 | audit ok / 124574 boxes; reproduced val mAP50 0.81077 | 0.81600 |
+| R108 | `submissions/r108/r108_r93_filter_van0001_keep_others000075_submission.csv` | R93 output, filter van below 0.0001, keep truck/car/bus at 0.000075 | audit ok / 122991 boxes | 0.83194 |
+| R110 | `submissions/r110/r110_r93_top100_per_image_per_class_submission.csv` | R93 output, keep top 100 predictions per image per class by confidence | audit ok / 106323 boxes | 0.83235 |
+
+Generated but not submitted:
+- R109: `submissions/r109/r109_r93_top100_per_image_submission.csv`, top 100 predictions per image across all classes, audit ok / 90624 boxes. It was not submitted because R108 showed tail removal was harmful and per-image total top-100 was expected to remove too many category-specific detections.
+- R103-R107 train+val Kaggle GPU candidates were prepared in `kaggle_gpu/r103_trainval_lowconf_20260606/`, but new execution was blocked by the Kaggle GPU batch session limit before outputs could be produced.
+
+Highest observed public score remains R36 `0.83245`. The active 640 px rule-constrained best remains `0.83235` from R93/R101/R110.
+
+Error analysis:
+- R94 scored only 0.81600, confirming that the Kaggle GPU reproduced R62 checkpoint should not replace the historical R62/R93 checkpoint line.
+- R108 dropped only 350 van boxes below 0.0001 and fell to 0.83194, so the R93 van low-confidence tail is useful and should be retained.
+- R110 dropped 17018 low-confidence car boxes beyond top 100 per image per class and tied R93/R101 at 0.83235, so that car overflow is public-neutral but not a source of improvement.
+- Combined with June 5, the R93 class-tail conclusion is now: keep bus and van tails; truck tail below 0.0001 is neutral; car overflow trimming is neutral.
+
+Repository/proof updates:
+- Added R108/R109/R110 summaries and audits.
+- Added R94/R108/R110 submit, poll, and final-list artifacts for June 6.
+- Added June 6 rules/evaluation/code/discussion refresh logs and Kaggle GPU session-limit logs.
+- Updated README, write-up, proof index, 3LC status, and chronological experiment log.
+
+Next candidate directions:
+- Do not spend more primary quota on R93 class-tail deletion unless there is a stronger label-specific signal.
+- Resume fresh Kaggle GPU train+val experiments only after batch GPU session capacity is available; compare validation quality before submitting outputs from a new checkpoint.
+- If using the historical R62/R93 checkpoint, the only plausible remaining inference direction is true lower confidence below 0.000075 with careful max-det monitoring.

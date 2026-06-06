@@ -11,7 +11,7 @@ The official 3LC starter code is retained. The dashboard-based 3LC process is no
 | Scope | Run | Public LB | Notes |
 |---|---|---:|---|
 | Highest observed | R36 | 0.83245 | Historical 768 px R1 inference diagnostic. |
-| Active 640 px | R93/R101 | 0.83235 | R62 no-mix close-mosaic=3 line, 640 px active constraint. |
+| Active 640 px | R93/R101/R110 | 0.83235 | R62 no-mix close-mosaic=3 line, 640 px active constraint. |
 | Earlier 640 px plateau | R46a/R49/R50/R51/R53/R54/R55/R60/R61/R62/R63/R64/R65/R66a/R67a/R77 | 0.82864 | R1/R49 low-confidence plateau. |
 
 ## Key Findings
@@ -32,7 +32,10 @@ The June 5 class-tail diagnostics showed that R93's bus tail below 0.0001 should
 | R99 | R93 output | filter truck+bus below 0.0001 | 120758 | 0.83216 |
 | R100 | R93 output | filter bus below 0.0001 | 121547 | 0.83216 |
 | R101 | R93 output | filter truck below 0.0001 | 122552 | 0.83235 |
+| R94 | Kaggle GPU R62 reproduction | conf=0.00007, iou=0.46625 | 124574 | 0.81600 |
+| R108 | R93 output | filter van below 0.0001 | 122991 | 0.83194 |
+| R110 | R93 output | top 100 per image per class | 106323 | 0.83235 |
 
 ## Next Direction
 
-Preserve R93's bus low-confidence tail; filtering bus below 0.0001 is harmful. Truck below 0.0001 is public-neutral but not beneficial to remove. The next high-upside path is true lower-confidence inference from the original R62/R93 checkpoint or a better-reproduced 640 px YOLOv8n scratch checkpoint whose validation quality matches the historical R62 run.
+Preserve R93's bus and van low-confidence tails; filtering bus below 0.0001 is harmful and filtering van below 0.0001 also drops public score. Truck below 0.0001 and car overflow beyond top 100 per image per class are public-neutral but not beneficial to remove. The next high-upside path is true lower-confidence inference from the original R62/R93 checkpoint or a better-reproduced 640 px YOLOv8n scratch checkpoint whose validation quality matches the historical R62 run.

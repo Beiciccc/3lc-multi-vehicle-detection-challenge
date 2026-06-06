@@ -1,0 +1,22 @@
+ref                                              title                                    author     lastRunTime                 totalVotes  
+-----------------------------------------------  ---------------------------------------  ---------  --------------------------  ----------  
+beicicc/3lc-trainval-low-confidence-2026-06-06   3lc trainval low confidence 2026 06 06   Kun Zhang  2026-06-06 02:58:29.767000           0  
+beicicc/rogii-0606-scott-v13-seq-cnn-rerun       rogii-0606-scott-v13-seq-cnn-rerun       Kun Zhang  2026-06-06 02:55:31                  0  
+beicicc/biohack44-winning-solution-replay-jun05  Biohack44 Winning Solution Replay Jun05  Kun Zhang  2026-06-06 02:50:44.497000           0  
+beicicc/rogii-0606-sel15-forced-selector-rerun   rogii-0606-sel15-forced-selector-rerun   Kun Zhang  2026-06-06 02:44:36.153000           0  
+beicicc/arc-prize-2026-latent-planner            ARC Prize 2026 Latent Planner            Kun Zhang  2026-06-06 02:44:33.560000           0  
+beicicc/rogii-0605-koolbox-8186-shim2            rogii-0605-koolbox-8186-shim2            Kun Zhang  2026-06-05 17:46:29.477000           0  
+beicicc/rogii-0605-koolbox-8186-shim             rogii-0605-koolbox-8186-shim             Kun Zhang  2026-06-05 15:45:11.413000           1  
+beicicc/rogii-0605-koolbox-8186-rerun            rogii-0605-koolbox-8186-rerun            Kun Zhang  2026-06-05 12:13:11.680000           0  
+beicicc/predicting-stellar-class                 Predicting Stellar Class                 Kun Zhang  2026-06-05 12:10:36.340000          27  
+beicicc/3lc-r62-low-confidence-sweep-2026-06-05  3lc r62 low confidence sweep 2026 06 05  Kun Zhang  2026-06-05 01:41:33.817000           0  
+beicicc/rogii-0605-aiden-pf-plateauavg           rogii-0605-aiden-pf-plateauavg           Kun Zhang  2026-06-05 01:40:48.657000           7  
+beicicc/rogii-0605-aiden-pf-scale265625          rogii-0605-aiden-pf-scale265625          Kun Zhang  2026-06-05 01:30:47.847000           3  
+beicicc/rogii-0605-aiden-pf-scale2765625         rogii-0605-aiden-pf-scale2765625         Kun Zhang  2026-06-05 01:30:47.590000           3  
+beicicc/rogii-0605-aiden-pf-scale2734375         rogii-0605-aiden-pf-scale2734375         Kun Zhang  2026-06-05 01:30:46.813000           3  
+beicicc/rogii-0605-aiden-pf-scale2703125         rogii-0605-aiden-pf-scale2703125         Kun Zhang  2026-06-05 01:30:46.490000           3  
+beicicc/rogii-0604-aiden-pf-scale271875          rogii-0604-aiden-pf-scale271875          Kun Zhang  2026-06-04 01:03:16.947000           1  
+beicicc/rogii-0604-aiden-pf-scale2875            rogii-0604-aiden-pf-scale2875            Kun Zhang  2026-06-04 01:03:16.083000           1  
+beicicc/rogii-0604-aiden-pf-scale2625            rogii-0604-aiden-pf-scale2625            Kun Zhang  2026-06-04 01:03:15.157000           1  
+beicicc/rogii-0604-aiden-pf-scale28125           rogii-0604-aiden-pf-scale28125           Kun Zhang  2026-06-04 01:03:14.757000           1  
+beicicc/rogii-0604-aiden-pf-scale26875           rogii-0604-aiden-pf-scale26875           Kun Zhang  2026-06-04 01:03:14.237000           1  

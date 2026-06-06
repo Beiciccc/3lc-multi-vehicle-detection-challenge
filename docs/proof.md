@@ -292,3 +292,15 @@ Final June 4 submission list snapshot: `logs/final_submissions_2026-06-04.txt`; 
 Final June 5 submission list snapshot: `logs/final_submissions_2026-06-05.txt`. R101 tied the active 640 px public best at 0.83235; R99 and R100 scored 0.83216. R36 remains the highest observed public score at 0.83245, but R93/R101 remain the best results under the active 640 px constraint used for new submissions.
 
 Generated but not submitted on June 5: R94-R98 from the Kaggle GPU R62 reproduction were audited but not submitted because the reproduced checkpoint validated at mAP50 0.81077, below the historical R62 run. R102 was audited but not submitted after R99/R100 showed bus-tail filtering was harmful.
+
+## June 6 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R94 | `submissions/r94/r94_r62_nomix_close3_conf000007000_iou0466250_submission.csv` | `submissions/r94/r94_r62_nomix_close3_conf000007000_iou0466250_summary.json` | `logs/r94/audit_r94.txt` | `logs/r94/submit_r94_2026-06-06.txt` | `logs/r94/submissions_poll_r94_2026-06-06_exact_*.txt` | 0.81600 |
+| R108 | `submissions/r108/r108_r93_filter_van0001_keep_others000075_submission.csv` | `submissions/r108/r108_r93_filter_van0001_keep_others000075_summary.json` | `logs/r108/audit_r108.txt` | `logs/r108/submit_r108_2026-06-06.txt` | `logs/r108/submissions_poll_r108_2026-06-06_exact_*.txt` | 0.83194 |
+| R110 | `submissions/r110/r110_r93_top100_per_image_per_class_submission.csv` | `submissions/r110/r110_r93_top100_per_image_per_class_summary.json` | `logs/r110/audit_r110.txt` | `logs/r110/submit_r110_2026-06-06.txt` | `logs/r110/submissions_poll_r110_2026-06-06_exact_*.txt` | 0.83235 |
+
+Final June 6 submission list snapshot: `logs/final_submissions_2026-06-06.txt`. R110 tied the active 640 px public best at 0.83235; R108 scored 0.83194; R94 scored 0.81600. R36 remains the highest observed public score at 0.83245, but R93/R101/R110 remain the best results under the active 640 px constraint used for new submissions.
+
+Generated but not submitted on June 6: R109 was audited at 90624 boxes but not submitted after the lower-risk R110 cap was selected. A fresh Kaggle GPU train+val kernel package was prepared but new execution was rejected by Kaggle's GPU batch session limit.
