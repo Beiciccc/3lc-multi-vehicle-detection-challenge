@@ -1,0 +1,16 @@
+# Local data, credentials, and bulky model outputs
+competition_starter/data/
+competition_starter/runs/
+**/weights/
+*.pt
+*.pth
+*.onnx
+*.engine
+*.cache
+__pycache__/
+*.pyc
+.DS_Store
+._*
+.kaggle/
+kaggle.json
+.env

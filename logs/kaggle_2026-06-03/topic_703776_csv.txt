@@ -1,5 +1,0 @@
-id,title,authorName,commentCount,votes,postDate
-703776,Vehicle Categories,Benson Wainaina,1,0,2026-06-01 22:12:41.334000
-id,authorName,postDate,votes,content
-3465880,RishikeshJadhav3LC,2026-06-03 00:16:41.153000,0,"<p>Hi Benson,</p>
-<p>The training set labels are the original labels provided with the source dataset and are messy. To help guide your annotations we've cleaned the validation and test sets so the validation set is currently the best reference for understanding how the vehicle categories are intended to be labeled in this competition.  You can browse the validation set examples in the dashboard to see how different vehicle types (cars, vans, trucks, buses) have been categorized. This should help provide guidance when you encounter borderline cases. I hope this helps clarify your question!</p>"

@@ -303,4 +303,4 @@ Generated but not submitted on June 5: R94-R98 from the Kaggle GPU R62 reproduct
 
 Final June 6 submission list snapshot: `logs/final_submissions_2026-06-06.txt`. R110 tied the active 640 px public best at 0.83235; R108 scored 0.83194; R94 scored 0.81600. R36 remains the highest observed public score at 0.83245, but R93/R101/R110 remain the best results under the active 640 px constraint used for new submissions.
 
-Generated but not submitted on June 6: R109 was audited at 90624 boxes but not submitted after the lower-risk R110 cap was selected. A fresh Kaggle GPU train+val kernel package was prepared but new execution was rejected by Kaggle's GPU batch session limit.
+Generated but not submitted on June 6: R109 was audited at 90624 boxes but not submitted after the lower-risk R110 cap was selected. The Kaggle GPU train+val kernel completed after the three accepted submissions had already used the daily quota; R103-R107 were audited at 123638-148392 boxes and retained as diagnostics.

@@ -1,0 +1,43 @@
+{
+  "source": "/kaggle/input/3lc-r93-baseline-20260606/r93_baseline_submission.csv",
+  "submission": "/kaggle/working/submissions_20260606/r107_r93_filter_van00009_keep_others000075_submission.csv",
+  "thresholds": {
+    "2": 9e-05
+  },
+  "dropped_by_class": {
+    "0": 0,
+    "1": 0,
+    "2": 225,
+    "3": 0
+  },
+  "kept_by_class": {
+    "0": 4554,
+    "1": 101689,
+    "2": 3906,
+    "3": 12967
+  },
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 123116,
+    "boxes_by_class": {
+      "0": 4554,
+      "1": 101689,
+      "2": 3906,
+      "3": 12967
+    },
+    "per_image": {
+      "mean": 125.37270875763747,
+      "median": 118.0,
+      "p95": 213,
+      "p99": 257,
+      "max": 294,
+      "near_max_det_290": 1
+    }
+  },
+  "note": "filter van below 0.00009; keep truck/car/bus at R93 floor",
+  "rule_note": "single YOLOv8n 640px checkpoint output; post-processing only; no TTA, no ensemble, no pseudo-labeling, no external data/images/labels",
+  "cuda_visible_devices": ""
+}

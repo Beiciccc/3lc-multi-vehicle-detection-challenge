@@ -1,0 +1,14 @@
+2026-06-06 Kaggle refresh summary
+
+Rules/evaluation:
+- Rules page refreshed with Kaggle API pages command on 2026-06-06.
+- Active constraints remain YOLOv8n only, input size 640 px, training from random initialization/no pretrained weights, competition-provided data only, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+- Submission limit remains 3 per day.
+- Evaluation remains COCO-style mAP@0.5 over four vehicle classes, public split around 40% of test images.
+
+Code:
+- Public notebook listing by dateRun shows no newer visible notebook after Omar / Quartz Yu on 2026-05-19.
+
+Discussion:
+- Recent/new topic listing still contains only topic 704140 (3LC install instructions, 2026-06-03), topic 703776 (vehicle categories), topic 702180 (train+val merge and oversampling allowed), and topic 697032 (allowed label-improvement methods within provided-data constraints).
+- No new topic appears after 2026-06-03 in the API-visible list.

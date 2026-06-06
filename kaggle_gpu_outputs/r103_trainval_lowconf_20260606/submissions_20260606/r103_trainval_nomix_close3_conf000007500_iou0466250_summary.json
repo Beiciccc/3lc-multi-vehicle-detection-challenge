@@ -1,0 +1,46 @@
+{
+  "round": "r103",
+  "weights": "/kaggle/working/runs/detect/r103_yolov8n_scratch_e10_seed42_trainval_nomix_close3_640_20260606/weights/best.pt",
+  "submission": "/kaggle/working/submissions_20260606/r103_trainval_nomix_close3_conf000007500_iou0466250_submission.csv",
+  "imgsz": 640,
+  "conf": 7.5e-05,
+  "iou": 0.46625,
+  "max_det": 300,
+  "batch": 32,
+  "device": "0",
+  "agnostic_nms": false,
+  "val_metrics": {
+    "map50": 0.8817943245918116,
+    "map50_95": 0.6878117043579626
+  },
+  "audit": {
+    "ok": true,
+    "errors": [],
+    "rows": 982,
+    "nonempty": 982,
+    "total_boxes": 123675,
+    "boxes_by_class": {
+      "0": 3597,
+      "1": 103170,
+      "2": 4537,
+      "3": 12371
+    },
+    "per_image": {
+      "mean": 125.94195519348268,
+      "median": 116.0,
+      "p95": 228,
+      "p99": 281,
+      "max": 300,
+      "near_max_det_290": 7
+    }
+  },
+  "dataset_info": {
+    "merged_dir": "/kaggle/working/merged_trainval",
+    "counts": {
+      "train": 7852,
+      "val": 982
+    }
+  },
+  "note": "r103 2026-06-06: train+val YOLOv8n scratch, nomix close_mosaic=3, low confidence sweep",
+  "rule_note": "single YOLOv8n checkpoint, yolov8n.yaml random initialization, provided competition train+val data only, 640 px, no TTA, no ensemble, no pseudo-labeling, no distillation"
+}

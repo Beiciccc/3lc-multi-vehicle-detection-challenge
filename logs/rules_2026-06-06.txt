@@ -1,0 +1,56 @@
+name   content                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+-----  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+rules  **ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES.**
+
+Eligibility, prizes, and general legal terms follow standard Kaggle and sponsor policies. Below is the **competition-specific** summary.
+
+## Competition-specific rules
+
+### Task
+
+- **Multi-class object detection** with **four** vehicle classes (see **[Description](https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/overview/description)** / `dataset.yaml`).
+- Submissions: **CSV** with columns `id`, `image_id`, `prediction_string`  format in **[Evaluation](https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/overview/evaluation)**.
+
+### Model and training constraints
+
+- **Architecture:** **YOLOv8n only**. The official `train.py` is locked to YOLOv8n and **trains from scratch** (`yolov8n.yaml`, random initialization - no COCO or other pretrained checkpoints). Using larger YOLO variants, other architectures, or replacing the training entrypoint with an unapproved script is **not allowed**.
+- **Input size:** 640 px (default in `config.yaml`).
+- **Hyperparameters:** May be tuned within `config.yaml` (learning rate, augmentation, epochs, etc.).
+- **Prohibited techniques:** Model ensembling, test-time augmentation (TTA), pseudo-labeling, knowledge distillation, or any method that effectively circumvents the single-model constraint.
+
+### Data use
+
+- **Train / val:** Use only the provided data for training and local validation.
+- **Test:** Images only do not attempt to obtain or use leaked labels.
+- **External data / images:** Not allowed unless an explicit exception is published by the organizers.
+- **Pretrained weights:** **Not allowed.** Training must start from random initialization.
+
+### 3LC
+
+- **3LC** is required for the prescribed process: register **train** and **val** Tables, run training integrated with 3LC Runs, and use the Dashboard for the data-centric loop.
+- **Test** images are **not** registered in 3LC; inference uses `predict.py` on local test files.
+- Participants must use their own **3LC account** and API key.
+
+### Teams and submissions
+
+- **Team size:** up to 4 participants.
+- **Submissions:** 3 per day maximum.
+- **Final selection:** Choose up to 2 submissions for final judging (per Kaggle settings).
+
+### Timeline
+
+- **Start / end / merger deadline:** As shown on the competition **Timeline**.
+
+### Evaluation form (if applicable)
+
+- Teams are required to submit an **evaluation / feedback form** and a **private GitHub** repo by the stated deadline to be eligible for prizes and certificates.
+- The form link, judge GitHub Username, and repo-contents checklist provided in Overview sectom. 
+- Evaluation [Google Form URL](https://docs.google.com/forms/d/e/1FAIpQLSeWCQh6vcc5oigeyDluOf05Nfk5w03dgchasiFVH_TyRos9UQ/viewform?usp=sharing&ouid=117102271415750563738)
+
+### Winner obligations
+
+- Provide reproducible code and methodology as required by the sponsor.
+- Grant license to the winning submission as stated in the full legal Rules.
+
+For general Kaggle competition rules and legal terms, refer to the [Kaggle Competition Rules](https://www.kaggle.com/terms).
+  

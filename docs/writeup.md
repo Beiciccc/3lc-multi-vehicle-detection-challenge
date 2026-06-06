@@ -88,8 +88,11 @@ The strongest active 640 px checkpoint is the R62 no-mixup/close-mosaic=3 YOLOv8
 | R99 | 2026-06-05 | R93 output, filter truck+bus below 0.0001, keep car/van at 0.000075 | 0.83216 |
 | R100 | 2026-06-05 | R93 output, filter bus below 0.0001, keep truck/car/van at 0.000075 | 0.83216 |
 | R101 | 2026-06-05 | R93 output, filter truck below 0.0001, keep car/van/bus at 0.000075 | 0.83235 |
+| R94 | 2026-06-06 | Kaggle GPU R62 reproduction, 640, conf 0.00007, iou 0.46625 | 0.81600 |
+| R108 | 2026-06-06 | R93 output, filter van below 0.0001, keep truck/car/bus at 0.000075 | 0.83194 |
+| R110 | 2026-06-06 | R93 output, keep top 100 predictions per image per class | 0.83235 |
 
-Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83235** from R93/R101.
+Highest observed public score: **R36, 0.83245**. After re-reading the rules on 2026-05-20, new submissions use the explicit 640 px input-size constraint; the best 640 px public score is **0.83235** from R93/R101/R110.
 
 ## Analysis
 
@@ -141,4 +144,4 @@ The June 4 loop confirmed that the R62 recall curve was still below its public o
 
 The June 5 loop used Kaggle GPU for a reproducibility diagnostic of the R62 no-mix/close-mosaic=3 training recipe. The corrected run completed with YOLOv8n from scratch at 640 px, but validation mAP50 was 0.81077, materially below the historical R62 mAP50 of 0.83104. Its R94-R98 low-confidence outputs were therefore kept as audited diagnostics rather than submitted. The accepted submissions used R93 output-only class-tail filtering: R99 and R100 both fell to 0.83216, while R101 tied R93 at 0.83235. This isolates the bus tail below 0.0001 as useful recall and shows that truck tail removal below 0.0001 is public-neutral but not beneficial.
 
-The June 6 loop attempted to start a fresh Kaggle GPU train+val low-confidence experiment, but Kaggle rejected new GPU execution because the account's batch GPU session limit was already full. The first accepted fallback submission used an audited Kaggle GPU R62 reproduction output: R94 scored only 0.81600, confirming that the reproduced checkpoint is substantially weaker than the historical R62/R93 checkpoint. The loop then returned to R93 output diagnostics. R108 removed only 350 van boxes below 0.0001 and fell to 0.83194, so the van tail should be preserved. R110 kept the top 100 predictions per image per class and tied R93/R101 at 0.83235, showing that low-confidence car overflow beyond that cap is public-neutral but not beneficial to remove.
+The June 6 loop used Kaggle GPU for a fresh train+val low-confidence experiment. That kernel completed after the three daily submissions had already been accepted, so its audited R103-R107 outputs were retained as generated-but-unsubmitted diagnostics. The first accepted submission used an audited Kaggle GPU R62 reproduction output: R94 scored only 0.81600, confirming that the reproduced checkpoint is substantially weaker than the historical R62/R93 checkpoint. The loop then returned to R93 output diagnostics. R108 removed only 350 van boxes below 0.0001 and fell to 0.83194, so the van tail should be preserved. R110 kept the top 100 predictions per image per class and tied R93/R101 at 0.83235, showing that low-confidence car overflow beyond that cap is public-neutral but not beneficial to remove.

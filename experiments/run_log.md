@@ -3,7 +3,7 @@
 Protocol for this session:
 - For each requested submission loop, first query current submissions/quota state.
 - Review Kaggle Code/Discussion updates before choosing the experiment.
-- Train/validate on GPU server, sync project artifacts back to this local directory.
+- Train/validate on GPU compute host, sync project artifacts back to this local directory.
 - Submit only after validation and submission-file audit pass.
 - Count a submission only when Kaggle accepts/rejects via API and the submission list shows a new record.
 
@@ -39,7 +39,7 @@ Artifacts synced:
 ## 2026-05-01 submission loop x3
 
 Context:
-- New GPU server: Windows host with NVIDIA RTX 4080 16GB.
+- New GPU compute host: Windows host with NVIDIA RTX 4080 16GB.
 - Project/data synchronized; macOS `._*` metadata excluded from remote and local validation logic.
 - Kaggle Code review: latest public notebook emphasizes YOLOv8n scratch, conservative data QA, low-conf inference; no readable Discussion updates.
 - Continued fallback Ultralytics process because official 3LC API-key process is unavailable.
@@ -350,7 +350,7 @@ Repository/proof updates:
 Next candidate directions:
 - Do not spend further quota on bus/truck low-confidence filtering unless needed as a control.
 - Continue to avoid van low-confidence filtering, global confidence increases, bbox scaling, and R1 NMS micro-sweeps.
-- Prioritize restoring GPU/server access or setting up a documented 3LC table-revision process before the next high-value submissions.
+- Prioritize restoring GPU/compute access or setting up a documented 3LC table-revision process before the next high-value submissions.
 
 ## 2026-05-19 submission loop x3
 
@@ -968,7 +968,7 @@ Context:
 - Submission list was queried at loop start on 2026-06-06 UTC/Europe-London. The starting list had no 2026-06-06 records, so the full three-submission quota was available. Final quota accounting uses the Kaggle submission list: R94, R108, and R110 were accepted and completed.
 - Rules and Evaluation pages were refreshed; active constraints remain YOLOv8n only, 640 px input size, from-scratch/no pretrained for training runs, no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
 - Public Code listing was refreshed; no new notebook appeared since 2026-05-19. Discussion topics remained the same as the June 5 refresh, with the latest 3LC installation post on 2026-06-03 and vehicle category guidance from the validation set.
-- A fresh Kaggle GPU train+val low-confidence kernel was prepared, but Kaggle repeatedly rejected new execution with `Maximum batch GPU session count of 2 reached`. The fallback for the first accepted submission used the previously completed Kaggle GPU R62 reproduction outputs, then the loop moved back to R93 output diagnostics after R94's public result confirmed the reproduced checkpoint was weak.
+- A fresh Kaggle GPU train+val low-confidence kernel was prepared and completed, generating audited R103-R107 candidates. Those outputs arrived after the daily submission quota had already been consumed by R94/R108/R110, so they were kept as generated-but-unsubmitted diagnostics. The first accepted submission used the previously completed Kaggle GPU R62 reproduction outputs, then the loop moved back to R93 output diagnostics after R94's public result confirmed the reproduced checkpoint was weak.
 
 Submission results:
 
@@ -980,7 +980,7 @@ Submission results:
 
 Generated but not submitted:
 - R109: `submissions/r109/r109_r93_top100_per_image_submission.csv`, top 100 predictions per image across all classes, audit ok / 90624 boxes. It was not submitted because R108 showed tail removal was harmful and per-image total top-100 was expected to remove too many category-specific detections.
-- R103-R107 train+val Kaggle GPU candidates were prepared in `kaggle_gpu/r103_trainval_lowconf_20260606/`, but new execution was blocked by the Kaggle GPU batch session limit before outputs could be produced.
+- R103-R107 train+val Kaggle GPU candidates were produced by `kaggle_gpu/r103_trainval_lowconf_20260606/`, passed audit, and were not submitted because R94/R108/R110 had already used the daily quota.
 
 Highest observed public score remains R36 `0.83245`. The active 640 px rule-constrained best remains `0.83235` from R93/R101/R110.
 
@@ -993,10 +993,10 @@ Error analysis:
 Repository/proof updates:
 - Added R108/R109/R110 summaries and audits.
 - Added R94/R108/R110 submit, poll, and final-list artifacts for June 6.
-- Added June 6 rules/evaluation/code/discussion refresh logs and Kaggle GPU session-limit logs.
+- Added June 6 rules/evaluation/code/discussion refresh logs and Kaggle GPU train+val kernel logs.
 - Updated README, write-up, proof index, 3LC status, and chronological experiment log.
 
 Next candidate directions:
 - Do not spend more primary quota on R93 class-tail deletion unless there is a stronger label-specific signal.
-- Resume fresh Kaggle GPU train+val experiments only after batch GPU session capacity is available; compare validation quality before submitting outputs from a new checkpoint.
+- Review the completed train+val R103-R107 outputs before spending future quota; compare public risk against R94's weak reproduced-checkpoint result and R93/R101/R110 baseline.
 - If using the historical R62/R93 checkpoint, the only plausible remaining inference direction is true lower confidence below 0.000075 with careful max-det monitoring.

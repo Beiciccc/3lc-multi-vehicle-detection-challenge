@@ -1,0 +1,10 @@
+path: /kaggle/working/merged_trainval
+train: data/train/images
+val: /kaggle/input/competitions/3-lc-multi-vehicle-detection-challenge/competition_starter/data/val/images
+test: /kaggle/input/competitions/3-lc-multi-vehicle-detection-challenge/competition_starter/data/test/images
+nc: 4
+names:
+  0: truck
+  1: car
+  2: van
+  3: bus
