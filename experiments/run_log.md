@@ -1000,3 +1000,23 @@ Next candidate directions:
 - Do not spend more primary quota on R93 class-tail deletion unless there is a stronger label-specific signal.
 - Review the completed train+val R103-R107 outputs before spending future quota; compare public risk against R94's weak reproduced-checkpoint result and R93/R101/R110 baseline.
 - If using the historical R62/R93 checkpoint, the only plausible remaining inference direction is true lower confidence below 0.000075 with careful max-det monitoring.
+
+## 2026-06-07 submission loop x3
+
+Context:
+- Submission list was queried at loop start on 2026-06-07 UTC/Europe-London. The starting list had no 2026-06-07 records, so the full three-submission quota was available before R112.
+- Rules/evaluation snapshots matched the June 5 and June 6 refreshes. Public Code and Discussion listings had no new 2026-06-07 update.
+- The June 6 Kaggle GPU train+val candidates were reviewed before submission. Discussion clarification permits train+val repartitioning within the provided data.
+- Strategy: spend the first slot on the most conservative train+val low-confidence candidate, then adapt based on the public score.
+
+Submission results so far:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R112 | `submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_submission.csv` | Train+val YOLOv8n scratch checkpoint, 640, conf 0.000075, iou 0.46625 | val mAP50 0.88179 / audit ok / 123675 boxes | 0.87382 |
+
+Current best public score is R112 `0.87382`. This result validates the train+val checkpoint direction and justifies spending the next slot on a nearby lower-confidence variant from the same checkpoint.
+
+Repository/proof updates after R112:
+- Added R112 submission CSV, summary, audit, submit, poll, and refresh-proof artifacts.
+- Updated README, write-up, proof index, and chronological experiment log.

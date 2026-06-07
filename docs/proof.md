@@ -304,3 +304,11 @@ Generated but not submitted on June 5: R94-R98 from the Kaggle GPU R62 reproduct
 Final June 6 submission list snapshot: `logs/final_submissions_2026-06-06.txt`. R110 tied the active 640 px public best at 0.83235; R108 scored 0.83194; R94 scored 0.81600. R36 remains the highest observed public score at 0.83245, but R93/R101/R110 remain the best results under the active 640 px constraint used for new submissions.
 
 Generated but not submitted on June 6: R109 was audited at 90624 boxes but not submitted after the lower-risk R110 cap was selected. The Kaggle GPU train+val kernel completed after the three accepted submissions had already used the daily quota; R103-R107 were audited at 123638-148392 boxes and retained as diagnostics.
+
+## June 7 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R112 | `submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_submission.csv` | `submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_summary.json` | `logs/r112/audit_r112_2026-06-07.txt` | `logs/r112/submit_r112_2026-06-07.txt` | `logs/r112/submissions_poll_r112_2026-06-07_1.txt` | 0.87382 |
+
+R112 is the current best public score at 0.87382. It uses a single YOLOv8n scratch train+val checkpoint at 640 px with no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.

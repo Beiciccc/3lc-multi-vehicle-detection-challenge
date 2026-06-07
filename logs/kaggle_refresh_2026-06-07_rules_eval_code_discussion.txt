@@ -1,0 +1,6 @@
+2026-06-07 refresh summary
+
+- Competition rules/evaluation pages matched the 2026-06-06 and 2026-06-05 snapshots by SHA256: efe28175fea90f47487423872d95364cdd34d932fa0b5d0ceb2f92caa5c85ceb.
+- Public Code listing had no new 2026-06-07 notebook; the newest public notebook remains from 2026-05-19.
+- Discussion topic list had no new 2026-06-07 topic. Existing relevant clarifications remain: train+val merge and oversampling are allowed within the provided data; validation labels are the cleaner category reference; label issue improvements are allowed when committed back into 3LC and based only on provided data.
+- Start-of-day submission list had no 2026-06-07 records, so the three daily submissions were available before R112.
