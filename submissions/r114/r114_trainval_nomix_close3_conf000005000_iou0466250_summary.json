@@ -1,0 +1,49 @@
+{
+  "agnostic_nms": false,
+  "alias_of": "r105_trainval_nomix_close3_conf000005000_iou0466250",
+  "audit": {
+    "boxes_by_class": {
+      "0": 4676,
+      "1": 123331,
+      "2": 5072,
+      "3": 15313
+    },
+    "errors": [],
+    "nonempty": 982,
+    "ok": true,
+    "per_image": {
+      "max": 300,
+      "mean": 151.11201629327903,
+      "median": 141.0,
+      "near_max_det_290": 27,
+      "p95": 262,
+      "p99": 300
+    },
+    "rows": 982,
+    "total_boxes": 148392
+  },
+  "batch": 32,
+  "conf": 5e-05,
+  "created_utc": "2026-06-07T06:43:13Z",
+  "dataset_info": {
+    "counts": {
+      "train": 7852,
+      "val": 982
+    },
+    "merged_dir": "/kaggle/working/merged_trainval"
+  },
+  "decision_note": "R113 showed lower threshold to 0.000060 was public-neutral; final slot tests whether further recall to 148392 boxes improves before max-det saturation becomes harmful.",
+  "device": "0",
+  "imgsz": 640,
+  "iou": 0.46625,
+  "max_det": 300,
+  "note": "r114 2026-06-07: alias of r105 train+val YOLOv8n scratch, conf 0.000050, iou 0.46625; final low-confidence expansion after R112/R113 tied 0.87382.",
+  "round": "r114",
+  "rule_note": "single YOLOv8n checkpoint, yolov8n.yaml random initialization, provided competition train+val data only, 640 px, no TTA, no ensemble, no pseudo-labeling, no distillation",
+  "submission": "submissions/r114/r114_trainval_nomix_close3_conf000005000_iou0466250_submission.csv",
+  "val_metrics": {
+    "map50": 0.8817943245918116,
+    "map50_95": 0.6878117043579626
+  },
+  "weights": "/kaggle/working/runs/detect/r103_yolov8n_scratch_e10_seed42_trainval_nomix_close3_640_20260606/weights/best.pt"
+}

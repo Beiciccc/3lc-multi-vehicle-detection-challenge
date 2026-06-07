@@ -311,5 +311,8 @@ Generated but not submitted on June 6: R109 was audited at 90624 boxes but not s
 |---|---|---|---|---|---|---:|
 | R112 | `submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_submission.csv` | `submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_summary.json` | `logs/r112/audit_r112_2026-06-07.txt` | `logs/r112/submit_r112_2026-06-07.txt` | `logs/r112/submissions_poll_r112_2026-06-07_1.txt` | 0.87382 |
 | R113 | `submissions/r113/r113_trainval_nomix_close3_conf000006000_iou0466250_submission.csv` | `submissions/r113/r113_trainval_nomix_close3_conf000006000_iou0466250_summary.json` | `logs/r113/audit_r113_2026-06-07.txt` | `logs/r113/submit_r113_2026-06-07.txt` | `logs/r113/submissions_poll_r113_2026-06-07_*.txt` | 0.87382 |
+| R114 | `submissions/r114/r114_trainval_nomix_close3_conf000005000_iou0466250_submission.csv` | `submissions/r114/r114_trainval_nomix_close3_conf000005000_iou0466250_summary.json` | `logs/r114/audit_r114_2026-06-07.txt` | `logs/r114/submit_r114_2026-06-07.txt` | `logs/r114/submissions_poll_r114_2026-06-07_1.txt` | 0.87382 |
 
-R112 and R113 are tied as the current best public score at 0.87382. It uses a single YOLOv8n scratch train+val checkpoint at 640 px with no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+R112, R113, and R114 are tied as the current best public score at 0.87382. It uses a single YOLOv8n scratch train+val checkpoint at 640 px with no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
+
+Final June 7 submission list snapshot: `logs/final_submissions_2026-06-07.txt`. All three June 7 submissions were accepted and completed.

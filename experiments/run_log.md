@@ -1009,15 +1009,23 @@ Context:
 - The June 6 Kaggle GPU train+val candidates were reviewed before submission. Discussion clarification permits train+val repartitioning within the provided data.
 - Strategy: spend the first slot on the most conservative train+val low-confidence candidate, then adapt based on the public score.
 
-Submission results so far:
+Submission results:
 
 | Loop | File | Experiment | Validation / audit | Public LB |
 |---|---|---|---|---:|
 | R112 | `submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_submission.csv` | Train+val YOLOv8n scratch checkpoint, 640, conf 0.000075, iou 0.46625 | val mAP50 0.88179 / audit ok / 123675 boxes | 0.87382 |
 | R113 | `submissions/r113/r113_trainval_nomix_close3_conf000006000_iou0466250_submission.csv` | Same train+val checkpoint, 640, conf 0.000060, iou 0.46625 | val mAP50 0.88179 / audit ok / 136688 boxes | 0.87382 |
+| R114 | `submissions/r114/r114_trainval_nomix_close3_conf000005000_iou0466250_submission.csv` | Same train+val checkpoint, 640, conf 0.000050, iou 0.46625 | val mAP50 0.88179 / audit ok / 148392 boxes | 0.87382 |
 
-Current best public score is R112/R113 `0.87382`. R113 added low-confidence recall to 136688 boxes without hurting public score, so the third slot will test a more aggressive lower-confidence point before switching away from this checkpoint.
+Current best public score is R112/R113/R114 `0.87382`. The train+val checkpoint shows a broad public plateau from 123675 to 148392 boxes at `iou=0.46625`; lowering confidence from 0.000075 to 0.000050 did not improve or hurt the displayed public score.
 
-Repository/proof updates after R112/R113:
+Repository/proof updates after R112/R113/R114:
 - Added R112 submission CSV, summary, audit, submit, poll, and refresh-proof artifacts.
 - Updated README, write-up, proof index, and chronological experiment log.
+
+Final June 7 submission list snapshot: `logs/final_submissions_2026-06-07.txt`. All three accepted submissions scored 0.87382.
+
+Error analysis:
+- R112 produced a decisive jump from the previous 0.83235 active 640 px baseline to 0.87382, validating train+val training on the provided data.
+- R113 and R114 added progressively more low-confidence detections, but both tied R112. The score plateau suggests the extra recall is either public-neutral or below the displayed-score resolution, while max-det saturation should be watched before pushing lower.
+- The remaining useful direction is likely NMS/localization calibration or a new train+val split/seed/checkpoint, not R93 output-only class-tail filtering.
