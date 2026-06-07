@@ -1020,8 +1020,8 @@ Submission results:
 Current best public score is R112/R113/R114 `0.87382`. The train+val checkpoint shows a broad public plateau from 123675 to 148392 boxes at `iou=0.46625`; lowering confidence from 0.000075 to 0.000050 did not improve or hurt the displayed public score.
 
 Repository/proof updates after R112/R113/R114:
-- Added R112 submission CSV, summary, audit, submit, poll, and refresh-proof artifacts.
-- Updated README, write-up, proof index, and chronological experiment log.
+- Added R112/R113/R114 submission CSVs, summaries, audits, submit logs, poll logs, and final submission-list proof.
+- Updated README, write-up, proof index, June 7 proof page, and chronological experiment log.
 
 Final June 7 submission list snapshot: `logs/final_submissions_2026-06-07.txt`. All three accepted submissions scored 0.87382.
 
