@@ -1014,9 +1014,10 @@ Submission results so far:
 | Loop | File | Experiment | Validation / audit | Public LB |
 |---|---|---|---|---:|
 | R112 | `submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_submission.csv` | Train+val YOLOv8n scratch checkpoint, 640, conf 0.000075, iou 0.46625 | val mAP50 0.88179 / audit ok / 123675 boxes | 0.87382 |
+| R113 | `submissions/r113/r113_trainval_nomix_close3_conf000006000_iou0466250_submission.csv` | Same train+val checkpoint, 640, conf 0.000060, iou 0.46625 | val mAP50 0.88179 / audit ok / 136688 boxes | 0.87382 |
 
-Current best public score is R112 `0.87382`. This result validates the train+val checkpoint direction and justifies spending the next slot on a nearby lower-confidence variant from the same checkpoint.
+Current best public score is R112/R113 `0.87382`. R113 added low-confidence recall to 136688 boxes without hurting public score, so the third slot will test a more aggressive lower-confidence point before switching away from this checkpoint.
 
-Repository/proof updates after R112:
+Repository/proof updates after R112/R113:
 - Added R112 submission CSV, summary, audit, submit, poll, and refresh-proof artifacts.
 - Updated README, write-up, proof index, and chronological experiment log.
