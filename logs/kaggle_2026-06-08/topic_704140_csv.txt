@@ -1,7 +1,0 @@
-id,title,authorName,commentCount,votes,postDate
-704140,Installation instruction changes for `3lc` 3.0.0 and 2.23.0,Kelly Walker,1,1,2026-06-03 15:29:33.405000
-id,authorName,postDate,votes,content
-3466743,Benson Wainaina,2026-06-04 16:23:34.650000,0,"<p>The following worked for me:</p>
-<p><code>pip install -q --index-url https://pypi.3lc.ai/public/repositories/releases-public --extra-index-url https://pypi.org/simple ""3lc==2.22.3""</code></p>
-<p><code>pip install -q ""3lc-ultralytics==0.2.0"" --extra-index-url https://pypi.3lc.ai/public/repositories/releases-public</code></p>
-<p><code>pip install umap-learn PyYAML tqdm</code></p>"
