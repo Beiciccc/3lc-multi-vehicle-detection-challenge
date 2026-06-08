@@ -322,5 +322,9 @@ Final June 7 submission list snapshot: `logs/final_submissions_2026-06-07.txt`. 
 | Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
 |---|---|---|---|---|---|---:|
 | R115 | `submissions/r115/r115_trainval_nomix_close3_conf000007500_iou0466125_submission.csv` | `submissions/r115/r115_trainval_nomix_close3_conf000007500_iou0466125_summary.json` | `logs/r115/audit_r115_2026-06-08.txt` | `logs/r115/submit_r115_2026-06-08.txt` | `logs/r115/submissions_poll_r115_2026-06-08_*.txt` | 0.87382 |
+| R115 duplicate | same as R115 | same as R115 | same as R115 | same as R115 | `logs/final_submissions_2026-06-08.txt` | 0.87382 |
+| R116 | `submissions/r116/r116_trainval_nomix_close3_conf000006000_iou0466125_submission.csv` | `submissions/r116/r116_trainval_nomix_close3_conf000006000_iou0466125_summary.json` | `logs/r116/audit_r116_2026-06-08.txt` | `logs/r116/submit_r116_2026-06-08.txt` | `logs/r116/submissions_poll_r116_2026-06-08_*.txt` | 0.87382 |
 
-R115 ties the current best public score at 0.87382. It uses the same single train+val YOLOv8n scratch checkpoint as R112-R114 with a slight NMS-left setting.
+R115 and R116 tie the current best public score at 0.87382. A duplicate R115 record also appeared in the final list and consumed one daily slot; this is recorded as an accounting anomaly, not a separate experiment.
+
+Final June 8 submission list snapshot: `logs/final_submissions_2026-06-08.txt`.

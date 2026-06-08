@@ -140,4 +140,4 @@ The June 6 loop used Kaggle GPU for a train+val low-confidence run; it completed
 The June 7 loop submitted R112, R113, and R114 from the train+val YOLOv8n scratch checkpoint at 640 px. Confidence thresholds `0.000075`, `0.000060`, and `0.000050` produced 123675, 136688, and 148392 boxes respectively. All three scored `0.87382`, becoming the new best public result and validating the train+val checkpoint direction.
 
 
-The June 8 first slot submitted R115, the closest NMS-left variant of R112 (`conf=0.000075`, `iou=0.466125`). It scored `0.87382`, tying the current best.
+The June 8 final-day records were R115, a duplicate R115 listing, and R116. R115 and R116 are NMS-left variants of R112/R113 (`iou=0.466125`) and both scored `0.87382`, tying the current best. The duplicate R115 listing consumed one daily slot and is recorded in the proof logs.

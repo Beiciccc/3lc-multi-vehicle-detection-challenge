@@ -95,6 +95,8 @@ The strongest active 640 px checkpoint is the R62 no-mixup/close-mosaic=3 YOLOv8
 | R113 | 2026-06-07 | Train+val YOLOv8n scratch, 640, conf 0.000060, iou 0.46625 | 0.87382 |
 | R114 | 2026-06-07 | Train+val YOLOv8n scratch, 640, conf 0.000050, iou 0.46625 | 0.87382 |
 | R115 | 2026-06-08 | Train+val YOLOv8n scratch, 640, conf 0.000075, iou 0.466125 | 0.87382 |
+| R115 duplicate | 2026-06-08 | Duplicate submission-list record for R115 | 0.87382 |
+| R116 | 2026-06-08 | Train+val YOLOv8n scratch, 640, conf 0.000060, iou 0.466125 | 0.87382 |
 
 Highest observed public score: **R112, 0.87382**. R112 follows the active 640 px constraint and uses only the provided train+val data with a single YOLOv8n scratch checkpoint.
 
@@ -153,4 +155,4 @@ The June 6 loop used Kaggle GPU for a fresh train+val low-confidence experiment.
 The June 7 loop submitted train+val checkpoint candidates R112, R113, and R114. R112 used `conf=0.000075` and produced 123675 boxes; R113 lowered confidence to `0.000060` and produced 136688 boxes; R114 lowered confidence to `0.000050` and produced 148392 boxes. All three scored 0.87382, a large public improvement over R93/R101/R110 at 0.83235. This confirms that the train+val single-checkpoint direction is now the primary final-window direction; additional low-confidence recall in this range is public-neutral on the displayed public score.
 
 
-The June 8 first slot submitted R115, the closest NMS-left variant of R112. It produced 123638 boxes and tied the current best at 0.87382, indicating this small NMS move is public-neutral rather than an improvement.
+The June 8 final-day records were R115, a duplicate R115 listing, and R116. R115 and R116 are the NMS-left counterparts of R112 and R113, producing 123638 and 136648 boxes respectively. Both scored 0.87382, so this small NMS-left move is public-neutral rather than an improvement. The duplicate R115 listing consumed one daily slot and is tracked as an accounting anomaly.

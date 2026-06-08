@@ -1038,10 +1038,22 @@ Context:
 - R112/R113/R114 established a train+val checkpoint plateau at 0.87382 across confidence thresholds 0.000075 to 0.000050.
 - Strategy: use final-day quota on low-risk variants around that plateau rather than returning to weaker R93 output-only filtering.
 
-Submission results so far:
+Submission results:
 
 | Loop | File | Experiment | Validation / audit | Public LB |
 |---|---|---|---|---:|
 | R115 | `submissions/r115/r115_trainval_nomix_close3_conf000007500_iou0466125_submission.csv` | Train+val checkpoint, 640, conf 0.000075, iou 0.466125 | val mAP50 0.88179 / audit ok / 123638 boxes | 0.87382 |
+| R115 duplicate | same file as R115 | Duplicate R115 submission-list record | same audit / 123638 boxes | 0.87382 |
+| R116 | `submissions/r116/r116_trainval_nomix_close3_conf000006000_iou0466125_submission.csv` | Train+val checkpoint, 640, conf 0.000060, iou 0.466125 | val mAP50 0.88179 / audit ok / 136648 boxes | 0.87382 |
 
-Current best public score remains R112/R113/R114/R115 `0.87382`. R115 changed only 37 boxes versus R112 and confirmed the tiny NMS-left move is public-neutral on the displayed score.
+Current best public score remains R112/R113/R114/R115/R116 `0.87382`. R115 changed only 37 boxes versus R112 and R116 changed only 40 boxes versus R113; both NMS-left variants are public-neutral on the displayed score. One duplicate R115 record appeared after the R116 pre-submit list check and consumed the third daily slot.
+
+Final June 8 submission list snapshot: `logs/final_submissions_2026-06-08.txt`. Today's three counted records are R115 ref 53478725, duplicate R115 ref 53478874, and R116 ref 53478878.
+
+Accounting note:
+- The R116 pre-submit list showed only one R115 record. The final list later showed a second R115 record timestamped seven seconds before R116. Because quota is judged by accepted/listed records, no additional submission was attempted after R116.
+- Future submit handling should wait for the post-submit list to remain stable before starting the next upload, especially after rate-limit responses or slow uploads.
+
+Error analysis:
+- R115 and R116 confirm that the tiny NMS-left move from 0.46625 to 0.466125 is public-neutral at both 0.000075 and 0.000060 confidence.
+- The best score remains 0.87382; the available final-day local variants did not improve the displayed score.
