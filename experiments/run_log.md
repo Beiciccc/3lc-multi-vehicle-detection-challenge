@@ -1029,3 +1029,19 @@ Error analysis:
 - R112 produced a decisive jump from the previous 0.83235 active 640 px baseline to 0.87382, validating train+val training on the provided data.
 - R113 and R114 added progressively more low-confidence detections, but both tied R112. The score plateau suggests the extra recall is either public-neutral or below the displayed-score resolution, while max-det saturation should be watched before pushing lower.
 - The remaining useful direction is likely NMS/localization calibration or a new train+val split/seed/checkpoint, not R93 output-only class-tail filtering.
+
+## 2026-06-08 submission loop x3
+
+Context:
+- Submission list was queried at loop start on 2026-06-08 UTC/Europe-London. The starting list had no 2026-06-08 records, so the full three-submission quota was available before R115.
+- Public Code and Discussion listings were refreshed. No 2026-06-08 notebook or discussion update was visible; the four topic details match the existing rule clarifications.
+- R112/R113/R114 established a train+val checkpoint plateau at 0.87382 across confidence thresholds 0.000075 to 0.000050.
+- Strategy: use final-day quota on low-risk variants around that plateau rather than returning to weaker R93 output-only filtering.
+
+Submission results so far:
+
+| Loop | File | Experiment | Validation / audit | Public LB |
+|---|---|---|---|---:|
+| R115 | `submissions/r115/r115_trainval_nomix_close3_conf000007500_iou0466125_submission.csv` | Train+val checkpoint, 640, conf 0.000075, iou 0.466125 | val mAP50 0.88179 / audit ok / 123638 boxes | 0.87382 |
+
+Current best public score remains R112/R113/R114/R115 `0.87382`. R115 changed only 37 boxes versus R112 and confirmed the tiny NMS-left move is public-neutral on the displayed score.

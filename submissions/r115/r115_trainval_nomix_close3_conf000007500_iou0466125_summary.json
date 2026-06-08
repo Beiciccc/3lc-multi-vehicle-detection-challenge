@@ -1,0 +1,49 @@
+{
+  "agnostic_nms": false,
+  "alias_of": "r106_trainval_nomix_close3_conf000007500_iou0466125",
+  "audit": {
+    "boxes_by_class": {
+      "0": 3597,
+      "1": 103137,
+      "2": 4537,
+      "3": 12367
+    },
+    "errors": [],
+    "nonempty": 982,
+    "ok": true,
+    "per_image": {
+      "max": 300,
+      "mean": 125.90427698574338,
+      "median": 116.0,
+      "near_max_det_290": 7,
+      "p95": 228,
+      "p99": 281
+    },
+    "rows": 982,
+    "total_boxes": 123638
+  },
+  "batch": 32,
+  "conf": 7.5e-05,
+  "created_utc": "2026-06-08T13:27:08Z",
+  "dataset_info": {
+    "counts": {
+      "train": 7852,
+      "val": 982
+    },
+    "merged_dir": "/kaggle/working/merged_trainval"
+  },
+  "decision_note": "R112/R113/R114 formed a 0.87382 confidence plateau; submit closest NMS-left variant first because it changes only 37 boxes versus R112 and may reduce duplicate false positives.",
+  "device": "0",
+  "imgsz": 640,
+  "iou": 0.466125,
+  "max_det": 300,
+  "note": "r115 2026-06-08: final-day low-risk NMS-left variant of R112 train+val checkpoint, conf 0.000075, iou 0.466125.",
+  "round": "r115",
+  "rule_note": "single YOLOv8n checkpoint, yolov8n.yaml random initialization, provided competition train+val data only, 640 px, no TTA, no ensemble, no pseudo-labeling, no distillation",
+  "submission": "submissions/r115/r115_trainval_nomix_close3_conf000007500_iou0466125_submission.csv",
+  "val_metrics": {
+    "map50": 0.8817943245918116,
+    "map50_95": 0.6878117043579626
+  },
+  "weights": "/kaggle/working/runs/detect/r103_yolov8n_scratch_e10_seed42_trainval_nomix_close3_640_20260606/weights/best.pt"
+}

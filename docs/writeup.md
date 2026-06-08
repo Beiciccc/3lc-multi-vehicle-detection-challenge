@@ -94,6 +94,7 @@ The strongest active 640 px checkpoint is the R62 no-mixup/close-mosaic=3 YOLOv8
 | R112 | 2026-06-07 | Train+val YOLOv8n scratch, 640, conf 0.000075, iou 0.46625 | 0.87382 |
 | R113 | 2026-06-07 | Train+val YOLOv8n scratch, 640, conf 0.000060, iou 0.46625 | 0.87382 |
 | R114 | 2026-06-07 | Train+val YOLOv8n scratch, 640, conf 0.000050, iou 0.46625 | 0.87382 |
+| R115 | 2026-06-08 | Train+val YOLOv8n scratch, 640, conf 0.000075, iou 0.466125 | 0.87382 |
 
 Highest observed public score: **R112, 0.87382**. R112 follows the active 640 px constraint and uses only the provided train+val data with a single YOLOv8n scratch checkpoint.
 
@@ -150,3 +151,6 @@ The June 5 loop used Kaggle GPU for a reproducibility diagnostic of the R62 no-m
 The June 6 loop used Kaggle GPU for a fresh train+val low-confidence experiment. That kernel completed after the three daily submissions had already been accepted, so its audited R103-R107 outputs were retained as generated-but-unsubmitted diagnostics. The first accepted submission used an audited Kaggle GPU R62 reproduction output: R94 scored only 0.81600, confirming that the reproduced checkpoint is substantially weaker than the historical R62/R93 checkpoint. The loop then returned to R93 output diagnostics. R108 removed only 350 van boxes below 0.0001 and fell to 0.83194, so the van tail should be preserved. R110 kept the top 100 predictions per image per class and tied R93/R101 at 0.83235, showing that low-confidence car overflow beyond that cap is public-neutral but not beneficial to remove.
 
 The June 7 loop submitted train+val checkpoint candidates R112, R113, and R114. R112 used `conf=0.000075` and produced 123675 boxes; R113 lowered confidence to `0.000060` and produced 136688 boxes; R114 lowered confidence to `0.000050` and produced 148392 boxes. All three scored 0.87382, a large public improvement over R93/R101/R110 at 0.83235. This confirms that the train+val single-checkpoint direction is now the primary final-window direction; additional low-confidence recall in this range is public-neutral on the displayed public score.
+
+
+The June 8 first slot submitted R115, the closest NMS-left variant of R112. It produced 123638 boxes and tied the current best at 0.87382, indicating this small NMS move is public-neutral rather than an improvement.

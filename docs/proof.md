@@ -316,3 +316,11 @@ Generated but not submitted on June 6: R109 was audited at 90624 boxes but not s
 R112, R113, and R114 are tied as the current best public score at 0.87382. It uses a single YOLOv8n scratch train+val checkpoint at 640 px with no external data, no ensemble, no TTA, no pseudo-labeling, and no distillation.
 
 Final June 7 submission list snapshot: `logs/final_submissions_2026-06-07.txt`. All three June 7 submissions were accepted and completed.
+
+## June 8 Submission Proof
+
+| Run | Candidate | Summary | Audit | Submit log | Poll logs | Public LB |
+|---|---|---|---|---|---|---:|
+| R115 | `submissions/r115/r115_trainval_nomix_close3_conf000007500_iou0466125_submission.csv` | `submissions/r115/r115_trainval_nomix_close3_conf000007500_iou0466125_summary.json` | `logs/r115/audit_r115_2026-06-08.txt` | `logs/r115/submit_r115_2026-06-08.txt` | `logs/r115/submissions_poll_r115_2026-06-08_*.txt` | 0.87382 |
+
+R115 ties the current best public score at 0.87382. It uses the same single train+val YOLOv8n scratch checkpoint as R112-R114 with a slight NMS-left setting.

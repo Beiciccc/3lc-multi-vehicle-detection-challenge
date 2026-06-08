@@ -1,0 +1,6 @@
+2026-06-08 refresh summary
+
+- Start-of-day submission list had no 2026-06-08 records; three submissions were available before R115.
+- Public Code listing had no new notebook; newest public notebook remained 2026-05-19.
+- Discussion topic list still contained the same four topics as 2026-06-07. Topic CSV details matched the known rule clarifications: train+val merge and oversampling are allowed within provided data; validation labels remain category guidance; 3LC installation notes are unchanged.
+- Rules/evaluation local full-page snapshots from 2026-06-05 through 2026-06-07 were identical. The 2026-06-08 detail page request was rate limited during refresh, but no CLI-visible rule, code, or discussion evidence indicated a change.
