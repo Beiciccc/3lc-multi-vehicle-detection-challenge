@@ -1,4 +1,6 @@
 ref,fileName,date,description,status,publicScore,privateScore
+53478878,r116_trainval_nomix_close3_conf000006000_iou0466125_submission.csv,2026-06-08 13:32:39.647000,r116_trainval_nomix_close3_conf0.000060_iou0.466125,SubmissionStatus.COMPLETE,0.87382,
+53478874,r115_trainval_nomix_close3_conf000007500_iou0466125_submission.csv,2026-06-08 13:32:32.317000,r115_trainval_nomix_close3_conf0.000075_iou0.466125,SubmissionStatus.COMPLETE,0.87382,
 53478725,r115_trainval_nomix_close3_conf000007500_iou0466125_submission.csv,2026-06-08 13:27:55.570000,r115_trainval_nomix_close3_conf0.000075_iou0.466125,SubmissionStatus.COMPLETE,0.87382,
 53442746,r114_trainval_nomix_close3_conf000005000_iou0466250_submission.csv,2026-06-07 06:43:25.980000,r114_trainval_nomix_close3_conf0.000050_iou0.46625,SubmissionStatus.COMPLETE,0.87382,
 53442661,r113_trainval_nomix_close3_conf000006000_iou0466250_submission.csv,2026-06-07 06:39:55.263000,r113_trainval_nomix_close3_conf0.000060_iou0.46625,SubmissionStatus.COMPLETE,0.87382,
@@ -47,5 +49,3 @@ ref,fileName,date,description,status,publicScore,privateScore
 52943994,r50_r1_640_conf000475_iou046625_submission.csv,2026-05-23 05:42:48.950000,r50_r1_640_conf0.000475_iou0.46625,SubmissionStatus.COMPLETE,0.82864,
 52931916,r49_r1_640_conf00045_iou046625_submission.csv,2026-05-22 17:54:20.267000,r49_r1_640_conf0.00045_iou0.46625,SubmissionStatus.COMPLETE,0.82864,
 52908938,r46_r1_640_conf00065_iou046625_submission.csv,2026-05-22 02:31:44.023000,r46_r1_640_conf0.00065_iou0.46625,SubmissionStatus.COMPLETE,0.82769,
-52908934,r46_r1_640_conf0005_iou046625_submission.csv,2026-05-22 02:31:35.993000,r46_r1_640_conf0.0005_iou0.46625,SubmissionStatus.COMPLETE,0.82864,
-52872683,r45_r1_640_conf0007_iou0466375_submission.csv,2026-05-21 04:44:12.263000,r45_r1_640_conf0.0007_iou0.466375,SubmissionStatus.COMPLETE,0.82768,

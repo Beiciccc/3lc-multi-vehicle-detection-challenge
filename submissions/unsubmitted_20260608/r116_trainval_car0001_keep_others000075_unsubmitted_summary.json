@@ -1,0 +1,24 @@
+{
+  "source": "submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_submission.csv",
+  "submission": "submissions/r116/r116_trainval_car0001_keep_others000075_submission.csv",
+  "thresholds": {
+    "1": 0.0001
+  },
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 111513,
+  "kept_by_class": {
+    "0": 3597,
+    "1": 91008,
+    "2": 4537,
+    "3": 12371
+  },
+  "dropped_by_class": {
+    "0": 0,
+    "1": 12162,
+    "2": 0,
+    "3": 0
+  },
+  "note": "2026-06-08 final-day candidate: train+val R112 source, raise only car low-confidence floor to 0.0001; preserve truck/van/bus tails",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

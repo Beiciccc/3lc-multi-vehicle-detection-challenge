@@ -37,6 +37,11 @@
   "imgsz": 640,
   "iou": 0.466125,
   "max_det": 300,
+  "public_score": 0.87382,
+  "kaggle_refs": [
+    "53478725",
+    "53478874"
+  ],
   "note": "r115 2026-06-08: final-day low-risk NMS-left variant of R112 train+val checkpoint, conf 0.000075, iou 0.466125.",
   "round": "r115",
   "rule_note": "single YOLOv8n checkpoint, yolov8n.yaml random initialization, provided competition train+val data only, 640 px, no TTA, no ensemble, no pseudo-labeling, no distillation",

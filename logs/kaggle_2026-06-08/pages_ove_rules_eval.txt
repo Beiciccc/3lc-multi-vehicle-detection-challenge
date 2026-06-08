@@ -1,0 +1,3 @@
+429 Client Error: Too Many Requests for url: https://api.kaggle.com/v1/competitions.CompetitionApiService/ListCompetitionPages
+429 Client Error: Too Many Requests for url: https://api.kaggle.com/v1/competitions.CompetitionApiService/ListCompetitionPages
+429 Client Error: Too Many Requests for url: https://api.kaggle.com/v1/competitions.CompetitionApiService/ListCompetitionPages

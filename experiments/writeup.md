@@ -39,3 +39,5 @@ The June 5 class-tail diagnostics showed that R93's bus tail below 0.0001 should
 ## Next Direction
 
 Preserve R93's bus and van low-confidence tails; filtering bus below 0.0001 is harmful and filtering van below 0.0001 also drops public score. Truck below 0.0001 and car overflow beyond top 100 per image per class are public-neutral but not beneficial to remove. The next high-upside path is true lower-confidence inference from the original R62/R93 checkpoint or a better-reproduced 640 px YOLOv8n scratch checkpoint whose validation quality matches the historical R62 run.
+
+The June 7 and June 8 final-window submissions establish a new train+val checkpoint plateau. R112, R113, and R114 scored 0.87382 at `iou=0.46625` across confidence thresholds `0.000075`, `0.000060`, and `0.000050`. R115 and R116 then scored 0.87382 at `iou=0.466125` for `conf=0.000075` and `conf=0.000060`; a duplicate accepted R115 record also scored 0.87382. The best confirmed public score is therefore 0.87382, and additional near-identical confidence/NMS micro-sweeps have low expected value compared with new train+val seeds or a stronger localization/class-calibration signal.

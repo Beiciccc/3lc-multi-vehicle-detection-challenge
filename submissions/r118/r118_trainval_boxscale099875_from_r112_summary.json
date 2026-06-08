@@ -1,0 +1,19 @@
+{
+  "source": "submissions/r112/r112_trainval_nomix_close3_conf000007500_iou0466250_submission.csv",
+  "submission": "submissions/r118/r118_trainval_boxscale099875_from_r112_submission.csv",
+  "scale": 0.99875,
+  "eps": 1e-06,
+  "rows": 982,
+  "nonempty": 982,
+  "total_boxes": 123675,
+  "removed": 0,
+  "adjusted": 123675,
+  "boxes_by_class": {
+    "0": 3597,
+    "1": 103170,
+    "2": 4537,
+    "3": 12371
+  },
+  "note": "2026-06-08 final-day candidate: tiny bbox shrink from R112 train+val output",
+  "rule_note": "post-processing of one YOLOv8n checkpoint submission; no TTA, no ensemble, no pseudo-labeling"
+}

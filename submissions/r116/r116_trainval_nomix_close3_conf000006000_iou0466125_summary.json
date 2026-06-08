@@ -1,9 +1,10 @@
 {
-  "round": "r107",
+  "round": "r116",
+  "alias_of": "r107_trainval_nomix_close3_conf000006000_iou0466125",
   "weights": "/kaggle/working/runs/detect/r103_yolov8n_scratch_e10_seed42_trainval_nomix_close3_640_20260606/weights/best.pt",
-  "submission": "/kaggle/working/submissions_20260606/r107_trainval_nomix_close3_conf000006000_iou0466125_submission.csv",
+  "submission": "submissions/r116/r116_trainval_nomix_close3_conf000006000_iou0466125_submission.csv",
   "imgsz": 640,
-  "conf": 6e-05,
+  "conf": 0.00006,
   "iou": 0.466125,
   "max_det": 300,
   "batch": 32,
@@ -41,6 +42,9 @@
       "val": 982
     }
   },
-  "note": "r107 2026-06-06: train+val YOLOv8n scratch, nomix close_mosaic=3, low confidence sweep",
+  "created_utc": "2026-06-08T13:32:00Z",
+  "public_score": 0.87382,
+  "kaggle_ref": "53478878",
+  "note": "r116 2026-06-08: final-day low-risk NMS-left variant of the train+val YOLOv8n scratch checkpoint, conf 0.000060, iou 0.466125.",
   "rule_note": "single YOLOv8n checkpoint, yolov8n.yaml random initialization, provided competition train+val data only, 640 px, no TTA, no ensemble, no pseudo-labeling, no distillation"
 }

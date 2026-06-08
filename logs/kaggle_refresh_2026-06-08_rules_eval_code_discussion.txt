@@ -1,6 +1,139 @@
-2026-06-08 refresh summary
+=== kernels ===
+ref,title,author,lastRunTime,totalVotes
+omarafik/notebookb217734f72,notebookb217734f72,Omar,2026-05-19 16:40:40.170000,6
+quartzyu/3lc-multi-vehicle-detection-challenge-yolov8n,3LC Multi Vehicle detection Challenge YOLOv8n,Quartz Yu ,2026-05-19 04:54:00.617000,1
+avikdas567/3lc-yolov8n-vehicle-detection-and-label-qa-process,3LC YOLOv8n Vehicle Detection and Label QA Process,Avik Das,2026-04-30 10:44:15.913000,10
+hmnshudhmn24/3lc-multi-vehicle-detection-challenge,3LC Multi Vehicle detection Challenge,Himanshu Dhiman,2026-04-11 09:43:42.557000,6
+lakhindarpal/3lc-multi-vehicle-detection-challenge,3LC Multi Vehicle detection Challenge,Lakhindar Pal,2026-04-11 00:36:46.533000,11
+=== topics ===
+id,title,authorName,commentCount,votes,postDate
+704140,Installation instruction changes for `3lc` 3.0.0 and 2.23.0,,1,1,2026-06-03 15:29:33.405000
+703776,Vehicle Categories,,3,0,2026-06-01 22:12:41.334000
+702180,Rule Clarification: Train+Val Merge and Oversampling Allowed?,,1,0,2026-05-21 18:06:30.099000
+697032,Question about allowed methods for label improvement,,1,0,2026-05-05 02:24:06.839000
+=== overview ===
+No pages found
+=== rules ===
+name   content                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+-----  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+rules  **ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES.**
 
-- Start-of-day submission list had no 2026-06-08 records; three submissions were available before R115.
-- Public Code listing had no new notebook; newest public notebook remained 2026-05-19.
-- Discussion topic list still contained the same four topics as 2026-06-07. Topic CSV details matched the known rule clarifications: train+val merge and oversampling are allowed within provided data; validation labels remain category guidance; 3LC installation notes are unchanged.
-- Rules/evaluation local full-page snapshots from 2026-06-05 through 2026-06-07 were identical. The 2026-06-08 detail page request was rate limited during refresh, but no CLI-visible rule, code, or discussion evidence indicated a change.
+Eligibility, prizes, and general legal terms follow standard Kaggle and sponsor policies. Below is the **competition-specific** summary.
+
+## Competition-specific rules
+
+### Task
+
+- **Multi-class object detection** with **four** vehicle classes (see **[Description](https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/overview/description)** / `dataset.yaml`).
+- Submissions: **CSV** with columns `id`, `image_id`, `prediction_string`  format in **[Evaluation](https://www.kaggle.com/competitions/3-lc-multi-vehicle-detection-challenge/overview/evaluation)**.
+
+### Model and training constraints
+
+- **Architecture:** **YOLOv8n only**. The official `train.py` is locked to YOLOv8n and **trains from scratch** (`yolov8n.yaml`, random initialization - no COCO or other pretrained checkpoints). Using larger YOLO variants, other architectures, or replacing the training entrypoint with an unapproved script is **not allowed**.
+- **Input size:** 640 px (default in `config.yaml`).
+- **Hyperparameters:** May be tuned within `config.yaml` (learning rate, augmentation, epochs, etc.).
+- **Prohibited techniques:** Model ensembling, test-time augmentation (TTA), pseudo-labeling, knowledge distillation, or any method that effectively circumvents the single-model constraint.
+
+### Data use
+
+- **Train / val:** Use only the provided data for training and local validation.
+- **Test:** Images only do not attempt to obtain or use leaked labels.
+- **External data / images:** Not allowed unless an explicit exception is published by the organizers.
+- **Pretrained weights:** **Not allowed.** Training must start from random initialization.
+
+### 3LC
+
+- **3LC** is required for the prescribed workflow: register **train** and **val** Tables, run training integrated with 3LC Runs, and use the Dashboard for the data-centric loop.
+- **Test** images are **not** registered in 3LC; inference uses `predict.py` on local test files.
+- Participants must use their own **3LC account** and API key.
+
+### Teams and submissions
+
+- **Team size:** up to 4 participants.
+- **Submissions:** 3 per day maximum.
+- **Final selection:** Choose up to 2 submissions for final judging (per Kaggle settings).
+
+### Timeline
+
+- **Start / end / merger deadline:** As shown on the competition **Timeline**.
+
+### Evaluation form (if applicable)
+
+- Teams are required to submit an **evaluation / feedback form** and a **private GitHub** repo by the stated deadline to be eligible for prizes and certificates.
+- The form link, judge GitHub Username, and repo-contents checklist provided in Overview sectom. 
+- Evaluation [Google Form URL](https://docs.google.com/forms/d/e/1FAIpQLSeWCQh6vcc5oigeyDluOf05Nfk5w03dgchasiFVH_TyRos9UQ/viewform?usp=sharing&ouid=117102271415750563738)
+
+### Winner obligations
+
+- Provide reproducible code and methodology as required by the sponsor.
+- Grant license to the winning submission as stated in the full legal Rules.
+
+For general Kaggle competition rules and legal terms, refer to the [Kaggle Competition Rules](https://www.kaggle.com/terms).
+  
+=== evaluation ===
+name        content                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+----------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+Evaluation  This is the section for **metric**, **submission format**, **validation rules**, and **leaderboard split**. Other pages point here - keep the full spec in this tab only.
+
+## Metric
+
+**Mean Average Precision at IoU 0.5 (mAP@0.5)** for multi-class object detection on the held-out test set.
+
+- **Implementation:** Predictions and ground truth are converted to **COCO-style** bounding boxes in **absolute pixels** using each image's width and height (from the competition's reference metadata). Evaluation uses `pycocotools` (`COCOeval`, bbox task, IoU threshold 0.5).
+- **Aggregation:** Standard COCO mAP@0.5 over the **four** vehicle classes (equal weighting via COCO's category AP), summarized as a single leaderboard score.
+- **Score range:** [0, 1], higher is better.
+- **Empty images:** If an image has no ground-truth vehicles, predicting `no box` (or no valid boxes) is treated as a correct non-detection; edge cases follow standard COCO handling.
+
+## Submission format
+
+Your CSV must match `sample_submission.csv` from the **Data** tab:
+
+- **Same column names** (case-sensitive).
+- **Same row count** and `id` / `image_id` values (one row per test image).
+
+### Columns
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `id` | int | Row id from `sample_submission.csv`. Preserve exactly - Kaggle uses it to align your file with the solution. |
+| `image_id` | string | Image filename stem (no extension), matching `sample_submission.csv` and the test filenames. |
+| `prediction_string` | string | All predictions for that image in one cell. No line breaks. |
+
+### `prediction_string` encoding
+
+For each detected box, emit **six** space-separated values:
+
+```
+class_id confidence x_center y_center width height
+```
+
+- **`class_id`:** integer 0–3 (truck, car, van, bus - order matches `dataset.yaml`).
+- **`confidence`:** float in [0, 1].
+- **`x_center`, `y_center`, `width`, `height`:** floats in [0, 1], **normalized** to image dimensions (YOLO format).
+
+Multiple boxes → concatenate 6-tuples with spaces. **No detections** → use the literal `no box` (lowercase, one space; as in `sample_submission.csv`).
+
+### Example
+
+```csv
+id,image_id,prediction_string
+0,MVI_20011__img00001,1 0.92 0.55 0.40 0.12 0.18 3 0.71 0.20 0.30 0.08 0.10
+1,MVI_20011__img00002,no box
+```
+
+## Validation rules
+
+Your submission will be **rejected** (with a participant-visible error) if:
+
+1. Columns `id`, `image_id`, or `prediction_string` are missing or misspelled.
+2. The `image_id` set doesn't match the required test images (missing or extra rows).
+3. `prediction_string` can't be parsed as zero or more 6-value groups, or `no box`, or values are out of range (class not 0–3, coordinates/confidence not in [0, 1]).
+
+**Tip:** Always download `sample_submission.csv` from the Data tab and match it exactly.
+
+## Leaderboard
+
+- **Public leaderboard:** ~40% of test images (fixed subset), shown during the competition.
+- **Private leaderboard:** Remaining test images, revealed after the deadline → final ranking.
+
+The public/private split is **within** the test set; it is unrelated to your train/val/test download splits. Optimize for **generalization**, not only the public score.  
