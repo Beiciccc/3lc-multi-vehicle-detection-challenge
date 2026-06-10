@@ -1,0 +1,19 @@
+Final Kaggle refresh summary - 2026-06-10
+UTC collection time: 2026-06-10T22:19Z
+Local collection time: 2026-06-10T23:19+0100
+
+Final submissions:
+- The post-competition submissions list includes both publicScore and privateScore.
+- Best privateScore observed for this team: 0.85648, reached by R113, R114, and R116.
+- Latest tied-best private submission: R116, ref 53478878, publicScore 0.87382, privateScore 0.85648.
+
+Leaderboard snapshot:
+- Downloaded leaderboard CSV contained 97 teams.
+- Kun Zhang / beicicc: rank 19, score 0.87382, last submission 2026-06-08 13:32:39, submission count 93.
+
+Code listing:
+- A post-deadline public notebook appeared on 2026-06-10 with title "0.934 submitted submitted 10 minutes late".
+- The other visible recent scratch-training notebook was last run on 2026-05-25.
+
+Discussion listing:
+- The topic list remained the same four visible topics: installation instructions, vehicle categories, train+val/oversampling clarification, and label-improvement methods.

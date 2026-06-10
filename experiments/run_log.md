@@ -1057,3 +1057,32 @@ Accounting note:
 Error analysis:
 - R115 and R116 confirm that the tiny NMS-left move from 0.46625 to 0.466125 is public-neutral at both 0.000075 and 0.000060 confidence.
 - The best score remains 0.87382; the available final-day local variants did not improve the displayed score.
+
+
+## 2026-06-10 final archive
+
+Competition status: closed. No additional submissions were attempted. Final information was collected through the Kaggle submissions list, downloaded leaderboard snapshot, Code listing, and Discussion topic list.
+
+Final leaderboard snapshot:
+
+| Field | Value |
+|---|---|
+| Team | Kun Zhang / beicicc |
+| Rank | 19/97 |
+| Displayed leaderboard score | 0.87382 |
+| Last submission date | 2026-06-08 13:32:39 |
+| Submission count | 93 |
+
+Post-competition submissions view:
+
+| Run | Ref | Public | Private |
+|---|---:|---:|---:|
+| R116 | 53478878 | 0.87382 | 0.85648 |
+| R114 | 53442746 | 0.87382 | 0.85648 |
+| R113 | 53442661 | 0.87382 | 0.85648 |
+| R112 | 53442509 | 0.87382 | 0.85637 |
+| R115 | 53478725 / 53478874 | 0.87382 | 0.85637 |
+
+Final conclusion: the train+val YOLOv8n scratch checkpoint at 640 px was the decisive direction, moving public score from the R93/R101/R110 baseline of 0.83235 to 0.87382 and producing the best privateScore of 0.85648. The nearby confidence/NMS variants formed a plateau; R116 is the latest tied-best private submission.
+
+Repository updates: added final submissions/leaderboard proof, final Kaggle refresh summary, final project summary, and public repository sanitization of raw topic/page exports.

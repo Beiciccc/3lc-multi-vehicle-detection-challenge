@@ -12,7 +12,7 @@ The active experiments follow the competition constraints:
 - Inference: single checkpoint, no ensemble, no TTA, no pseudo-labeling.
 - Submission format: `id,image_id,prediction_string`, matching `competition_starter/sample_submission.csv`.
 
-The official 3LC process requires a personal 3LC API key. That process was blocked in this environment, so the score-chasing runs use a compliant Ultralytics fallback with YOLOv8n from scratch and documented inference-only sweeps from the R1 checkpoint.
+The official 3LC process requires a personal 3LC API key. That process was blocked in this environment, so the score-chasing runs use a compliant Ultralytics fallback with YOLOv8n from scratch and documented training/inference sweeps, culminating in the train+val checkpoint recorded below.
 
 ## Repository Layout
 
@@ -68,17 +68,25 @@ python scripts/yolo_fallback_pipeline.py \
   --close-mosaic 1 --pred-conf 0.001 --pred-iou 0.65
 ```
 
-### Reproduce active 640 px baseline submission
+### Reproduce final train+val submission
 
-Highest observed public score is now R112 at `0.87382` under the active 640 px constraint. The previous 640 px baseline was R93/R101/R110 at `0.83235`.
+Final public best: `0.87382` from R112-R116. The post-competition submissions view shows best `privateScore` `0.85648` for R113/R114/R116. The downloaded final leaderboard snapshot ranks `Kun Zhang` at `19/97` with displayed score `0.87382`.
+
+Run the train+val script on a Kaggle GPU runtime with the competition data attached:
+
+```bash
+python kaggle_gpu/r103_trainval_lowconf_20260606/run.py
+```
+
+The script trains one YOLOv8n checkpoint from `yolov8n.yaml` random initialization at 640 px, then exports low-confidence candidates matching the submitted R112-R116 family. If using the archived local checkpoint, R116 can be regenerated with:
 
 ```bash
 python scripts/make_inference_submission.py \
   --starter-dir competition_starter \
-  --weights competition_starter/runs/detect/r62_yolov8n_scratch_e10_seed42_nomix_close3_640/weights/best.pt \
-  --out submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv \
-  --summary submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_summary.json \
-  --imgsz 640 --conf 0.000075 --iou 0.46625 \
+  --weights kaggle_gpu_outputs/r103_trainval_lowconf_20260606/runs/detect/r103_yolov8n_scratch_e10_seed42_trainval_nomix_close3_640_20260606/weights/best.pt \
+  --out submissions/r116/r116_trainval_nomix_close3_conf000006000_iou0466125_submission.csv \
+  --summary submissions/r116/r116_trainval_nomix_close3_conf000006000_iou0466125_summary.json \
+  --imgsz 640 --conf 0.000060 --iou 0.466125 \
   --max-det 300 --batch 32 --device 0 --val
 ```
 
@@ -86,7 +94,7 @@ python scripts/make_inference_submission.py \
 
 ```bash
 python scripts/audit_submission.py \
-  submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv \
+  submissions/r116/r116_trainval_nomix_close3_conf000006000_iou0466125_submission.csv \
   --sample competition_starter/sample_submission.csv \
   --test-images-dir competition_starter/data/test/images \
   --strict-bbox-inside
@@ -97,11 +105,18 @@ python scripts/audit_submission.py \
 ```bash
 kaggle competitions submit \
   -c 3-lc-multi-vehicle-detection-challenge \
-  -f submissions/r93/r93_r62_nomix_close3_conf000075_iou046625_submission.csv \
-  -m "r93_r62_nomix_close3_conf0.000075_iou0.46625"
+  -f submissions/r116/r116_trainval_nomix_close3_conf000006000_iou0466125_submission.csv \
+  -m "r116_trainval_nomix_close3_conf0.000060_iou0.466125"
 ```
 
 Always query `kaggle competitions submissions -c 3-lc-multi-vehicle-detection-challenge` immediately before and after each submit. Count quota only by API accept/reject plus submission-list records.
+
+## Final Results
+
+- Final downloaded leaderboard snapshot: rank `19/97`, score `0.87382`, team `Kun Zhang`, member `beicicc`, submission count `93`.
+- Best post-competition `privateScore`: `0.85648`, reached by R113, R114, and R116.
+- Latest tied-best private submission: R116 (`53478878`), public `0.87382`, private `0.85648`.
+- Final archive: `experiments/final_summary_2026-06-10.md`.
 
 ## Latest Results
 
@@ -140,4 +155,4 @@ The June 6 loop used Kaggle GPU for a train+val low-confidence run; it completed
 The June 7 loop submitted R112, R113, and R114 from the train+val YOLOv8n scratch checkpoint at 640 px. Confidence thresholds `0.000075`, `0.000060`, and `0.000050` produced 123675, 136688, and 148392 boxes respectively. All three scored `0.87382`, becoming the new best public result and validating the train+val checkpoint direction.
 
 
-The June 8 final-day records were R115, a duplicate R115 listing, and R116. R115 and R116 are NMS-left variants of R112/R113 (`iou=0.466125`) and both scored `0.87382`, tying the current best. The duplicate R115 listing consumed one daily slot and is recorded in the proof logs.
+The June 8 final-day records were R115, a duplicate R115 listing, and R116. R115 and R116 are NMS-left variants of R112/R113 (`iou=0.466125`) and both scored `0.87382`, tying the public best. The duplicate R115 listing consumed one daily slot and is recorded in the proof logs. The June 10 post-competition archive shows best `privateScore` `0.85648` for R113/R114/R116 and a downloaded leaderboard snapshot rank of `19/97`.

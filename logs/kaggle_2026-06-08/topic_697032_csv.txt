@@ -1,4 +1,0 @@
-id,title,authorName,commentCount,votes,postDate
-697032,Question about allowed methods for label improvement,Nguyễn Đức Danh,1,0,2026-05-05 02:24:06.839000
-id,authorName,postDate,votes,content
-3453823,RishikeshJadhav3LC,2026-05-06 01:06:34.703000,0,"<p>Yes, that is allowed. You can use external scripts or methods to help identify missing annotations or label issues. As long as any changes are committed back into 3LC as a new table revision before retraining and you are only using the provided dataset (no external data or labels) this approach aligns with the competition rules and the intended data centric workflow.</p>"

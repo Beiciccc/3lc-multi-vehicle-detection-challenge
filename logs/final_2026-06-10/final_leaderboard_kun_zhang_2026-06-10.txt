@@ -1,0 +1,6 @@
+Final downloaded leaderboard snapshot - 2026-06-10
+Teams in downloaded CSV: 97
+Source CSV: logs/final_2026-06-10/final_leaderboard_public_snapshot_2026-06-10.csv
+
+Rank,TeamId,TeamName,LastSubmissionDate,Score,SubmissionCount,TeamMemberUserNames
+19,15788473,Kun Zhang,2026-06-08 13:32:39,0.87382,93,beicicc

@@ -328,3 +328,18 @@ Final June 7 submission list snapshot: `logs/final_submissions_2026-06-07.txt`. 
 R115 and R116 tie the current best public score at 0.87382. A duplicate R115 record also appeared in the final list and consumed one daily slot; this is recorded as an accounting anomaly, not a separate experiment.
 
 Final June 8 submission list snapshot: `logs/final_submissions_2026-06-08.txt`.
+
+
+## Final Archive - June 10
+
+Post-competition proof files:
+
+| Artifact | Path | Notes |
+|---|---|---|
+| Final submissions list | `logs/final_2026-06-10/submissions_final_2026-06-10.txt` | Includes publicScore and privateScore. |
+| Downloaded leaderboard row | `logs/final_2026-06-10/final_leaderboard_kun_zhang_2026-06-10.txt` | Rank 19/97, score 0.87382. |
+| Downloaded leaderboard CSV | `logs/final_2026-06-10/final_leaderboard_public_snapshot_2026-06-10.csv` | Full downloaded snapshot used for rank verification. |
+| Final refresh summary | `logs/kaggle_refresh_2026-06-10_final_summary.txt` | Code/discussion/submission final refresh. |
+| Final project summary | `experiments/final_summary_2026-06-10.md` | Final result and technical conclusion. |
+
+Best post-competition `privateScore` is 0.85648 from R113/R114/R116. The downloaded leaderboard snapshot ranks Kun Zhang / beicicc at 19/97 with displayed score 0.87382 and submission count 93.

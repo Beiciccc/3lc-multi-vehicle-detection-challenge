@@ -4,7 +4,17 @@
 
 All scored experiments use the competition-provided data and YOLOv8n only. The official 3LC process was unavailable because no usable 3LC API key was present in the runtime, so the active work used a fallback Ultralytics pipeline that preserves the key competition constraints: YOLOv8n architecture, random initialization for training runs, single model inference, no external data, no pretrained checkpoints, no TTA, no ensemble, and no pseudo-labeling.
 
-The strongest active 640 px checkpoint is the R62 no-mixup/close-mosaic=3 YOLOv8n-from-scratch run. It became competitive only with very low confidence thresholds; R93 at `conf=0.000075` reached public `0.83235`. Earlier R1/R49 inference sweeps established a lower 640 px plateau at `0.82864`.
+The strongest final 640 px checkpoint is the train+val YOLOv8n-from-scratch run used by R112-R116. It reached public `0.87382` and best post-competition `privateScore` `0.85648`. The earlier R62/R93 line reached public `0.83235`, and the R1/R49 inference sweeps established a lower 640 px plateau at `0.82864`.
+
+## Final Result
+
+| Source | Result |
+|---|---|
+| Downloaded final leaderboard snapshot | Rank 19/97, displayed score 0.87382, team Kun Zhang / beicicc. |
+| Post-competition submissions view | Best privateScore 0.85648, reached by R113/R114/R116. |
+| Latest tied-best private submission | R116, ref 53478878, public 0.87382, private 0.85648. |
+
+The final high-scoring line is the train+val YOLOv8n scratch checkpoint at 640 px. It uses one checkpoint, provided data only, no external data, no pretrained weights, no TTA, no ensemble, no pseudo-labeling, and no distillation.
 
 ## Key Results
 
@@ -98,7 +108,7 @@ The strongest active 640 px checkpoint is the R62 no-mixup/close-mosaic=3 YOLOv8
 | R115 duplicate | 2026-06-08 | Duplicate submission-list record for R115 | 0.87382 |
 | R116 | 2026-06-08 | Train+val YOLOv8n scratch, 640, conf 0.000060, iou 0.466125 | 0.87382 |
 
-Highest observed public score: **R112, 0.87382**. R112 follows the active 640 px constraint and uses only the provided train+val data with a single YOLOv8n scratch checkpoint.
+Final public best: **0.87382** from R112-R116. Best post-competition `privateScore`: **0.85648** from R113/R114/R116. These submissions follow the active 640 px constraint and use only the provided train+val data with a single YOLOv8n scratch checkpoint.
 
 ## Analysis
 
@@ -156,3 +166,8 @@ The June 7 loop submitted train+val checkpoint candidates R112, R113, and R114. 
 
 
 The June 8 final-day records were R115, a duplicate R115 listing, and R116. R115 and R116 are the NMS-left counterparts of R112 and R113, producing 123638 and 136648 boxes respectively. Both scored 0.87382, so this small NMS-left move is public-neutral rather than an improvement. The duplicate R115 listing consumed one daily slot and is tracked as an accounting anomaly.
+
+
+## Final Archive
+
+The competition is closed. Final files retained for proof are `logs/final_2026-06-10/submissions_final_2026-06-10.txt`, `logs/final_2026-06-10/final_leaderboard_kun_zhang_2026-06-10.txt`, `logs/final_2026-06-10/final_leaderboard_public_snapshot_2026-06-10.csv`, and `experiments/final_summary_2026-06-10.md`. No further submissions are planned.
